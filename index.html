@@ -83,10 +83,9 @@
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 antialiased min-h-screen flex flex-col md:flex-row">
-    <!-- SIDEBAR NAVIGASI (Tema Biru Tua Gelap #0b132b) -->
+    <!-- SIDEBAR NAVIGASI -->
     <aside class="w-full md:w-64 bg-navy-800 text-white flex-shrink-0 flex flex-col justify-between shadow-xl">
         <div>
-            <!-- Header Logo & Tajuk (Logo PAS 4 segi tajam dengan bulatan putih) -->
             <div class="p-4 bg-navy-900 flex items-center gap-3 border-b border-navy-700">
                 <div class="w-10 h-10 bg-pasgreen flex items-center justify-center shrink-0 border border-white/30 rounded-none">
                     <svg viewBox="0 0 100 100" class="w-7 h-7">
@@ -99,7 +98,6 @@
                     <p class="text-[11px] text-amber-300 font-medium">PAS Kawasan Pasir Mas</p>
                 </div>
             </div>
-            <!-- Menu Utama Navigasi -->
             <nav class="p-3 space-y-1.5 text-xs">
                 <button onclick="tukarTab('dashboard')" id="nav-dashboard" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-sky-600 text-white font-medium transition hover:bg-navy-700">
                     <i class="fa-solid fa-chart-line w-4 text-center"></i>
@@ -135,16 +133,14 @@
             Lajnah Tarbiah &copy; asri 2026
         </div>
     </aside>
+
     <!-- KANDUNGAN UTAMA -->
     <main id="main-content-area" class="flex-1 flex flex-col min-w-0 overflow-y-auto">
-        
-        <!-- HEADER ATAS -->
         <header class="bg-navy-800 text-white shadow-sm border-b border-navy-700 px-4 md:px-6 py-4 flex items-center justify-between sticky top-0 z-10">
             <div>
                 <h2 id="page-title" class="text-base md:text-xl font-bold text-white">Analisis & Ringkasan Takwim Tarbiah</h2>
                 <div class="flex flex-col text-xs text-gray-300 mt-1 gap-1.5">
                     <span>Tahun Semasa: <span id="lbl-tahun-semasa" class="font-bold text-pasgreen">2026</span></span>
-                    <!-- Kotak Tarikh Bergaya Pil dalam satu baris di bawah tahun semasa -->
                     <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-navy-900 border border-navy-700 rounded-full text-xs font-semibold text-gray-200 w-fit shadow-inner">
                         <i class="fa-solid fa-calendar-days text-pasgreen text-[11px]"></i>
                         <span id="header-current-date" class="whitespace-nowrap">Rabu, 28 Oktober 2026</span>
@@ -157,7 +153,6 @@
                         <i class="fa-solid fa-bell text-lg"></i>
                         <span id="notif-badge" class="hidden absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
                     </button>
-                    
                     <div id="notif-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-white text-gray-800 rounded-lg shadow-xl border border-gray-200 z-50 overflow-hidden">
                         <div class="bg-navy-800 text-white px-4 py-2 font-bold text-xs flex justify-between items-center">
                             <span><i class="fa-solid fa-clock mr-1"></i> Program 3 Hari Akan Datang</span>
@@ -170,9 +165,9 @@
                 </div>
             </div>
         </header>
-        <!-- KANDUNGAN TAB -->
+
         <div class="p-4 md:p-6 space-y-6 flex-1">
-            <!-- 1. DASHBOARD -->
+            <!-- DASHBOARD -->
             <section id="tab-dashboard" class="tab-content space-y-5">
                 <div class="neu-card p-4 border-l-4 border-navy-800 flex flex-col md:flex-row justify-between items-center gap-3">
                     <div>
@@ -183,7 +178,6 @@
                         <span class="px-3 py-1 bg-green-100 text-pasgreen text-[11px] font-bold rounded-full border border-green-300">Pangkalan Data Aktif</span>
                     </div>
                 </div>
-                <!-- Kad Statistik Saiz Kecil dan Kemas -->
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                     <div class="neu-card p-2.5 flex items-center gap-2">
                         <div class="p-1.5 bg-amber-100 text-amber-600 rounded-md shrink-0"><i class="fa-solid fa-sun text-xs"></i></div>
@@ -214,7 +208,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Matriks Takwim Font Saiz 10 -->
                 <div class="neu-card p-4 overflow-hidden">
                     <div class="flex justify-between items-center mb-3">
                         <h4 class="font-bold text-gray-800 text-xs"><i class="fa-solid fa-calendar-days text-navy-800 mr-1.5"></i>Matriks Takwim Program Tarbiah</h4>
@@ -272,7 +265,8 @@
                     </div>
                 </div>
             </section>
-            <!-- 2. KULIAH DHUHA -->
+
+            <!-- KULIAH DHUHA -->
             <section id="tab-dhuha" class="tab-content space-y-4 hidden">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-3.5 rounded-xl shadow-sm">
                     <div>
@@ -295,7 +289,8 @@
                     </table>
                 </div>
             </section>
-            <!-- 3. IFTAR JAMAIE 12K -->
+
+            <!-- IFTAR JAMAIE 12K -->
             <section id="tab-iftar" class="tab-content space-y-4 hidden">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-3.5 rounded-xl shadow-sm">
                     <div>
@@ -318,7 +313,8 @@
                     </table>
                 </div>
             </section>
-            <!-- 4. USRAH PAS KAWASAN -->
+
+            <!-- USRAH PAS KAWASAN -->
             <section id="tab-usrah-kaw" class="tab-content space-y-4 hidden">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-3.5 rounded-xl shadow-sm">
                     <div>
@@ -344,7 +340,8 @@
                     </table>
                 </div>
             </section>
-            <!-- 5. KULIAH HARAKI DUN -->
+
+            <!-- KULIAH HARAKI DUN -->
             <section id="tab-kuliah-dun" class="tab-content space-y-4 hidden">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-3.5 rounded-xl shadow-sm">
                     <div>
@@ -368,7 +365,8 @@
                     </table>
                 </div>
             </section>
-            <!-- 6. USRAH UDM MERANTI -->
+
+            <!-- USRAH UDM MERANTI -->
             <section id="tab-usrah-udm" class="tab-content space-y-4 hidden">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-3.5 rounded-xl shadow-sm">
                     <div>
@@ -391,14 +389,34 @@
                     </table>
                 </div>
             </section>
-            <!-- 7. TETAPAN & AWAN -->
+
+            <!-- TETAPAN & AWAN -->
             <section id="tab-tetapan" class="tab-content space-y-4 hidden">
+                <!-- Tetapan No Telefon WhatsApp -->
+                <div class="neu-card p-4 bg-white space-y-3">
+                    <div class="border-b pb-2">
+                        <h3 class="font-bold text-xs text-navy-800"><i class="fa-solid fa-phone text-green-600 mr-1.5"></i>Tetapan Nombor Telefon WhatsApp</h3>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Masukkan nombor telefon penerima (Contoh: 60123456789) supaya butang WhatsApp terus menghantar mesej.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                        <div class="w-full sm:w-72">
+                            <label class="block text-[11px] font-bold text-gray-700 mb-1">No. Telefon WhatsApp:</label>
+                            <input type="text" id="input-no-telefon" placeholder="Cth: 60199887766" class="neu-input px-3 py-2 rounded-lg text-xs font-bold w-full border focus:outline-none">
+                        </div>
+                        <div class="pt-4">
+                            <button onclick="simpanNoTelefon()" class="px-4 py-2 btn-navy-pill font-semibold text-xs flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-floppy-disk text-xs"></i>
+                                <span>Simpan No. Telefon</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="neu-card p-4 bg-white space-y-3">
                     <div class="border-b pb-2">
                         <h3 class="font-bold text-xs text-navy-800"><i class="fa-solid fa-calendar-plus text-pasgreen mr-1.5"></i>Peralihan & Penjanaan Tahun Semasa</h3>
                         <p class="text-[11px] text-gray-500 mt-0.5">Sistem mengekalkan senarai pengkuliah & naqib tetapi mengira semula tarikh bagi tahun semasa secara dinamik.</p>
                     </div>
-                    
                     <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
                         <div>
                             <label class="block text-[11px] font-bold text-gray-700 mb-1">Tahun Sasaran Sistem:</label>
@@ -417,7 +435,6 @@
                         <h3 class="font-bold text-xs text-red-700"><i class="fa-solid fa-trash-can mr-1.5"></i>Hapus Rekod / Sesi Program</h3>
                         <p class="text-[11px] text-gray-500 mt-0.5">Pilih modul program dan masukkan tarikh sesi yang ingin dipadam.</p>
                     </div>
-                    
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                         <div>
                             <label class="block font-bold text-gray-700 mb-1">Modul Program:</label>
@@ -458,13 +475,11 @@
                         </button>
                     </div>
                 </div>
-                <!-- Petak Organisasi -->
                 <div class="pt-2 flex justify-center items-center">
                     <div class="inline-block px-4 py-1.5 bg-amber-50/70 border border-amber-300/80 rounded-2xl text-[9px] text-amber-900 font-medium tracking-wide shadow-sm text-center">
                         Lajnah Tarbiah & Perkadaran PAS Kawasan Pasir Mas
                     </div>
                 </div>
-                <!-- Hak Cipta -->
                 <div class="pt-1 text-center pb-4">
                     <p class="text-[9px] text-gray-400 font-medium tracking-wide">
                         Lajnah Tarbiah &copy; asri 2026
@@ -473,14 +488,14 @@
             </section>
         </div>
     </main>
-    <!-- MODAL EDIT -->
+
+    <!-- MODALS -->
     <div id="modal-edit" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl w-full max-w-md p-5 shadow-2xl space-y-3">
             <div class="flex justify-between items-center border-b pb-2">
                 <h3 class="font-bold text-navy-800 text-sm">Kemaskini Rekod Program</h3>
                 <button onclick="tutupModal()" class="text-gray-400 hover:text-gray-700 text-base font-bold">&times;</button>
             </div>
-            
             <form id="form-edit" onsubmit="simpanKemaskini(event)" class="space-y-3 text-xs">
                 <input type="hidden" id="edit-kategori">
                 <input type="hidden" id="edit-index">
@@ -507,7 +522,7 @@
             </form>
         </div>
     </div>
-    <!-- MODAL PENGESAHAN HAPUS -->
+
     <div id="modal-confirm-hapus" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl w-full max-w-xs p-5 shadow-2xl space-y-3 text-center">
             <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto text-base">
@@ -523,7 +538,7 @@
             </div>
         </div>
     </div>
-    <!-- MODAL MAKLUMAN -->
+
     <div id="modal-custom-alert" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl w-full max-w-xs p-5 shadow-2xl space-y-3 text-center">
             <div class="w-10 h-10 rounded-full bg-blue-100 text-navy-800 flex items-center justify-center mx-auto text-base">
@@ -538,6 +553,7 @@
             </div>
         </div>
     </div>
+
     <!-- FIREBASE MODULE -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
@@ -583,10 +599,12 @@
             return null;
         };
     </script>
+
     <!-- JAVASCRIPT LOGIK -->
     <script>
         let dbData = {
             tahun: 2026,
+            noTelefon: "",
             dhuha: [],
             iftar: [],
             usrahKaw: [],
@@ -597,20 +615,16 @@
             "JANUARI", "FEBRUARI", "MAC", "APRIL", "MEI", "JUN", 
             "JULAI", "OGOS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DISEMBER"
         ];
+        
         function paparkanTarikhHeaderSemasa() {
             const hariList = ["Ahad", "Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu"];
             const bulanList = ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Desember"];
             const d = new Date();
-            const namaHari = hariList[d.getDay()];
-            const tgl = d.getDate();
-            const namaBulan = bulanList[d.getMonth()];
-            const thn = d.getFullYear();
-            const formatStr = `${namaHari}, ${tgl} ${namaBulan} ${thn}`;
+            const formatStr = `${hariList[d.getDay()]}, ${d.getDate()} ${bulanList[d.getMonth()]} ${d.getFullYear()}`;
             const el = document.getElementById('header-current-date');
-            if (el) {
-                el.innerText = formatStr;
-            }
+            if (el) el.innerText = formatStr;
         }
+
         function paparPesan(pesan) {
             document.getElementById('custom-alert-msg').innerText = pesan;
             document.getElementById('modal-custom-alert').classList.remove('hidden');
@@ -618,30 +632,43 @@
         function tutupCustomAlert() {
             document.getElementById('modal-custom-alert').classList.add('hidden');
         }
+
         window.onload = async function() {
             paparkanTarikhHeaderSemasa();
+            janaTarikhTahunBaharu(2026, false);
+
             if (typeof window.muatDariCloud === 'function') {
-                const cloudData = await window.muatDariCloud();
-                if (cloudData) {
-                    dbData = cloudData;
-                } else {
-                    janaTarikhTahunBaharu(2026, false);
-                }
-            } else {
-                janaTarikhTahunBaharu(2026, false);
+                window.muatDariCloud().then(cloudData => {
+                    if (cloudData) {
+                        dbData = cloudData;
+                        if (!dbData.noTelefon) dbData.noTelefon = "";
+                        kemaskiniPaparanTetapan();
+                        binaJadualDhuha();
+                        binaJadualIftar();
+                        binaJadualUsrahKaw();
+                        binaJadualKuliahDun();
+                        binaJadualUsrahUdm();
+                        semakNotifikasiLoceng();
+                    }
+                }).catch(err => console.log("Mod offline aktif"));
             }
-            kemaskiniPaparanTahun();
-            binaJadualDhuha();
-            binaJadualIftar();
-            binaJadualUsrahKaw();
-            binaJadualKuliahDun();
-            binaJadualUsrahUdm();
-            semakNotifikasiLoceng();
         };
-        function kemaskiniPaparanTahun() {
+
+        function kemaskiniPaparanTetapan() {
             document.getElementById('lbl-tahun-semasa').innerText = dbData.tahun;
             document.getElementById('input-tahun-tetapan').value = dbData.tahun;
+            document.getElementById('input-no-telefon').value = dbData.noTelefon || "";
         }
+
+        function simpanNoTelefon() {
+            const noTel = document.getElementById('input-no-telefon').value.trim();
+            dbData.noTelefon = noTel;
+            if (typeof window.simpanKeCloud === 'function') {
+                window.simpanKeCloud(dbData);
+            }
+            paparPesan("Nombor telefon WhatsApp telah berjaya disimpan!");
+        }
+
         function cariTarikhHariN(tahun, bulanIdx, hariTarget, mingguKe) {
             let d = new Date(tahun, bulanIdx, 1);
             while (d.getDay() !== hariTarget) {
@@ -652,6 +679,7 @@
             let bln = String(d.getMonth() + 1).padStart(2, '0');
             return `${tggl}/${bln}/${tahun}`;
         }
+
         function janaTarikhTahunBaharu(thnInput, showPopup = true) {
             const thn = thnInput || parseInt(document.getElementById('input-tahun-tetapan').value) || 2026;
             dbData.tahun = thn;
@@ -693,10 +721,11 @@
                 senaraiUdm: "Meranti, Bakong, Pohon Buloh, Pohon Tanjong, Meranti Renang, Gelam, Kenor, Banggol Chicha, Alor Pasir, Tepi Sungai, Jejawi, Lubok Kuin, Kasar",
                 naqib: "13 Naqib UDM Lantikan Kawasan"
             }));
-            if (typeof window.simpanKeCloud === 'function') {
+
+            if (typeof window.simpanKeCloud === 'function' && showPopup) {
                 window.simpanKeCloud(dbData);
             }
-            kemaskiniPaparanTahun();
+            kemaskiniPaparanTetapan();
             binaJadualDhuha();
             binaJadualIftar();
             binaJadualUsrahKaw();
@@ -707,25 +736,28 @@
                 paparPesan(`Jadual Tarbiah bagi Tahun ${thn} telah berjaya dijana!`);
             }
         }
+
         function bukaModalHapusRekod() {
             const kat = document.getElementById('select-hapus-kategori').value;
             const tggl = document.getElementById('input-hapus-tarikh').value.trim();
             if (!tggl) {
-                paparPesan("Sila masukkan tarikh program yang ingin dipadam terlebih dahulu (Cth: 16/01/2026).");
+                paparPesan("Sila masukkan tarikh program yang ingin dipadam terlebih dahulu.");
                 return;
             }
             let senarai = dbData[kat];
             let jumpa = senarai.some(item => item.tarikh === tggl);
             if (!jumpa) {
-                paparPesan(`Tiada rekod dijumpai untuk tarikh "${tggl}" di bawah modul yang dipilih.`);
+                paparPesan(`Tiada rekod dijumpai untuk tarikh "${tggl}".`);
                 return;
             }
             document.getElementById('confirm-hapus-desc').innerText = `Adakah Ustaz pasti untuk memadam rekod program bertarikh ${tggl}?`;
             document.getElementById('modal-confirm-hapus').classList.remove('hidden');
         }
+
         function tutupModalHapus() {
             document.getElementById('modal-confirm-hapus').classList.add('hidden');
         }
+
         function lulusHapusRekod() {
             const kat = document.getElementById('select-hapus-kategori').value;
             const tggl = document.getElementById('input-hapus-tarikh').value.trim();
@@ -743,6 +775,7 @@
             paparPesan(`Rekod bertarikh ${tggl} telah berjaya dihapuskan!`);
             document.getElementById('input-hapus-tarikh').value = '';
         }
+
         function binaJadualDhuha() {
             const tbody = document.getElementById('tbody-dhuha');
             tbody.innerHTML = '';
@@ -763,6 +796,7 @@
                 `;
             });
         }
+
         function binaJadualIftar() {
             const tbody = document.getElementById('tbody-iftar');
             tbody.innerHTML = '';
@@ -782,6 +816,7 @@
                 `;
             });
         }
+
         function binaJadualUsrahKaw() {
             const tbody = document.getElementById('tbody-usrah-kaw');
             tbody.innerHTML = '';
@@ -804,6 +839,7 @@
                 `;
             });
         }
+
         function binaJadualKuliahDun() {
             const tbody = document.getElementById('tbody-kuliah-dun');
             tbody.innerHTML = '';
@@ -824,6 +860,7 @@
                 `;
             });
         }
+
         function binaJadualUsrahUdm() {
             const tbody = document.getElementById('tbody-usrah-udm');
             tbody.innerHTML = '';
@@ -845,208 +882,62 @@
                 `;
             });
         }
+
         function bukaPautanWA(mesej) {
-            const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mesej)}`;
+            let tel = dbData.noTelefon ? dbData.noTelefon.trim() : '';
+            let url = '';
+            if (tel) {
+                // Buang simbol '+' atau spasi jika ada
+                tel = tel.replace(/[^0-9]/g, '');
+                url = `https://api.whatsapp.com/send?phone=${tel}&text=${encodeURIComponent(mesej)}`;
+            } else {
+                url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mesej)}`;
+            }
             window.open(url, '_blank');
         }
+
         function hantarWADhuha(idx, jenis) {
             const item = dbData.dhuha[idx];
             const parts = item.tarikh.split('/');
-            let namaBulanStr = "";
-            if (parts.length === 3) {
-                const bIdx = parseInt(parts[1]) - 1;
-                namaBulanStr = SENARAI_BULAN[bIdx] || "";
-            }
+            let namaBulanStr = parts.length === 3 ? SENARAI_BULAN[parseInt(parts[1]) - 1] || "" : "";
             const dObj = new Date(parts[2], parts[1] - 1, parts[0]);
-            const tglNum = dObj.getDate();
-            const mingguKe = Math.ceil(tglNum / 7);
+            const mingguKe = Math.ceil(dObj.getDate() / 7);
 
-            let msg = `Assalamualaikum Wbt\n` +
-                      `*KULIAH DHUHA PAGI JUMAAT*\n\n` +
-                      `Ke Majlis,\n` +
-                      `• YB/Ustaz/Tuan/Puan AJK PAS Kawasan Pasir Mas\n` +
-                      `• AJK Dewan Ulama'/Muslimat/Pemuda\n` +
-                      `• Semua Lantikan Politik\n` +
-                      `• Penghulu /Halaqat/PPAD/PICT\n` +
-                      `• Peserta Ladang Rakyat\n\n` +
-                      `Dengan segala hormatnya, dijemput hadir ke Kuliah Dhuha Pagi Jumaat sebagaimana berikut:\n\n` +
-                      `Bulan : *${namaBulanStr}*\n` +
-                      `Tarikh : *${item.tarikh}*\n` +
-                      `Minggu : *${mingguKe}*\n` +
-                      `Masa : *9:30 - 10:30 Pagi*\n\n` +
-                      `Tempat :\n` +
-                      `*Masjid Madrasah Nasrullah,\n` +
-                      `Pohon Buloh.*\n\n` +
-                      `Pengkuliah :\n` +
-                      `*${item.pengkuliah}*\n` +
-                      `-------------------------\n\n` +
-                      `Semua dijemput hadir.\n` +
-                      `Sekian, Terima Kasih.`;
+            let msg = `Assalamualaikum Wbt\n*KULIAH DHUHA PAGI JUMAAT*\n\nKe Majlis,\n• YB/Ustaz/Tuan/Puan AJK PAS Kawasan Pasir Mas\n• AJK Dewan Ulama'/Muslimat/Pemuda\n• Semua Lantikan Politik\n• Penghulu /Halaqat/PPAD/PICT\n• Peserta Ladang Rakyat\n\nDengan segala hormatnya, dijemput hadir ke Kuliah Dhuha Pagi Jumaat sebagaimana berikut:\n\nBulan : *${namaBulanStr}*\nTarikh : *${item.tarikh}*\nMinggu : *${mingguKe}*\nMasa : *9:30 - 10:30 Pagi*\n\nTempat :\n*Masjid Madrasah Nasrullah,\nPohon Buloh.*\n\nPengkuliah :\n*${item.pengkuliah}*\n-------------------------\n\nSemua dijemput hadir.\nSekian, Terima Kasih.`;
             bukaPautanWA(msg);
         }
+
         function hantarWAIFTAR(idx) {
             const item = dbData.iftar[idx];
-            const msg = `Assalamualaikum\n` +
-                        `*Iftar Jamaie 12K Ansorullah PAS Kawasan Pasir Mas*\n\n` +
-                        `*Peserta Program 12K Ansorullah PAS Kawasan Pasir Mas Bulan ${item.bulan}:*\n` +
-                        `• AJK PAS Kawasan Pasir Mas\n` +
-                        `• Ketua & AJK Dewan Ulama\n` +
-                        `• Ketua & AJK Dewan Muslimat\n` +
-                        `• Ketua & AJK Dewan Pemuda\n` +
-                        `• AJK Lajnah Tarbiah\n` +
-                        `• Ahli Projek 12K Kawasan PAS Pasir Mas\n` +
-                        `• Penghulu Parlimen Pasir Mas\n\n` +
-                        `Sukacita dimaklumkan bahawa kami Jawatankuasa Program 12K Ansorullah akan mengadakan Iftar Jamaie secara bulanan (minggu ke-3) dan Qiamullail setiap 3 bulan.\n\n` +
-                        `Maklumat sepertimana berikut :\n` +
-                        `Tarikh : *${item.tarikh} (${item.bulan.charAt(0) + item.bulan.slice(1).toLowerCase()})*\n` +
-                        `Masa : *6.30 ptg - 9.30 mlm*\n` +
-                        `Tempat : *Masjid Madrasah Nasrullah, Pohon Buloh.*\n\n` +
-                        `Pengkuliah & Sukatan :\n` +
-                        `1. *${item.tazkirah}* -\n` +
-                        `Tazkirah 15 minit (Maghrib - Isya')\n` +
-                        `2. *${item.tadabbur}* -\n` +
-                        `Tadabbur Ayat (Selepas Isya' 30 minit)\n\n` +
-                        `Oleh yang demikian, tuan adalah ahli 12K Ansorullah PAS Kawasan Pasir Mas dan *DIWAJIBKAN HADIR* pada program tersebut.\n\n` +
-                        `_Peserta program dikehendaki berpuasa Sunat pada hari Khamis tersebut._\n\n` +
-                        `*Kehadiran adalah WAJIB kecuali uzur syar'ie.*\n\n` +
-                        `Sekian, Terima Kasih.`;
+            const msg = `Assalamualaikum\n*Iftar Jamaie 12K Ansorullah PAS Kawasan Pasir Mas*\n\n*Peserta Program 12K Ansorullah PAS Kawasan Pasir Mas Bulan ${item.bulan}:*\n• AJK PAS Kawasan Pasir Mas\n• Ketua & AJK Dewan Ulama\n• Ketua & AJK Dewan Muslimat\n• Ketua & AJK Dewan Pemuda\n• AJK Lajnah Tarbiah\n• Ahli Projek 12K Kawasan PAS Pasir Mas\n• Penghulu Parlimen Pasir Mas\n\nSukacita dimaklumkan bahawa kami Jawatankuasa Program 12K Ansorullah akan mengadakan Iftar Jamaie secara bulanan (minggu ke-3) dan Qiamullail setiap 3 bulan.\n\nMaklumat sepertimana berikut :\nTarikh : *${item.tarikh} (${item.bulan.charAt(0) + item.bulan.slice(1).toLowerCase()})*\nMasa : *6.30 ptg - 9.30 mlm*\nTempat : *Masjid Madrasah Nasrullah, Pohon Buloh.*\n\nPengkuliah & Sukatan :\n1. *${item.tazkirah}* -\nTazkirah 15 minit (Maghrib - Isya')\n2. *${item.tadabbur}* -\nTadabbur Ayat (Selepas Isya' 30 minit)\n\nOleh yang demikian, tuan adalah ahli 12K Ansorullah PAS Kawasan Pasir Mas dan *DIWAJIBKAN HADIR* pada program tersebut.\n\n_Peserta program dikehendaki berpuasa Sunat pada hari Khamis tersebut._\n\n*Kehadiran adalah WAJIB kecuali uzur syar'ie.*\n\nSekian, Terima Kasih.`;
             bukaPautanWA(msg);
         }
+
         function hantarWAUsrahKaw(idx) {
             const item = dbData.usrahKaw[idx];
-            const msg = `Assalamualaikum\n` +
-                        `*USRAH PIMPINAN PAS KAWASAN PASIR MAS*\n\n` +
-                        `Ke majlis,\n\n` +
-                        `*AHLI USRAH PIMPINAN PAS KAWASAN*\n` +
-                        `1. AJK PAS Kawasan\n` +
-                        `2. Mantan AJK PAS Kawasan\n` +
-                        `3. Mantan & AJK Dewan Ulamak PAS Kawasan\n` +
-                        `4. Mantan & AJK Dewan Pemuda PAS Kawasan\n` +
-                        `5. Mantan & AJK Dewan Muslimat PAS Kawasan\n` +
-                        `6. AJK Lajnah Tarbiah PAS Kawasan\n\n` +
-                        `*USRAH PIMPINAN PAS KAWASAN PASIR MAS (${item.bulan})*\n\n` +
-                        `Tarikh : *${item.tarikh}*\n` +
-                        `Hari : *Rabu*\n` +
-                        `Masa : *Bermula Solat Maghrib berjemaah*\n\n` +
-                        `Tempat :\n` +
-                        `*Pejabat PAS Kawasan Pasir Mas*\n\n` +
-                        `Naqib Usrah Negeri :\n` +
-                        `*${item.naqibNegeri || '-'}*\n\n` +
-                        `Naqib Kawasan :\n` +
-                        `1. *${item.tafsir}* (TAFSIR)\n` +
-                        `2. *${item.hadis}* (SIRAH)\n\n` +
-                        `Tuan dijemput dan *DIWAJIBKAN hadir*\n` +
-                        `Sekian, Wassalam`;
+            const msg = `Assalamualaikum\n*USRAH PIMPINAN PAS KAWASAN PASIR MAS*\n\nKe majlis,\n\n*AHLI USRAH PIMPINAN PAS KAWASAN*\n1. AJK PAS Kawasan\n2. Mantan AJK PAS Kawasan\n3. Mantan & AJK Dewan Ulamak PAS Kawasan\n4. Mantan & AJK Dewan Pemuda PAS Kawasan\n5. Mantan & AJK Dewan Muslimat PAS Kawasan\n6. AJK Lajnah Tarbiah PAS Kawasan\n\n*USRAH PIMPINAN PAS KAWASAN PASIR MAS (${item.bulan})*\n\nTarikh : *${item.tarikh}*\nHari : *Rabu*\nMasa : *Bermula Solat Maghrib berjemaah*\n\nTempat :\n*Pejabat PAS Kawasan Pasir Mas*\n\nNaqib Usrah Negeri :\n*${item.naqibNegeri || '-'}*\n\nNaqib Kawasan :\n1. *${item.tafsir}* (TAFSIR)\n2. *${item.hadis}* (SIRAH)\n\nTuan dijemput dan *DIWAJIBKAN hadir*\nSekian, Wassalam`;
             bukaPautanWA(msg);
         }
+
         function hantarWAKuliahDun(idx) {
             const item = dbData.kuliahDun[idx];
-            const msg = `*KULIAH HARAKI DUN MERANTI*\n\n` +
-                        `السلام عليكم ورحمة الله وبركاته\n\n` +
-                        `Ke majlis,\n\n` +
-                        `*AHLI USRAH KULIAH HARAKI*\n\n` +
-                        `👉 AJK MTD\n` +
-                        `👉 AJK Pemuda DUN\n` +
-                        `👉 AJK Muslimat DUN\n` +
-                        `👉 AJK Amerah DUN\n` +
-                        `👉 AJK Nuqaba DUN\n` +
-                        `👉 semua lantikan politik DUN Meranti\n\n` +
-                        `📝 *KULIAH HARAKI DUN MERANTI BULAN ${item.bulan} 2026* :\n\n` +
-                        `📅 *${item.tarikh} (Rabu)*\n\n` +
-                        `⏳ *Bermula Solat Maghrib Berjemaah*\n\n` +
-                        `🏛️ *Tempat :\n` +
-                        `PUSAT KHIDMAT DUN MERANTI*\n\n` +
-                        `Tajuk :\n` +
-                        `*${item.pengisian}*\n\n` +
-                        `Tuan dijemput dan *DIWAJIBKAN hadir*\n` +
-                        `Sekian, Wassalam\n\n` +
-                        `الواجبات أكثر من الأوقات\n\n` +
-                        `Sekian`;
+            const msg = `*KULIAH HARAKI DUN MERANTI*\n\nالسلام عليكم ورحمة الله وبركاته\n\nKe majlis,\n\n*AHLI USRAH KULIAH HARAKI*\n\n👉 AJK MTD\n👉 AJK Pemuda DUN\n👉 AJK Muslimat DUN\n👉 AJK Amerah DUN\n👉 AJK Nuqaba DUN\n👉 semua lantikan politik DUN Meranti\n\n📝 *KULIAH HARAKI DUN MERANTI BULAN ${item.bulan} 2026* :\n\n📅 *${item.tarikh} (Rabu)*\n\n⏳ *Bermula Solat Maghrib Berjemaah*\n\n🏛️ *Tempat :\nPUSAT KHIDMAT DUN MERANTI*\n\nTajuk :\n*${item.pengisian}*\n\nTuan dijemput dan *DIWAJIBKAN hadir*\nSekian, Wassalam\n\nالواجبات أكثر من الأوقات\n\nSekian`;
             bukaPautanWA(msg);
         }
+
         function hantarWAUsrahUdm(idx, pilihan) {
             const item = dbData.usrahUdm[idx];
             let msg = '';
             if (pilihan === 1) {
-                // Gambar 2: Jemputan UDM
-                msg = `Assalamualaikum\n` +
-                      `*USRAH UDM DUN MERANTI BULAN ${item.bulan} ${dbData.tahun}*\n\n` +
-                      `Ke majlis,\n` +
-                      `*Ketua UDM :*\n` +
-                      `1. Meranti\n` +
-                      `2. Bakong\n` +
-                      `3. Meranti Kechik\n` +
-                      `4. Pohon Buloh\n` +
-                      `5. Bayu Lalang\n` +
-                      `6. Pohon Tanjong\n` +
-                      `7. Siram\n` +
-                      `8. Jejawi\n` +
-                      `9. Banggol Setol\n` +
-                      `10. Tok Sangkut\n` +
-                      `11. Tasek Berangan\n` +
-                      `12. Banggol Chica\n` +
-                      `13. Gajah Mati\n\n` +
-                      `*Usrah UDM bulan ${item.bulan} ${dbData.tahun}*\n` +
-                      `Tarikh : *${item.tarikh} | Hari : Isnin*\n\n` +
-                      `Masa :\n` +
-                      `Bermula solat maghrib berjemaah\n\n` +
-                      `Tempat :\n` +
-                      `Ditentukan oleh UDM\n\n` +
-                      `Pastikan usrah UDM berjalan mengikut jadual yang ditetapkan\n\n` +
-                      `Sekian, terima kasih`;
+                msg = `Assalamualaikum\n*USRAH UDM DUN MERANTI BULAN ${item.bulan} ${dbData.tahun}*\n\nKe majlis,\n*Ketua UDM :*\n1. Meranti\n2. Bakong\n3. Meranti Kechik\n4. Pohon Buloh\n5. Bayu Lalang\n6. Pohon Tanjong\n7. Siram\n8. Jejawi\n9. Banggol Setol\n10. Tok Sangkut\n11. Tasek Berangan\n12. Banggol Chica\n13. Gajah Mati\n\n*Usrah UDM bulan ${item.bulan} ${dbData.tahun}*\nTarikh : *${item.tarikh} | Hari : Isnin*\n\nMasa :\nBermula solat maghrib berjemaah\n\nTempat :\nDitentukan oleh UDM\n\nPastikan usrah UDM berjalan mengikut jadual yang ditetapkan\n\nSekian, terima kasih`;
             } else if (pilihan === 2) {
-                // Gambar 3: Phn Tanjong
-                msg = `Assalamualaikum\n` +
-                      `*USRAH UDM DUN MERANTI BULAN ${item.bulan} ${dbData.tahun}*\n\n` +
-                      `Ke majlis,\n` +
-                      `Ahli usrah UDM Pohon Tanjong :\n\n` +
-                      `Usrah UDM bulan ${item.bulan} ${dbData.tahun}\n` +
-                      `Tarikh : *${item.tarikh}*\n\n` +
-                      `Hari : Isnin (mlm Selasa)\n\n` +
-                      `Masa :\n` +
-                      `9.00 mlm\n\n` +
-                      `Tempat :\n` +
-                      `Balaisah Wok Abas\n\n` +
-                      `Semua ahli usrah dijemput hadir\n\n` +
-                      `Sekian, terima kasih`;
+                msg = `Assalamualaikum\n*USRAH UDM DUN MERANTI BULAN ${item.bulan} ${dbData.tahun}*\n\nKe majlis,\nAhli usrah UDM Pohon Tanjong :\n\nUsrah UDM bulan ${item.bulan} ${dbData.tahun}\nTarikh : *${item.tarikh}*\n\nHari : Isnin (mlm Selasa)\n\nMasa :\n9.00 mlm\n\nTempat :\nBalaisah Wok Abas\n\nSemua ahli usrah dijemput hadir\n\nSekian, terima kasih`;
             } else {
-                // Gambar 4: Senarai Naqib
-                msg = `Assalamualaikum\n` +
-                      `*USRAH UDM DUN MERANTI*\n` +
-                      `Bulan : *${item.bulan}* | Tarikh : *${item.tarikh}*\n\n` +
-                      `Dimaklumkan bahawa Usrah UDM bagi bulan *${item.bulan}* hendaklah dilaksanakan mengikut jadual dan tempat yang telah ditetapkan. Mohon kerjasama semua Naqib untuk bersedia dan memastikan kehadiran serta kelancaran usrah di UDM masing-masing.\n\n` +
-                      `Sekiranya terdapat sebarang perubahan, sila maklum kepada ketua Naqib.\n\n` +
-                      `*Berikut adalah Naqib UDM dalam DUN Meranti :*\n\n` +
-                      `*Meranti*\n` +
-                      `Ust Ahmad Syakir B Dato' Hj Mohd Nassurudin\n` +
-                      `*Bakong*\n` +
-                      `Ust Mohd Yusof Bahji B Mohd Shargawi\n` +
-                      `*Meranti Kechik*\n` +
-                      `Ust Muhammad B Mohd Shah\n` +
-                      `*Pohon Buloh*\n` +
-                      `Ust Mohd Zulkernain B Tajuddin\n` +
-                      `*Bayu Lalang*\n` +
-                      `Ust Mohd Nasrullah B Mustafa\n` +
-                      `*Pohon Tanjong*\n` +
-                      `Ust Asri B Mohd Zain\n` +
-                      `*Siram*\n` +
-                      `Ust Mohamad Rosni B Harun\n` +
-                      `*Jejawi*\n` +
-                      `Ust Mad B Omar\n` +
-                      `*Banggol Setol*\n` +
-                      `Ust Ibni B Mat Zin\n` +
-                      `*Tok Sangkut*\n` +
-                      `Ust Mohd Izrul Hariz B Mohd Rafi\n` +
-                      `*Tasek Berangan*\n` +
-                      `Ust Othman B Che Yeeng\n` +
-                      `*Banggol Chica*\n` +
-                      `Ust Zakaria Bin Jusoh\n` +
-                      `*Bgl Gajah Mati*\n` +
-                      `Ust Abdul Fatah B Jaafar\n\n` +
-                      `Terima kasih atas komitmen dan kerjasama semua.`;
+                msg = `Assalamualaikum\n*USRAH UDM DUN MERANTI*\nBulan : *${item.bulan}* | Tarikh : *${item.tarikh}*\n\nDimaklumkan bahawa Usrah UDM bagi bulan *${item.bulan}* hendaklah dilaksanakan mengikut jadual dan tempat yang telah ditetapkan. Mohon kerjasama semua Naqib untuk bersedia dan memastikan kehadiran serta kelancaran usrah di UDM masing-masing.\n\nSekiranya terdapat sebarang perubahan, sila maklum kepada ketua Naqib.\n\n*Berikut adalah Naqib UDM dalam DUN Meranti :*\n\n*Meranti*\nUst Ahmad Syakir B Dato' Hj Mohd Nassurudin\n*Bakong*\nUst Mohd Yusof Bahji B Mohd Shargawi\n*Meranti Kechik*\nUst Muhammad B Mohd Shah\n*Pohon Buloh*\nUst Mohd Zulkernain B Tajuddin\n*Bayu Lalang*\nUst Mohd Nasrullah B Mustafa\n*Pohon Tanjong*\nUst Asri B Mohd Zain\n*Siram*\nUst Mohamad Rosni B Harun\n*Jejawi*\nUst Mad B Omar\n*Banggol Setol*\nUst Ibni B Mat Zin\n*Tok Sangkut*\nUst Mohd Izrul Hariz B Mohd Rafi\n*Tasek Berangan*\nUst Othman B Che Yeeng\n*Banggol Chica*\nUst Zakaria Bin Jusoh\n*Bgl Gajah Mati*\nUst Abdul Fatah B Jaafar\n\nTerima kasih atas komitmen dan kerjasama semua.`;
             }
             bukaPautanWA(msg);
         }
+
         function bukaModal(kategori, index) {
             document.getElementById('edit-kategori').value = kategori;
             document.getElementById('edit-index').value = index;
@@ -1089,9 +980,11 @@
             }
             document.getElementById('modal-edit').classList.remove('hidden');
         }
+
         function tutupModal() {
             document.getElementById('modal-edit').classList.add('hidden');
         }
+
         function simpanKemaskini(e) {
             e.preventDefault();
             const kat = document.getElementById('edit-kategori').value;
@@ -1124,15 +1017,13 @@
             tutupModal();
             semakNotifikasiLoceng();
         }
+
         function semakNotifikasiLoceng() {
             const hariIni = new Date();
             let senaraiPeringatan = [];
             function tukarKeTarikh(strTarikh) {
                 const parts = strTarikh.split('/');
-                if (parts.length === 3) {
-                    return new Date(parts[2], parts[1] - 1, parts[0]);
-                }
-                return null;
+                return parts.length === 3 ? new Date(parts[2], parts[1] - 1, parts[0]) : null;
             }
             const gabunganProgram = [
                 ...dbData.dhuha.map(i => ({ tajuk: 'Kuliah Dhuha', tarikh: i.tarikh })),
@@ -1177,9 +1068,11 @@
                 notifList.innerHTML = `<div class="p-3 text-gray-500 text-center text-xs">Tiada program berdekatan.</div>`;
             }
         }
+
         function toggleNotifikasi() {
             document.getElementById('notif-dropdown').classList.toggle('hidden');
         }
+
         function tukarTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.nav-link').forEach(el => {
@@ -1214,6 +1107,7 @@
                 }
             }, 60);
         }
+
         function cetakJadual(tableId) {
             const content = document.getElementById(tableId).outerHTML;
             const win = window.open('', '', 'height=700,width=900');
@@ -1226,6 +1120,7 @@
             win.document.close();
             win.print();
         }
+
         function eksportBackupJSON() {
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(dbData, null, 2));
             const downloadAnchor = document.createElement('a');
@@ -1235,6 +1130,7 @@
             downloadAnchor.click();
             downloadAnchor.remove();
         }
+
         function importBackupJSON(e) {
             const fileReader = new FileReader();
             fileReader.onload = function (event) {
@@ -1242,10 +1138,11 @@
                     const parsedData = JSON.parse(event.target.result);
                     if (parsedData && parsedData.tahun) {
                         dbData = parsedData;
+                        if (!dbData.noTelefon) dbData.noTelefon = "";
                         if (typeof window.simpanKeCloud === 'function') {
                             window.simpanKeCloud(dbData);
                         }
-                        kemaskiniPaparanTahun();
+                        kemaskiniPaparanTetapan();
                         binaJadualDhuha();
                         binaJadualIftar();
                         binaJadualUsrahKaw();
