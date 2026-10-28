@@ -786,7 +786,8 @@
                         <td class="p-2 border text-center">
                             <div class="flex items-center justify-center gap-1">
                                 <button onclick="bukaModal('dhuha', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200" title="Edit"><i class="fa-solid fa-pen text-xs"></i></button>
-                                <button onclick="hantarWADhuha(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> Hantar Link</button>
+                                <button onclick="hantarWADhuha(${idx}, 'pengkuliah')" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> Pengkuliah</button>
+                                <button onclick="hantarWADhuha(${idx}, 'jemputan')" class="px-2 py-0.5 bg-emerald-700 text-white rounded text-[10px] font-bold hover:bg-emerald-800"><i class="fa-brands fa-whatsapp"></i> Umum</button>
                             </div>
                         </td>
                     </tr>
@@ -805,7 +806,7 @@
                         <td class="p-2 border text-center">
                             <div class="flex items-center justify-center gap-1">
                                 <button onclick="bukaModal('iftar', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button>
-                                <button onclick="hantarWAUmum()" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> Hantar Link</button>
+                                <button onclick="hantarWAIFTAR(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> WA 12K</button>
                             </div>
                         </td>
                     </tr>
@@ -827,7 +828,7 @@
                         <td class="p-2 border text-center">
                             <div class="flex items-center justify-center gap-1">
                                 <button onclick="bukaModal('usrahKaw', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button>
-                                <button onclick="hantarWAUmum()" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> Hantar Link</button>
+                                <button onclick="hantarWAUsrahKaw(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> WA Usrah</button>
                             </div>
                         </td>
                     </tr>
@@ -847,7 +848,7 @@
                         <td class="p-2 border text-center">
                             <div class="flex items-center justify-center gap-1">
                                 <button onclick="bukaModal('kuliahDun', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button>
-                                <button onclick="hantarWAUmum()" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> Hantar Link</button>
+                                <button onclick="hantarWAKuliahDun(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> WA MTD</button>
                             </div>
                         </td>
                     </tr>
@@ -864,28 +865,91 @@
                         <td class="p-2 border text-gray-700">${row.senaraiUdm}</td>
                         <td class="p-2 border text-gray-700">${row.naqib}</td>
                         <td class="p-2 border text-center">
-                            <div class="flex items-center justify-center gap-1">
+                            <div class="flex flex-col sm:flex-row items-center justify-center gap-1">
                                 <button onclick="bukaModal('usrahUdm', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200" title="Edit"><i class="fa-solid fa-pen text-xs"></i></button>
-                                <button onclick="hantarWAUmum()" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> Hantar Link</button>
+                                <button onclick="hantarWAUsrahUdm(${idx}, 1)" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> Jemputan UDM</button>
+                                <button onclick="hantarWAUsrahUdm(${idx}, 2)" class="px-2 py-0.5 bg-teal-600 text-white rounded text-[10px] font-bold hover:bg-teal-700"><i class="fa-brands fa-whatsapp"></i> Phn Tanjong</button>
+                                <button onclick="hantarWAUsrahUdm(${idx}, 3)" class="px-2 py-0.5 bg-emerald-700 text-white rounded text-[10px] font-bold hover:bg-emerald-800"><i class="fa-brands fa-whatsapp"></i> Senarai Naqib</button>
                             </div>
                         </td>
                     </tr>
                 `;
             });
         }
-        function hantarWAUmum() {
+        function bukaPautanWA(mesej) {
             let phone = dbData.noWhatsapp ? dbData.noWhatsapp.replace(/[^0-9]/g, '') : '';
-            let linkSistem = "https://asrimohdzain-arch.github.io/e-Lajnah-Tarbiah/";
             let url = '';
             if (phone) {
-                url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(linkSistem)}`;
+                url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(mesej)}`;
             } else {
-                url = `https://api.whatsapp.com/send?text=${encodeURIComponent(linkSistem)}`;
+                url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mesej)}`;
             }
             window.open(url, '_blank');
         }
-        function hantarWADhuha(idx) {
-            hantarWAUmum();
+        function hantarWADhuha(idx, jenis) {
+            const item = dbData.dhuha[idx];
+            let msg = '';
+            if (jenis === 'pengkuliah') {
+                msg = `*PERINGATAN JEMPUTAN PENGKULIAH DHUHA PAGI JUMAAT*\n\n` +
+                      `Tarikh: *${item.tarikh}*\n` +
+                      `Masa: 9.30 Pagi - 10.30 Pagi\n` +
+                      `Tempat: Pusat Tarbiah Pohon Buloh\n` +
+                      `Pengkuliah: *${item.pengkuliah}*\n` +
+                      `Kitab/Tajuk: _${item.kitab}_\n\n` +
+                      `Mohon hadir tepat pada waktunya.`;
+            } else {
+                msg = `*JEMPUTAN KULIAH DHUHA PAGI JUMAAT*\n\n` +
+                      `Tarikh: *${item.tarikh}*\n` +
+                      `Masa: 9.30 Pagi\n` +
+                      `Tempat: Masjid Madrasah Nasrullah, Pohon Buloh\n` +
+                      `Pengkuliah: *${item.pengkuliah}*\n\n` +
+                      `Semua dijemput hadir.`;
+            }
+            bukaPautanWA(msg);
+        }
+        function hantarWAIFTAR(idx) {
+            const item = dbData.iftar[idx];
+            const msg = `*JEMPUTAN IFTAR JAMA'I 12K ANSORULLAH*\n\n` +
+                          `Tarikh: *${item.tarikh}*\n` +
+                          `Tempat: Pusat Tarbiah Pohon Buloh\n` +
+                          `Tazkirah: *${item.tazkirah}*\n` +
+                          `Tadabbur Ayat: *${item.tadabbur}*\n\n` +
+                          `Kehadiran diwajibkan bagi peserta 12K.`;
+            bukaPautanWA(msg);
+        }
+        function hantarWAUsrahKaw(idx) {
+            const item = dbData.usrahKaw[idx];
+            const msg = `*USRAH PIMPINAN PAS KAWASAN PASIR MAS*\n\n` +
+                          `Tarikh: *${item.tarikh} (Rabu)*\n` +
+                          `Naqib Negeri: *${item.naqibNegeri || '-'}*\n` +
+                          `Masa: Bermula Maghrib\n` +
+                          `Tempat: Pejabat PAS Kawasan Pasir Mas\n\n` +
+                          `Tafsir: *${item.tafsir}*\n` +
+                          `Hadis: *${item.hadis}*\n` +
+                          `Sirah: *${item.sirah}*\n` +
+                          `Fikrah: *${item.fikrah}*`;
+            bukaPautanWA(msg);
+        }
+        function hantarWAKuliahDun(idx) {
+            const item = dbData.kuliahDun[idx];
+            const msg = `*KULIAH HARAKI DUN MERANTI*\n\n` +
+                          `Tarikh: *${item.tarikh} (Isnin)*\n` +
+                          `Tempat: *${item.lokasi}*\n` +
+                          `Pengkuliah: *${item.pengkuliah}*\n` +
+                          `Tajuk: _${item.pengisian}_`;
+            bukaPautanWA(msg);
+        }
+        function hantarWAUsrahUdm(idx, pilihan) {
+            const item = dbData.usrahUdm[idx];
+            let msg = '';
+            if (pilihan === 1) {
+                msg = `*USRAH UDM DUN MERANTI*\nTarikh: *${item.tarikh}*\nTempat: UDM Masing-masing.`;
+            } else if (pilihan === 2) {
+                msg = `*USRAH UDM POHON TANJONG*\nTarikh: *${item.tarikh}*\nTempat: Balaisah Wok Abas.`;
+            } else {
+                msg = `*SENARAI NAQIB UDM DUN MERANTI*\nTarikh: *${item.tarikh}*\nSemua naqib diminta ambil perhatian.`;
+            }
+            bukaPautanWA(msg);
         }
         function bukaModal(kategori, index) {
             document.getElementById('edit-kategori').value = kategori;
