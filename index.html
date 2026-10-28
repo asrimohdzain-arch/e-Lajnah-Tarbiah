@@ -393,6 +393,26 @@
             </section>
             <!-- 7. TETAPAN & AWAN -->
             <section id="tab-tetapan" class="tab-content space-y-4 hidden">
+                <!-- Tetapan Nombor Telefon WhatsApp -->
+                <div class="neu-card p-4 bg-white space-y-3">
+                    <div class="border-b pb-2">
+                        <h3 class="font-bold text-xs text-navy-800"><i class="fa-brands fa-whatsapp text-green-600 mr-1.5 text-sm"></i>Tetapan Nombor Telefon Penerima WhatsApp</h3>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Masukkan nombor telefon rasmi penerima/kumpulan (Cth: 60123456789 atau kosongkan untuk hantar umum).</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                        <div class="w-full sm:w-72">
+                            <label class="block text-[11px] font-bold text-gray-700 mb-1">No. Telefon WhatsApp:</label>
+                            <input type="text" id="input-no-whatsapp" placeholder="Cth: 60199876543" class="neu-input px-3 py-1.5 rounded-lg text-xs font-bold w-full border focus:outline-none">
+                        </div>
+                        <div class="pt-4">
+                            <button onclick="simpanNoWhatsApp()" class="px-4 py-2 btn-navy-pill font-semibold text-xs flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-floppy-disk text-xs"></i>
+                                <span>Simpan No. Telefon</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="neu-card p-4 bg-white space-y-3">
                     <div class="border-b pb-2">
                         <h3 class="font-bold text-xs text-navy-800"><i class="fa-solid fa-calendar-plus text-pasgreen mr-1.5"></i>Peralihan & Penjanaan Tahun Semasa</h3>
@@ -412,27 +432,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Tetapan Nombor Telefon Penerima WhatsApp -->
-                <div class="neu-card p-4 bg-white space-y-3">
-                    <div class="border-b pb-2">
-                        <h3 class="font-bold text-xs text-navy-800"><i class="fa-brands fa-whatsapp text-green-600 mr-1.5"></i>No. Telefon Penerima WhatsApp</h3>
-                        <p class="text-[11px] text-gray-500 mt-0.5">Masukkan nombor telefon rasmi penerima/penganjur (Cth: 60123456789).</p>
-                    </div>
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                        <div class="w-full sm:w-72">
-                            <label class="block text-[11px] font-bold text-gray-700 mb-1">Nombor Telefon:</label>
-                            <input type="text" id="input-no-whatsapp" placeholder="Cth: 60199876543" class="w-full neu-input px-3 py-1.5 rounded-lg text-xs font-bold border focus:outline-none">
-                        </div>
-                        <div class="pt-4">
-                            <button onclick="simpanNoWhatsApp()" class="px-4 py-2 btn-navy-pill font-semibold text-xs flex items-center gap-1.5 shadow-sm">
-                                <i class="fa-solid fa-floppy-disk text-xs"></i>
-                                <span>Simpan Nombor</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="neu-card p-4 bg-white space-y-3">
                     <div class="border-b pb-2">
                         <h3 class="font-bold text-xs text-red-700"><i class="fa-solid fa-trash-can mr-1.5"></i>Hapus Rekod / Sesi Program</h3>
@@ -618,7 +617,7 @@
     <script>
         let dbData = {
             tahun: 2026,
-            noWhatsApp: "",
+            noWhatsapp: "",
             dhuha: [],
             iftar: [],
             usrahKaw: [],
@@ -662,8 +661,7 @@
             } else {
                 janaTarikhTahunBaharu(2026, false);
             }
-            kemaskiniPaparanTahun();
-            document.getElementById('input-no-whatsapp').value = dbData.noWhatsApp || '';
+            kemaskiniPaparanTetapan();
             binaJadualDhuha();
             binaJadualIftar();
             binaJadualUsrahKaw();
@@ -671,20 +669,21 @@
             binaJadualUsrahUdm();
             semakNotifikasiLoceng();
         };
-        function kemaskiniPaparanTahun() {
+        function kemaskiniPaparanTetapan() {
             document.getElementById('lbl-tahun-semasa').innerText = dbData.tahun;
             document.getElementById('input-tahun-tetapan').value = dbData.tahun;
+            if (dbData.noWhatsapp) {
+                document.getElementById('input-no-whatsapp').value = dbData.noWhatsapp;
+            }
         }
-
         function simpanNoWhatsApp() {
-            const noWA = document.getElementById('input-no-whatsapp').value.trim();
-            dbData.noWhatsApp = noWA;
+            const noWp = document.getElementById('input-no-whatsapp').value.trim();
+            dbData.noWhatsapp = noWp;
             if (typeof window.simpanKeCloud === 'function') {
                 window.simpanKeCloud(dbData);
             }
             paparPesan("Nombor telefon WhatsApp berjaya disimpan!");
         }
-
         function cariTarikhHariN(tahun, bulanIdx, hariTarget, mingguKe) {
             let d = new Date(tahun, bulanIdx, 1);
             while (d.getDay() !== hariTarget) {
@@ -739,7 +738,7 @@
             if (typeof window.simpanKeCloud === 'function') {
                 window.simpanKeCloud(dbData);
             }
-            kemaskiniPaparanTahun();
+            kemaskiniPaparanTetapan();
             binaJadualDhuha();
             binaJadualIftar();
             binaJadualUsrahKaw();
@@ -889,10 +888,10 @@
             });
         }
         function bukaPautanWA(mesej) {
-            const noTarget = dbData.noWhatsApp ? dbData.noWhatsApp.replace(/[^0-9]/g, '') : '';
+            let phone = dbData.noWhatsapp ? dbData.noWhatsapp.replace(/[^0-9]/g, '') : '';
             let url = '';
-            if (noTarget) {
-                url = `https://api.whatsapp.com/send?phone=${noTarget}&text=${encodeURIComponent(mesej)}`;
+            if (phone) {
+                url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(mesej)}`;
             } else {
                 url = `https://api.whatsapp.com/send?text=${encodeURIComponent(mesej)}`;
             }
@@ -1161,8 +1160,7 @@
                         if (typeof window.simpanKeCloud === 'function') {
                             window.simpanKeCloud(dbData);
                         }
-                        kemaskiniPaparanTahun();
-                        document.getElementById('input-no-whatsapp').value = dbData.noWhatsApp || '';
+                        kemaskiniPaparanTetapan();
                         binaJadualDhuha();
                         binaJadualIftar();
                         binaJadualUsrahKaw();
