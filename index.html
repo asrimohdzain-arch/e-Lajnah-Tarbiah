@@ -635,23 +635,30 @@
 
         window.onload = async function() {
             paparkanTarikhHeaderSemasa();
-            janaTarikhTahunBaharu(2026, false);
-
+            
+            // Muat data dari Cloud dahulu supaya nombor telefon sedia ada tidak hilang
             if (typeof window.muatDariCloud === 'function') {
-                window.muatDariCloud().then(cloudData => {
-                    if (cloudData) {
-                        dbData = cloudData;
-                        if (dbData.noTelefon === undefined) dbData.noTelefon = "";
-                        kemaskiniPaparanTetapan();
-                        binaJadualDhuha();
-                        binaJadualIftar();
-                        binaJadualUsrahKaw();
-                        binaJadualKuliahDun();
-                        binaJadualUsrahUdm();
-                        semakNotifikasiLoceng();
+                const cloudData = await window.muatDariCloud();
+                if (cloudData) {
+                    dbData = cloudData;
+                    if (dbData.noTelefon === undefined) dbData.noTelefon = "";
+                    if (!dbData.dhuha || dbData.dhuha.length === 0) {
+                        janaTarikhTahunBaharu(dbData.tahun || 2026, false);
                     }
-                }).catch(err => console.log("Mod offline aktif"));
+                } else {
+                    janaTarikhTahunBaharu(2026, false);
+                }
+            } else {
+                janaTarikhTahunBaharu(2026, false);
             }
+
+            kemaskiniPaparanTetapan();
+            binaJadualDhuha();
+            binaJadualIftar();
+            binaJadualUsrahKaw();
+            binaJadualKuliahDun();
+            binaJadualUsrahUdm();
+            semakNotifikasiLoceng();
         };
 
         function kemaskiniPaparanTetapan() {
