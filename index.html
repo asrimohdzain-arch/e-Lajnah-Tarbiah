@@ -641,7 +641,7 @@
                 window.muatDariCloud().then(cloudData => {
                     if (cloudData) {
                         dbData = cloudData;
-                        if (!dbData.noTelefon) dbData.noTelefon = "";
+                        if (dbData.noTelefon === undefined) dbData.noTelefon = "";
                         kemaskiniPaparanTetapan();
                         binaJadualDhuha();
                         binaJadualIftar();
@@ -666,7 +666,7 @@
             if (typeof window.simpanKeCloud === 'function') {
                 window.simpanKeCloud(dbData);
             }
-            paparPesan("Nombor telefon WhatsApp telah berjaya disimpan!");
+            paparPesan("Nombor telefon WhatsApp telah berjaya disimpan ke awan!");
         }
 
         function cariTarikhHariN(tahun, bulanIdx, hariTarget, mingguKe) {
@@ -887,7 +887,6 @@
             let tel = dbData.noTelefon ? dbData.noTelefon.trim() : '';
             let url = '';
             if (tel) {
-                // Buang simbol '+' atau spasi jika ada
                 tel = tel.replace(/[^0-9]/g, '');
                 url = `https://api.whatsapp.com/send?phone=${tel}&text=${encodeURIComponent(mesej)}`;
             } else {
@@ -1138,7 +1137,7 @@
                     const parsedData = JSON.parse(event.target.result);
                     if (parsedData && parsedData.tahun) {
                         dbData = parsedData;
-                        if (!dbData.noTelefon) dbData.noTelefon = "";
+                        if (dbData.noTelefon === undefined) dbData.noTelefon = "";
                         if (typeof window.simpanKeCloud === 'function') {
                             window.simpanKeCloud(dbData);
                         }
