@@ -615,6 +615,7 @@
             try {
                 const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
                 await setDoc(docRef, dataPayload);
+                console.log("Berjaya simpan ke Firestore.");
             } catch (err) {
                 console.error("Ralat simpan data ke Cloud:", err);
             }
@@ -682,10 +683,12 @@
                 }
             }
 
-            // MESTI GUNA DATA CLOUD SEBULAT-BULATNYA JIKA ADA
-            if (cloudData && cloudData.dhuha && cloudData.dhuha.length > 0) {
+            // PERLINDUNGAN MUTLAK: Jika data ada di Firestore, guna terus tanpa syarat. Jangan jana semula!
+            if (cloudData && cloudData.dhuha && Array.isArray(cloudData.dhuha) && cloudData.dhuha.length > 0) {
                 dbData = cloudData;
+                console.log("Menggunakan data sepenuhnya daripada Cloud Firestore.");
             } else {
+                // Hanya jana jika Firestore betul-betul kosong
                 janaTarikhTahunBaharu(2026, false);
                 if (typeof window.simpanKeCloud === 'function') {
                     window.simpanKeCloud(dbData);
@@ -702,22 +705,6 @@
             tukarTab('dashboard', false);
             semakNotifikasiLoceng();
         };
-
-        function uruskanTarikhDhuhaOktober() {
-            let jumpa30 = dbData.dhuha.some(item => item.tarikh === "30/10/2026");
-            if (!jumpa30) {
-                dbData.dhuha.push({
-                    tarikh: "30/10/2026",
-                    pengkuliah: "Ustaz Hj. Ahmad Awang",
-                    kitab: "Tafsir Ayat Ahkam / Riyadhus Shalihin"
-                });
-                dbData.dhuha.sort((a, b) => {
-                    let pA = a.tarikh.split('/');
-                    let pB = b.tarikh.split('/');
-                    return new Date(pA[2], pA[1]-1, pA[0]) - new Date(pB[2], pB[1]-1, pB[0]);
-                });
-            }
-        }
 
         function kemaskiniPaparanTetapan() {
             document.getElementById('lbl-tahun-semasa').innerText = dbData.tahun;
