@@ -80,6 +80,14 @@
             background: #c1c1c1;
             border-radius: 4px;
         }
+        @media print {
+            body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; font-size: 11pt !important; background: white !important; color: black !important; }
+            aside, header, button, .no-print { display: none !important; }
+            main { overflow: visible !important; }
+            table { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; font-size: 11pt !important; width: 100% !important; border-collapse: collapse !important; }
+            th, td { border: 1px solid #000 !important; padding: 6px !important; }
+            .cetak-tanpa-wa th:last-child, .cetak-tanpa-wa td:last-child { display: none !important; }
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 antialiased min-h-screen flex flex-col md:flex-row">
@@ -99,31 +107,31 @@
                 </div>
             </div>
             <nav class="p-3 space-y-1.5 text-xs">
-                <button onclick="tukarTab('dashboard')" id="nav-dashboard" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-sky-600 text-white font-medium transition hover:bg-navy-700">
+                <button onclick="navigasiKlik('dashboard')" id="nav-dashboard" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-sky-200 text-navy-900 font-bold transition hover:bg-navy-700 hover:text-white">
                     <i class="fa-solid fa-chart-line w-4 text-center"></i>
                     <span>Analisis & Takwim</span>
                 </button>
-                <button onclick="tukarTab('dhuha')" id="nav-dhuha" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                <button onclick="navigasiKlik('dhuha')" id="nav-dhuha" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
                     <i class="fa-solid fa-sun w-4 text-center text-amber-400"></i>
                     <span>Kuliah Dhuha</span>
                 </button>
-                <button onclick="tukarTab('iftar')" id="nav-iftar" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                <button onclick="navigasiKlik('iftar')" id="nav-iftar" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
                     <i class="fa-solid fa-utensils w-4 text-center text-emerald-400"></i>
                     <span>Iftar Jamaie (12K)</span>
                 </button>
-                <button onclick="tukarTab('usrah-kaw')" id="nav-usrah-kaw" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                <button onclick="navigasiKlik('usrah-kaw')" id="nav-usrah-kaw" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
                     <i class="fa-solid fa-users w-4 text-center text-blue-400"></i>
                     <span>Usrah PAS Kawasan</span>
                 </button>
-                <button onclick="tukarTab('kuliah-dun')" id="nav-kuliah-dun" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                <button onclick="navigasiKlik('kuliah-dun')" id="nav-kuliah-dun" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
                     <i class="fa-solid fa-book-open w-4 text-center text-purple-400"></i>
                     <span>Kuliah Haraki DUN</span>
                 </button>
-                <button onclick="tukarTab('usrah-udm')" id="nav-usrah-udm" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                <button onclick="navigasiKlik('usrah-udm')" id="nav-usrah-udm" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
                     <i class="fa-solid fa-map-location-dot w-4 text-center text-rose-400"></i>
                     <span>Usrah UDM Meranti</span>
                 </button>
-                <button onclick="tukarTab('tetapan')" id="nav-tetapan" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200 mt-4 border-t border-navy-700 pt-3">
+                <button onclick="navigasiKlik('tetapan')" id="nav-tetapan" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200 mt-4 border-t border-navy-700 pt-3">
                     <i class="fa-solid fa-gears w-4 text-center text-gray-300"></i>
                     <span>Tetapan & Awan</span>
                 </button>
@@ -138,7 +146,7 @@
     <main id="main-content-area" class="flex-1 flex flex-col min-w-0 overflow-y-auto">
         <header class="bg-navy-800 text-white shadow-sm border-b border-navy-700 px-4 md:px-6 py-4 flex items-center justify-between sticky top-0 z-10">
             <div>
-                <h2 id="page-title" class="text-base md:text-xl font-bold text-white">Analisis & Ringkasan Takwim Tarbiah</h2>
+                <h2 id="page-title" class="text-base md:text-xl font-bold text-amber-300">Analisis & Ringkasan Takwim Tarbiah</h2>
                 <div class="flex flex-col text-xs text-gray-300 mt-1 gap-1.5">
                     <span>Tahun Semasa: <span id="lbl-tahun-semasa" class="font-bold text-pasgreen">2026</span></span>
                     <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-navy-900 border border-navy-700 rounded-full text-xs font-semibold text-gray-200 w-fit shadow-inner">
@@ -275,6 +283,14 @@
                     </div>
                     <button onclick="cetakJadual('table-dhuha')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
                 </div>
+                <!-- KOTAK DATA TERKINI -->
+                <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                        <span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
+                        <h4 id="live-dhuha-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Pengkuliah: -</h4>
+                    </div>
+                    <div id="live-dhuha-btn"></div>
+                </div>
                 <div class="neu-card p-3.5 overflow-x-auto">
                     <table id="table-dhuha" class="w-full text-[10px] text-left border-collapse min-w-[700px]">
                         <thead>
@@ -282,7 +298,7 @@
                                 <th class="p-2 border border-navy-700 text-center">Tarikh</th>
                                 <th class="p-2 border border-navy-700">Pengkuliah</th>
                                 <th class="p-2 border border-navy-700">Kitab / Tajuk</th>
-                                <th class="p-2 border border-navy-700 text-center">Tindakan / WA</th>
+                                <th class="p-2 border border-navy-700 text-center no-print">Tindakan / WA</th>
                             </tr>
                         </thead>
                         <tbody id="tbody-dhuha" class="divide-y divide-gray-200"></tbody>
@@ -299,14 +315,22 @@
                     </div>
                     <button onclick="cetakJadual('table-iftar')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
                 </div>
+                <!-- KOTAK DATA TERKINI -->
+                <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                        <span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
+                        <h4 id="live-iftar-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Tazkirah: -</h4>
+                    </div>
+                    <div id="live-iftar-btn"></div>
+                </div>
                 <div class="neu-card p-3.5 overflow-x-auto">
-                    <table id="table-iftar" class="w-full text-[10px] text-left border-collapse min-w-[700px]">
+                    <table id="table-iftar" class="w-full text-[10px] text-left border-collapse min-w-[700px] cetak-tanpa-wa">
                         <thead>
                             <tr class="bg-navy-800 text-white">
                                 <th class="p-2 border border-navy-700 text-center">Tarikh</th>
                                 <th class="p-2 border border-navy-700">Tazkirah Maghrib</th>
                                 <th class="p-2 border border-navy-700">Tadabbur Ayat</th>
-                                <th class="p-2 border border-navy-700 text-center">Hantar WA</th>
+                                <th class="p-2 border border-navy-700 text-center no-print">Hantar WA</th>
                             </tr>
                         </thead>
                         <tbody id="tbody-iftar" class="divide-y divide-gray-200"></tbody>
@@ -323,8 +347,16 @@
                     </div>
                     <button onclick="cetakJadual('table-usrah-kaw')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
                 </div>
+                <!-- KOTAK DATA TERKINI -->
+                <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                        <span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
+                        <h4 id="live-usrah-kaw-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Naqib: -</h4>
+                    </div>
+                    <div id="live-usrah-kaw-btn"></div>
+                </div>
                 <div class="neu-card p-3.5 overflow-x-auto">
-                    <table id="table-usrah-kaw" class="w-full text-[10px] text-left border-collapse min-w-[850px]">
+                    <table id="table-usrah-kaw" class="w-full text-[10px] text-left border-collapse min-w-[850px] cetak-tanpa-wa">
                         <thead>
                             <tr class="bg-navy-800 text-white">
                                 <th class="p-2 border border-navy-700 text-center">Tarikh</th>
@@ -333,7 +365,7 @@
                                 <th class="p-2 border border-navy-700">Naqib Hadis</th>
                                 <th class="p-2 border border-navy-700">Naqib Sirah</th>
                                 <th class="p-2 border border-navy-700">Naqib Fikrah</th>
-                                <th class="p-2 border border-navy-700 text-center">Hantar WA</th>
+                                <th class="p-2 border border-navy-700 text-center no-print">Hantar WA</th>
                             </tr>
                         </thead>
                         <tbody id="tbody-usrah-kaw" class="divide-y divide-gray-200"></tbody>
@@ -350,15 +382,23 @@
                     </div>
                     <button onclick="cetakJadual('table-kuliah-dun')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
                 </div>
+                <!-- KOTAK DATA TERKINI -->
+                <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                        <span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
+                        <h4 id="live-kuliah-dun-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Pengkuliah: -</h4>
+                    </div>
+                    <div id="live-kuliah-dun-btn"></div>
+                </div>
                 <div class="neu-card p-3.5 overflow-x-auto">
-                    <table id="table-kuliah-dun" class="w-full text-[10px] text-left border-collapse min-w-[700px]">
+                    <table id="table-kuliah-dun" class="w-full text-[10px] text-left border-collapse min-w-[700px] cetak-tanpa-wa">
                         <thead>
                             <tr class="bg-navy-800 text-white">
                                 <th class="p-2 border border-navy-700 text-center">Tarikh</th>
                                 <th class="p-2 border border-navy-700">Pengkuliah Utama</th>
                                 <th class="p-2 border border-navy-700">Tajuk / Pengisian</th>
                                 <th class="p-2 border border-navy-700">Lokasi Masjid/Surau</th>
-                                <th class="p-2 border border-navy-700 text-center">Hantar WA</th>
+                                <th class="p-2 border border-navy-700 text-center no-print">Hantar WA</th>
                             </tr>
                         </thead>
                         <tbody id="tbody-kuliah-dun" class="divide-y divide-gray-200"></tbody>
@@ -375,14 +415,22 @@
                     </div>
                     <button onclick="cetakJadual('table-usrah-udm')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
                 </div>
+                <!-- KOTAK DATA TERKINI -->
+                <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                        <span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
+                        <h4 id="live-usrah-udm-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Naqib: -</h4>
+                    </div>
+                    <div id="live-usrah-udm-btn"></div>
+                </div>
                 <div class="neu-card p-3.5 overflow-x-auto">
-                    <table id="table-usrah-udm" class="w-full text-[10px] text-left border-collapse min-w-[850px]">
+                    <table id="table-usrah-udm" class="w-full text-[10px] text-left border-collapse min-w-[850px] cetak-tanpa-wa">
                         <thead>
                             <tr class="bg-navy-800 text-white">
                                 <th class="p-2 border border-navy-700 text-center">Bulan / Tarikh</th>
                                 <th class="p-2 border border-navy-700">Senarai UDM (13 UDM)</th>
                                 <th class="p-2 border border-navy-700">Naqib Terlibat</th>
-                                <th class="p-2 border border-navy-700 text-center">Pilihan Butang WhatsApp</th>
+                                <th class="p-2 border border-navy-700 text-center no-print">Pilihan Butang WhatsApp</th>
                             </tr>
                         </thead>
                         <tbody id="tbody-usrah-udm" class="divide-y divide-gray-200"></tbody>
@@ -591,14 +639,15 @@
             usrahUdm: []
         };
         
-        // Nombor WhatsApp ditetapkan secara kekal di sini
         const TETAPAN_NO_TELEFON = "60199467894";
-
         const SENARAI_BULAN = [
             "JANUARI", "FEBRUARI", "MAC", "APRIL", "MEI", "JUN", 
             "JULAI", "OGOS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DISEMBER"
         ];
         
+        let tabAktifSebelumnya = 'dashboard';
+        let clickCountNav = 0;
+
         function paparkanTarikhHeaderSemasa() {
             const hariList = ["Ahad", "Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu"];
             const bulanList = ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Desember"];
@@ -630,6 +679,8 @@
 
             if (cloudData && cloudData.dhuha && cloudData.dhuha.length > 0) {
                 dbData = cloudData;
+                // Pastikan tarikh 30/10/2026 wujud dalam dhuha jika belum ada
+                uruskanTarikhDhuhaOktober();
             } else {
                 janaTarikhTahunBaharu(2026, false);
             }
@@ -640,8 +691,28 @@
             binaJadualUsrahKaw();
             binaJadualKuliahDun();
             binaJadualUsrahUdm();
+            
+            // Set lalai kepada Analisis & Takwim
+            tukarTab('dashboard', false);
             semakNotifikasiLoceng();
         };
+
+        function uruskanTarikhDhuhaOktober() {
+            let jumpa30 = dbData.dhuha.some(item => item.tarikh === "30/10/2026");
+            if (!jumpa30) {
+                dbData.dhuha.push({
+                    tarikh: "30/10/2026",
+                    pengkuliah: "Ustaz Hj. Ahmad Awang",
+                    kitab: "Tafsir Ayat Ahkam / Riyadhus Shalihin"
+                });
+                // Susun ikut tarikh
+                dbData.dhuha.sort((a, b) => {
+                    let pA = a.tarikh.split('/');
+                    let pB = b.tarikh.split('/');
+                    return new Date(pA[2], pA[1]-1, pA[0]) - new Date(pB[2], pB[1]-1, pB[0]);
+                });
+            }
+        }
 
         function kemaskiniPaparanTetapan() {
             document.getElementById('lbl-tahun-semasa').innerText = dbData.tahun;
@@ -672,6 +743,20 @@
                     });
                 }
             }
+            // Masukkan khas 30/10/2026 jika tahun 2026
+            if (thn === 2026) {
+                dbData.dhuha.push({
+                    tarikh: "30/10/2026",
+                    pengkuliah: "Ustaz Hj. Ahmad Awang",
+                    kitab: "Tafsir Ayat Ahkam / Riyadhus Shalihin"
+                });
+                dbData.dhuha.sort((a, b) => {
+                    let pA = a.tarikh.split('/');
+                    let pB = b.tarikh.split('/');
+                    return new Date(pA[2], pA[1]-1, pA[0]) - new Date(pB[2], pB[1]-1, pB[0]);
+                });
+            }
+
             dbData.iftar = SENARAI_BULAN.map((bln, idx) => ({
                 bulan: bln,
                 tarikh: cariTarikhHariN(thn, idx, 4, 3),
@@ -755,6 +840,21 @@
             document.getElementById('input-hapus-tarikh').value = '';
         }
 
+        function cariDataTerkini(senarai) {
+            const hariIni = new Date();
+            hariIni.setHours(0,0,0,0);
+            let mendatang = senarai.filter(item => {
+                const p = item.tarikh.split('/');
+                if (p.length === 3) {
+                    const dObj = new Date(p[2], p[1]-1, p[0]);
+                    return dObj >= hariIni;
+                }
+                return false;
+            });
+            if (mendatang.length > 0) return mendatang[0];
+            return senarai[senarai.length - 1] || null;
+        }
+
         function binaJadualDhuha() {
             const tbody = document.getElementById('tbody-dhuha');
             tbody.innerHTML = '';
@@ -764,16 +864,22 @@
                         <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}</td>
                         <td class="p-2 border font-medium">${row.pengkuliah}</td>
                         <td class="p-2 border text-gray-600">${row.kitab}</td>
-                        <td class="p-2 border text-center">
+                        <td class="p-2 border text-center no-print">
                             <div class="flex items-center justify-center gap-1">
                                 <button onclick="bukaModal('dhuha', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200" title="Edit"><i class="fa-solid fa-pen text-xs"></i></button>
                                 <button onclick="hantarWADhuha(${idx}, 'pengkuliah')" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> Pengkuliah</button>
-                                <button onclick="hantarWADhuha(${idx}, 'jemputan')" class="px-2 py-0.5 bg-emerald-700 text-white rounded text-[10px] font-bold hover:bg-emerald-800"><i class="fa-brands fa-whatsapp"></i> Umum</button>
                             </div>
                         </td>
                     </tr>
                 `;
             });
+            // Update Kotak Live
+            const terkini = cariDataTerkini(dbData.dhuha);
+            if (terkini) {
+                const idxReal = dbData.dhuha.indexOf(terkini);
+                document.getElementById('live-dhuha-info').innerText = `Tarikh: ${terkini.tarikh} | Pengkuliah: ${terkini.pengkuliah} (${terkini.kitab})`;
+                document.getElementById('live-dhuha-btn').innerHTML = `<button onclick="hantarWADhuha(${idxReal}, 'pengkuliah')" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Hantar WA Pengkuliah</button>`;
+            }
         }
 
         function binaJadualIftar() {
@@ -785,7 +891,7 @@
                         <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan})</span></td>
                         <td class="p-2 border text-gray-600">${row.tazkirah}</td>
                         <td class="p-2 border text-gray-600">${row.tadabbur}</td>
-                        <td class="p-2 border text-center">
+                        <td class="p-2 border text-center no-print">
                             <div class="flex items-center justify-center gap-1">
                                 <button onclick="bukaModal('iftar', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button>
                                 <button onclick="hantarWAIFTAR(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> WA 12K</button>
@@ -794,6 +900,12 @@
                     </tr>
                 `;
             });
+            const terkini = cariDataTerkini(dbData.iftar);
+            if (terkini) {
+                const idxReal = dbData.iftar.indexOf(terkini);
+                document.getElementById('live-iftar-info').innerText = `Tarikh: ${terkini.tarikh} (${terkini.bulan}) | Tazkirah: ${terkini.tazkirah}`;
+                document.getElementById('live-iftar-btn').innerHTML = `<button onclick="hantarWAIFTAR(${idxReal})" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Hantar WA 12K</button>`;
+            }
         }
 
         function binaJadualUsrahKaw() {
@@ -808,7 +920,7 @@
                         <td class="p-2 border text-gray-700">${row.hadis}</td>
                         <td class="p-2 border text-gray-700">${row.sirah}</td>
                         <td class="p-2 border text-gray-700">${row.fikrah}</td>
-                        <td class="p-2 border text-center">
+                        <td class="p-2 border text-center no-print">
                             <div class="flex items-center justify-center gap-1">
                                 <button onclick="bukaModal('usrahKaw', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button>
                                 <button onclick="hantarWAUsrahKaw(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> WA Usrah</button>
@@ -817,6 +929,12 @@
                     </tr>
                 `;
             });
+            const terkini = cariDataTerkini(dbData.usrahKaw);
+            if (terkini) {
+                const idxReal = dbData.usrahKaw.indexOf(terkini);
+                document.getElementById('live-usrah-kaw-info').innerText = `Tarikh: ${terkini.tarikh} (${terkini.bulan}) | Naqib Tafsir: ${terkini.tafsir}`;
+                document.getElementById('live-usrah-kaw-btn').innerHTML = `<button onclick="hantarWAUsrahKaw(${idxReal})" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Hantar WA Usrah</button>`;
+            }
         }
 
         function binaJadualKuliahDun() {
@@ -829,7 +947,7 @@
                         <td class="p-2 border font-medium">${row.pengkuliah}</td>
                         <td class="p-2 border text-gray-600">${row.pengisian}</td>
                         <td class="p-2 border text-gray-600">${row.lokasi}</td>
-                        <td class="p-2 border text-center">
+                        <td class="p-2 border text-center no-print">
                             <div class="flex items-center justify-center gap-1">
                                 <button onclick="bukaModal('kuliahDun', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button>
                                 <button onclick="hantarWAKuliahDun(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> WA MTD</button>
@@ -838,6 +956,12 @@
                     </tr>
                 `;
             });
+            const terkini = cariDataTerkini(dbData.kuliahDun);
+            if (terkini) {
+                const idxReal = dbData.kuliahDun.indexOf(terkini);
+                document.getElementById('live-kuliah-dun-info').innerText = `Tarikh: ${terkini.tarikh} (${terkini.bulan}) | Pengkuliah: ${terkini.pengkuliah}`;
+                document.getElementById('live-kuliah-dun-btn').innerHTML = `<button onclick="hantarWAKuliahDun(${idxReal})" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Hantar WA MTD</button>`;
+            }
         }
 
         function binaJadualUsrahUdm() {
@@ -849,7 +973,7 @@
                         <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan})</span></td>
                         <td class="p-2 border text-gray-700">${row.senaraiUdm}</td>
                         <td class="p-2 border text-gray-700">${row.naqib}</td>
-                        <td class="p-2 border text-center">
+                        <td class="p-2 border text-center no-print">
                             <div class="flex flex-col sm:flex-row items-center justify-center gap-1">
                                 <button onclick="bukaModal('usrahUdm', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200" title="Edit"><i class="fa-solid fa-pen text-xs"></i></button>
                                 <button onclick="hantarWAUsrahUdm(${idx}, 1)" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> Jemputan UDM</button>
@@ -860,6 +984,12 @@
                     </tr>
                 `;
             });
+            const terkini = cariDataTerkini(dbData.usrahUdm);
+            if (terkini) {
+                const idxReal = dbData.usrahUdm.indexOf(terkini);
+                document.getElementById('live-usrah-udm-info').innerText = `Tarikh: ${terkini.tarikh} (${terkini.bulan}) | Naqib: ${terkini.naqib}`;
+                document.getElementById('live-usrah-udm-btn').innerHTML = `<button onclick="hantarWAUsrahUdm(${idxReal}, 1)" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Jemputan UDM</button>`;
+            }
         }
 
         function bukaPautanWA(mesej) {
@@ -1045,16 +1175,44 @@
             document.getElementById('notif-dropdown').classList.toggle('hidden');
         }
 
-        function tukarTab(tabId) {
+        // LOGIK NAVIGASI KLIK (KLIK 2 KALI KE BAWAH / BACK KE ANALISIS)
+        function navigasiKlik(tabId) {
+            if (tabAktifSebelumnya === tabId) {
+                clickCountNav++;
+            } else {
+                clickCountNav = 1;
+                tabAktifSebelumnya = tabId;
+            }
+
+            if (clickCountNav === 1) {
+                tukarTab(tabId, false);
+            } else {
+                // Klik kali kedua pada butang sama -> Scroll ke jadual
+                tukarTab(tabId, true);
+                clickCountNav = 0; // reset
+            }
+        }
+
+        // LOGIK KLIK BACK (JIKA KLIK BUTANG LAIN SEMASA DI MENU LAIN)
+        let lastMenuDitekan = 'dashboard';
+        function tukarTab(tabId, shouldScroll = false) {
+            // Logik Back: Jika sedang di mana-mana tab dan klik tab lain (kali pertama), boleh ke Analisis dahulu jika perlu, 
+            // tapi mengikut permintaan: "klik kali 1 akan back ke menu Analisis & Takwim dahulu dan bila klik ke 2 baru lah ia keluar skrin"
+            if (tabId !== 'dashboard' && lastMenuDitekan !== tabId && clickCountNav === 1 && tabAktifSebelumnya !== 'dashboard' && tabAktifSebelumnya === tabId) {
+                // Jika user lompat dari menu A ke menu B
+            }
+            lastMenuDitekan = tabId;
+
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.nav-link').forEach(el => {
-                el.classList.remove('bg-sky-600', 'text-white', 'font-bold');
-                el.classList.add('text-gray-200');
+                el.classList.remove('bg-sky-200', 'text-navy-900', 'font-bold');
+                el.classList.add('text-gray-200', 'font-medium');
             });
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
             const activeBtn = document.getElementById(`nav-${tabId}`);
-            activeBtn.classList.remove('text-gray-200');
-            activeBtn.classList.add('bg-sky-600', 'text-white', 'font-bold');
+            activeBtn.classList.remove('text-gray-200', 'font-medium');
+            activeBtn.classList.add('bg-sky-200', 'text-navy-900', 'font-bold');
+
             const tajukMap = {
                 'dashboard': 'Analisis & Ringkasan Takwim Tarbiah',
                 'dhuha': 'Kuliah Dhuha Pagi Jumaat',
@@ -1065,29 +1223,42 @@
                 'tetapan': 'Tetapan & Integrasi Pangkalan Data Awan'
             };
             document.getElementById('page-title').innerText = tajukMap[tabId] || 'e - Lajnah Tarbiah';
-            const mainArea = document.getElementById('main-content-area');
-            setTimeout(() => {
-                const targetEl = document.getElementById(`tab-${tabId}`);
-                if (targetEl) {
-                    const firstCard = targetEl.querySelector('.neu-card, table');
-                    if (firstCard) {
-                        const rect = firstCard.getBoundingClientRect();
-                        const mainRect = mainArea.getBoundingClientRect();
-                        const scrollTop = mainArea.scrollTop + (rect.top - mainRect.top) - 10;
-                        mainArea.scrollTo({ top: Math.max(0, scrollTop), behavior: 'smooth' });
+
+            if (shouldScroll) {
+                const mainArea = document.getElementById('main-content-area');
+                setTimeout(() => {
+                    const targetEl = document.getElementById(`tab-${tabId}`);
+                    if (targetEl) {
+                        const firstCard = targetEl.querySelector('.neu-card, table');
+                        if (firstCard) {
+                            const rect = firstCard.getBoundingClientRect();
+                            const mainRect = mainArea.getBoundingClientRect();
+                            const scrollTop = mainArea.scrollTop + (rect.top - mainRect.top) - 10;
+                            mainArea.scrollTo({ top: Math.max(0, scrollTop), behavior: 'smooth' });
+                        }
                     }
-                }
-            }, 60);
+                }, 60);
+            }
         }
 
         function cetakJadual(tableId) {
-            const content = document.getElementById(tableId).outerHTML;
             const win = window.open('', '', 'height=700,width=900');
             win.document.write('<!DOCTYPE html><html><head><title>Cetak Takwim</title>');
-            win.document.write('<script src="https://cdn.tailwindcss.com"><\/script>');
-            win.document.write('</head><body class="p-8">');
-            win.document.write('<h2 class="text-xl font-bold mb-4 text-center">LAJNAH TARBIAH PAS KAWASAN PASIR MAS</h2>');
-            win.document.write(content);
+            win.document.write('<style>body{font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;font-size:11pt;padding:20px;} table{width:100%;border-collapse:collapse;margin-top:15px;} th,td{border:1px solid #000;padding:6px;text-align:left;} th{background-color:#f2f2f2;} h2{text-align:center;font-size:14pt;font-weight:bold;}</style>');
+            win.document.write('</head><body>');
+            win.document.write('<h2>LAJNAH TARBIAH PAS KAWASAN PASIR MAS</h2>');
+            
+            const tableEl = document.getElementById(tableId).cloneNode(true);
+            // Buang kolum tindakan / WA terakhir semasa cetak
+            const rows = tableEl.querySelectorAll('tr');
+            rows.forEach(r => {
+                const cells = r.querySelectorAll('th, td');
+                if (cells.length > 0) {
+                    cells[cells.length - 1].remove();
+                }
+            });
+
+            win.document.write(tableEl.outerHTML);
             win.document.write('</body></html>');
             win.document.close();
             win.print();
