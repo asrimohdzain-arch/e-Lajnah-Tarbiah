@@ -281,7 +281,7 @@
                         <h3 class="font-bold text-sm text-navy-800">Kuliah Dhuha Pagi Jumaat</h3>
                         <p class="text-[11px] text-gray-500">Masa: 9.30 pg - 10.30 pg | Lokasi: Pusat Tarbiah Pohon Buloh</p>
                     </div>
-                    <button onclick="cetakJadual('table-dhuha')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
+                    <button onclick="cetakJadual('table-dhuha', 'KULIAH DHUHA PAGI JUMAAT')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
                 </div>
                 <!-- KOTAK DATA TERKINI -->
                 <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
@@ -313,7 +313,7 @@
                         <h3 class="font-bold text-sm text-navy-800">Iftar Jamaie 12K Ansorullah</h3>
                         <p class="text-[11px] text-gray-500">Setiap Minggu Ke-3 (Khamis) | Tempat: Pusat Tarbiah Pohon Buloh</p>
                     </div>
-                    <button onclick="cetakJadual('table-iftar')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
+                    <button onclick="cetakJadual('table-iftar', 'IFTAR JAMAIE 12K ANSORULLAH')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
                 </div>
                 <!-- KOTAK DATA TERKINI -->
                 <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
@@ -345,7 +345,7 @@
                         <h3 class="font-bold text-sm text-navy-800">Usrah PAS Kawasan Pasir Mas</h3>
                         <p class="text-[11px] text-gray-500">Setiap Minggu Ke-4 (Rabu) | Pejabat PAS Kawasan Pasir Mas</p>
                     </div>
-                    <button onclick="cetakJadual('table-usrah-kaw')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
+                    <button onclick="cetakJadual('table-usrah-kaw', 'USRAH PIMPINAN PAS KAWASAN PASIR MAS')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
                 </div>
                 <!-- KOTAK DATA TERKINI -->
                 <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
@@ -380,7 +380,7 @@
                         <h3 class="font-bold text-sm text-navy-800">Kuliah Haraki DUN Meranti</h3>
                         <p class="text-[11px] text-gray-500">Minggu Ke-2 (Isnin) | Tempat Ditentukan MTD DUN</p>
                     </div>
-                    <button onclick="cetakJadual('table-kuliah-dun')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
+                    <button onclick="cetakJadual('table-kuliah-dun', 'KULIAH HARAKI DUN MERANTI')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
                 </div>
                 <!-- KOTAK DATA TERKINI -->
                 <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
@@ -413,7 +413,7 @@
                         <h3 class="font-bold text-sm text-navy-800">Usrah UDM DUN Meranti (13 UDM)</h3>
                         <p class="text-[11px] text-gray-500">Minggu Ke-4 (Isnin) | Pilihan Butang WhatsApp Khas</p>
                     </div>
-                    <button onclick="cetakJadual('table-usrah-udm')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
+                    <button onclick="cetakJadual('table-usrah-udm', 'USRAH UDM DUN MERANTI (13 UDM)')" class="px-3 py-1.5 bg-gray-700 text-white rounded-lg text-xs font-semibold hover:bg-gray-800"><i class="fa-solid fa-print mr-1"></i> Cetak</button>
                 </div>
                 <!-- KOTAK DATA TERKINI -->
                 <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
@@ -690,7 +690,6 @@
             binaJadualKuliahDun();
             binaJadualUsrahUdm();
             
-            // Set lalai buka di Analisis & Takwim
             tukarTab('dashboard', false);
             semakNotifikasiLoceng();
         };
@@ -1170,22 +1169,18 @@
             document.getElementById('notif-dropdown').classList.toggle('hidden');
         }
 
-        // LOGIK NAVIGASI DIKEMASKINI: BERTUKAR WARNA SERTA-MERTA & TERUS SKROL
         function pilihMenuSidebar(tabId) {
-            // Tukar paparan tab serta-merta
             tukarTab(tabId, true);
         }
 
         function tukarTab(tabId, shouldScroll = false) {
             tabTerakhirDipilih = tabId;
 
-            // Buang kelas aktif dari semua butang sidebar dan tukar ke warna asal segera
             document.querySelectorAll('.nav-link').forEach(el => {
                 el.classList.remove('bg-sky-200', 'text-navy-900', 'font-bold');
                 el.classList.add('text-gray-200', 'font-medium');
             });
 
-            // Aktifkan butang yang ditekan serta-merta dengan warna biru muda lembut
             const activeBtn = document.getElementById(`nav-${tabId}`);
             if (activeBtn) {
                 activeBtn.classList.remove('text-gray-200', 'font-medium');
@@ -1226,12 +1221,13 @@
             }
         }
 
-        function cetakJadual(tableId) {
+        function cetakJadual(tableId, namaProgram) {
             const win = window.open('', '', 'height=700,width=900');
             win.document.write('<!DOCTYPE html><html><head><title>Cetak Takwim</title>');
-            win.document.write('<style>body{font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;font-size:11pt;padding:20px;} table{width:100%;border-collapse:collapse;margin-top:15px;} th,td{border:1px solid #000;padding:6px;text-align:left;} th{background-color:#f2f2f2;} h2{text-align:center;font-size:14pt;font-weight:bold;}</style>');
+            win.document.write('<style>body{font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;font-size:11pt;padding:20px;} h2{text-align:center;font-size:14pt;font-weight:bold;margin:2px 0;} h3{text-align:center;font-size:12pt;font-weight:bold;margin-bottom:15px;color:#333;} table{width:100%;border-collapse:collapse;margin-top:5px;} th,td{border:1px solid #000;padding:6px;text-align:left;} th{background-color:#f2f2f2;}</style>');
             win.document.write('</head><body>');
             win.document.write('<h2>LAJNAH TARBIAH PAS KAWASAN PASIR MAS</h2>');
+            win.document.write(`<h3>${namaProgram}</h3>`);
             
             const tableEl = document.getElementById(tableId).cloneNode(true);
             const rows = tableEl.querySelectorAll('tr');
