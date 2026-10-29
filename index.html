@@ -107,31 +107,31 @@
                 </div>
             </div>
             <nav class="p-3 space-y-1.5 text-xs">
-                <button onclick="navigasiKlik('dashboard')" id="nav-dashboard" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-sky-200 text-navy-900 font-bold transition hover:bg-navy-700 hover:text-white">
+                <button onclick="pilihMenuSidebar('dashboard')" id="nav-dashboard" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-sky-200 text-navy-900 font-bold transition hover:bg-navy-700 hover:text-white">
                     <i class="fa-solid fa-chart-line w-4 text-center"></i>
                     <span>Analisis & Takwim</span>
                 </button>
-                <button onclick="navigasiKlik('dhuha')" id="nav-dhuha" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                <button onclick="pilihMenuSidebar('dhuha')" id="nav-dhuha" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
                     <i class="fa-solid fa-sun w-4 text-center text-amber-400"></i>
                     <span>Kuliah Dhuha</span>
                 </button>
-                <button onclick="navigasiKlik('iftar')" id="nav-iftar" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                <button onclick="pilihMenuSidebar('iftar')" id="nav-iftar" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
                     <i class="fa-solid fa-utensils w-4 text-center text-emerald-400"></i>
                     <span>Iftar Jamaie (12K)</span>
                 </button>
-                <button onclick="navigasiKlik('usrah-kaw')" id="nav-usrah-kaw" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                <button onclick="pilihMenuSidebar('usrah-kaw')" id="nav-usrah-kaw" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
                     <i class="fa-solid fa-users w-4 text-center text-blue-400"></i>
                     <span>Usrah PAS Kawasan</span>
                 </button>
-                <button onclick="navigasiKlik('kuliah-dun')" id="nav-kuliah-dun" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                <button onclick="pilihMenuSidebar('kuliah-dun')" id="nav-kuliah-dun" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
                     <i class="fa-solid fa-book-open w-4 text-center text-purple-400"></i>
                     <span>Kuliah Haraki DUN</span>
                 </button>
-                <button onclick="navigasiKlik('usrah-udm')" id="nav-usrah-udm" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                <button onclick="pilihMenuSidebar('usrah-udm')" id="nav-usrah-udm" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
                     <i class="fa-solid fa-map-location-dot w-4 text-center text-rose-400"></i>
                     <span>Usrah UDM Meranti</span>
                 </button>
-                <button onclick="navigasiKlik('tetapan')" id="nav-tetapan" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200 mt-4 border-t border-navy-700 pt-3">
+                <button onclick="pilihMenuSidebar('tetapan')" id="nav-tetapan" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200 mt-4 border-t border-navy-700 pt-3">
                     <i class="fa-solid fa-gears w-4 text-center text-gray-300"></i>
                     <span>Tetapan & Awan</span>
                 </button>
@@ -645,8 +645,7 @@
             "JULAI", "OGOS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DISEMBER"
         ];
         
-        let tabAktifSebelumnya = 'dashboard';
-        let clickCountNav = 0;
+        let tabTerakhirDipilih = 'dashboard';
 
         function paparkanTarikhHeaderSemasa() {
             const hariList = ["Ahad", "Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu"];
@@ -679,7 +678,6 @@
 
             if (cloudData && cloudData.dhuha && cloudData.dhuha.length > 0) {
                 dbData = cloudData;
-                // Pastikan tarikh 30/10/2026 wujud dalam dhuha jika belum ada
                 uruskanTarikhDhuhaOktober();
             } else {
                 janaTarikhTahunBaharu(2026, false);
@@ -692,7 +690,7 @@
             binaJadualKuliahDun();
             binaJadualUsrahUdm();
             
-            // Set lalai kepada Analisis & Takwim
+            // Set lalai buka di Analisis & Takwim
             tukarTab('dashboard', false);
             semakNotifikasiLoceng();
         };
@@ -705,7 +703,6 @@
                     pengkuliah: "Ustaz Hj. Ahmad Awang",
                     kitab: "Tafsir Ayat Ahkam / Riyadhus Shalihin"
                 });
-                // Susun ikut tarikh
                 dbData.dhuha.sort((a, b) => {
                     let pA = a.tarikh.split('/');
                     let pB = b.tarikh.split('/');
@@ -743,7 +740,6 @@
                     });
                 }
             }
-            // Masukkan khas 30/10/2026 jika tahun 2026
             if (thn === 2026) {
                 dbData.dhuha.push({
                     tarikh: "30/10/2026",
@@ -873,7 +869,6 @@
                     </tr>
                 `;
             });
-            // Update Kotak Live
             const terkini = cariDataTerkini(dbData.dhuha);
             if (terkini) {
                 const idxReal = dbData.dhuha.indexOf(terkini);
@@ -1175,43 +1170,33 @@
             document.getElementById('notif-dropdown').classList.toggle('hidden');
         }
 
-        // LOGIK NAVIGASI KLIK (KLIK 2 KALI KE BAWAH / BACK KE ANALISIS)
-        function navigasiKlik(tabId) {
-            if (tabAktifSebelumnya === tabId) {
-                clickCountNav++;
-            } else {
-                clickCountNav = 1;
-                tabAktifSebelumnya = tabId;
-            }
-
-            if (clickCountNav === 1) {
-                tukarTab(tabId, false);
-            } else {
-                // Klik kali kedua pada butang sama -> Scroll ke jadual
-                tukarTab(tabId, true);
-                clickCountNav = 0; // reset
-            }
+        // LOGIK NAVIGASI DIKEMASKINI: BERTUKAR WARNA SERTA-MERTA & TERUS SKROL
+        function pilihMenuSidebar(tabId) {
+            // Tukar paparan tab serta-merta
+            tukarTab(tabId, true);
         }
 
-        // LOGIK KLIK BACK (JIKA KLIK BUTANG LAIN SEMASA DI MENU LAIN)
-        let lastMenuDitekan = 'dashboard';
         function tukarTab(tabId, shouldScroll = false) {
-            // Logik Back: Jika sedang di mana-mana tab dan klik tab lain (kali pertama), boleh ke Analisis dahulu jika perlu, 
-            // tapi mengikut permintaan: "klik kali 1 akan back ke menu Analisis & Takwim dahulu dan bila klik ke 2 baru lah ia keluar skrin"
-            if (tabId !== 'dashboard' && lastMenuDitekan !== tabId && clickCountNav === 1 && tabAktifSebelumnya !== 'dashboard' && tabAktifSebelumnya === tabId) {
-                // Jika user lompat dari menu A ke menu B
-            }
-            lastMenuDitekan = tabId;
+            tabTerakhirDipilih = tabId;
 
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // Buang kelas aktif dari semua butang sidebar dan tukar ke warna asal segera
             document.querySelectorAll('.nav-link').forEach(el => {
                 el.classList.remove('bg-sky-200', 'text-navy-900', 'font-bold');
                 el.classList.add('text-gray-200', 'font-medium');
             });
-            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+
+            // Aktifkan butang yang ditekan serta-merta dengan warna biru muda lembut
             const activeBtn = document.getElementById(`nav-${tabId}`);
-            activeBtn.classList.remove('text-gray-200', 'font-medium');
-            activeBtn.classList.add('bg-sky-200', 'text-navy-900', 'font-bold');
+            if (activeBtn) {
+                activeBtn.classList.remove('text-gray-200', 'font-medium');
+                activeBtn.classList.add('bg-sky-200', 'text-navy-900', 'font-bold');
+            }
+
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            const targetTab = document.getElementById(`tab-${tabId}`);
+            if (targetTab) {
+                targetTab.classList.remove('hidden');
+            }
 
             const tajukMap = {
                 'dashboard': 'Analisis & Ringkasan Takwim Tarbiah',
@@ -1237,7 +1222,7 @@
                             mainArea.scrollTo({ top: Math.max(0, scrollTop), behavior: 'smooth' });
                         }
                     }
-                }, 60);
+                }, 50);
             }
         }
 
@@ -1249,7 +1234,6 @@
             win.document.write('<h2>LAJNAH TARBIAH PAS KAWASAN PASIR MAS</h2>');
             
             const tableEl = document.getElementById(tableId).cloneNode(true);
-            // Buang kolum tindakan / WA terakhir semasa cetak
             const rows = tableEl.querySelectorAll('tr');
             rows.forEach(r => {
                 const cells = r.querySelectorAll('th, td');
