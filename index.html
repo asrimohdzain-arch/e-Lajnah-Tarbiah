@@ -577,7 +577,7 @@
                 console.warn("Firebase Auth fallback active:", err);
             }
         }
-        initAuth();
+        await initAuth();
         window.simpanKeCloud = async function(dataPayload) {
             try {
                 const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
@@ -636,18 +636,19 @@
         window.onload = async function() {
             paparkanTarikhHeaderSemasa();
             
-            // Muat data dari Cloud dahulu supaya nombor telefon sedia ada tidak hilang
+            // Tunggu sehingga data berjaya ditarik dari Cloud Firestore sepenuhnya sebelum paparan dibina
+            let cloudData = null;
             if (typeof window.muatDariCloud === 'function') {
-                const cloudData = await window.muatDariCloud();
-                if (cloudData) {
-                    dbData = cloudData;
-                    if (dbData.noTelefon === undefined) dbData.noTelefon = "";
-                    if (!dbData.dhuha || dbData.dhuha.length === 0) {
-                        janaTarikhTahunBaharu(dbData.tahun || 2026, false);
-                    }
-                } else {
-                    janaTarikhTahunBaharu(2026, false);
+                try {
+                    cloudData = await window.muatDariCloud();
+                } catch (e) {
+                    console.log("Gagal capaian awan, guna data lalai.");
                 }
+            }
+
+            if (cloudData && cloudData.dhuha && cloudData.dhuha.length > 0) {
+                dbData = cloudData;
+                if (dbData.noTelefon === undefined) dbData.noTelefon = "";
             } else {
                 janaTarikhTahunBaharu(2026, false);
             }
