@@ -676,19 +676,22 @@
             let cloudData = null;
             if (typeof window.muatDariCloud === 'function') {
                 try {
+                    // Cuba tarik data dari Cloud Firestore
                     cloudData = await window.muatDariCloud();
                 } catch (e) {
-                    console.log("Gagal capaian awan, guna data lalai.");
+                    console.log("Gagal capaian awan.");
                 }
             }
 
+            // UTAMAKAN DATA CLOUD: Jika data ada di Cloud, wajib guna data Cloud sepenuhnya
             if (cloudData && cloudData.dhuha && cloudData.dhuha.length > 0) {
                 dbData = cloudData;
                 uruskanTarikhDhuhaOktober();
             } else {
+                // Jika Cloud kosong langsung, baru jana data tahun baharu & simpan ke cloud
                 janaTarikhTahunBaharu(2026, false);
-                if (cloudData) {
-                    dbData = cloudData;
+                if (typeof window.simpanKeCloud === 'function') {
+                    window.simpanKeCloud(dbData);
                 }
             }
 
