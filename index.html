@@ -615,7 +615,6 @@
             try {
                 const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
                 await setDoc(docRef, dataPayload);
-                console.log("Berjaya simpan ke Firestore.");
             } catch (err) {
                 console.error("Ralat simpan data ke Cloud:", err);
             }
@@ -674,6 +673,7 @@
         window.onload = async function() {
             paparkanTarikhHeaderSemasa();
             
+            // 1. UTAMAKAN BACAAN DARIPADA CLOUD FIRESTORE SEBULAT-BULATNYA
             let cloudData = null;
             if (typeof window.muatDariCloud === 'function') {
                 try {
@@ -683,12 +683,9 @@
                 }
             }
 
-            // PERLINDUNGAN MUTLAK: Jika data ada di Firestore, guna terus tanpa syarat. Jangan jana semula!
             if (cloudData && cloudData.dhuha && Array.isArray(cloudData.dhuha) && cloudData.dhuha.length > 0) {
                 dbData = cloudData;
-                console.log("Menggunakan data sepenuhnya daripada Cloud Firestore.");
             } else {
-                // Hanya jana jika Firestore betul-betul kosong
                 janaTarikhTahunBaharu(2026, false);
                 if (typeof window.simpanKeCloud === 'function') {
                     window.simpanKeCloud(dbData);
@@ -1077,10 +1074,12 @@
             document.getElementById('modal-edit').classList.add('hidden');
         }
 
-        function simpanKemaskini(e) {
+        // FUNGSI SIMPAN YANG DIBAIKI: Pastikan ia kemaskini objek dengan betul
+        async function simpanKemaskini(e) {
             e.preventDefault();
             const kat = document.getElementById('edit-kategori').value;
             const idx = parseInt(document.getElementById('edit-index').value);
+            
             dbData[kat][idx].tarikh = document.getElementById('edit-tarikh').value;
             if (kat === 'dhuha') {
                 dbData.dhuha[idx].pengkuliah = document.getElementById('edit-field-1').value;
@@ -1103,11 +1102,15 @@
                 dbData.usrahUdm[idx].naqib = document.getElementById('edit-field-2').value;
                 binaJadualUsrahUdm();
             }
+
+            // Hantar data terkini ke Cloud Firestore dengan selamat
             if (typeof window.simpanKeCloud === 'function') {
-                window.simpanKeCloud(dbData);
+                await window.simpanKeCloud(dbData);
             }
+            
             tutupModal();
             semakNotifikasiLoceng();
+            paparPesan("Perubahan berjaya disimpan ke pangkalan data awan!");
         }
 
         function semakNotifikasiLoceng() {
