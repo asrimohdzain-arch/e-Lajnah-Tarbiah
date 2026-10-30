@@ -582,7 +582,7 @@
         </div>
     </div>
 
-    <!-- FIREBASE MODULE (API KEY RASMI USTAZ) -->
+    <!-- FIREBASE MODULE (DISELARASKAN DENGAN ID SEBENAR DI KONSOL FIRESTORE) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -597,7 +597,8 @@
             appId: "1:495158317965:web:739fedb2b2c024342d23c4"
         };
         
-        const appId = 'etarbiah-pasir-mas';
+        // Diselaraskan mengikut ID laluan folder sebenar yang Ustaz paparkan dalam gambar Firestore
+        const appId = 'c_84318e6a865664d99042b36a19f2a244';
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
@@ -615,6 +616,7 @@
             try {
                 const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
                 await setDoc(docRef, dataPayload);
+                console.log("Berjaya simpan ke Firestore.");
             } catch (err) {
                 console.error("Ralat simpan data ke Cloud:", err);
             }
@@ -673,7 +675,6 @@
         window.onload = async function() {
             paparkanTarikhHeaderSemasa();
             
-            // 1. UTAMAKAN BACAAN DARIPADA CLOUD FIRESTORE SEBULAT-BULATNYA
             let cloudData = null;
             if (typeof window.muatDariCloud === 'function') {
                 try {
@@ -685,6 +686,7 @@
 
             if (cloudData && cloudData.dhuha && Array.isArray(cloudData.dhuha) && cloudData.dhuha.length > 0) {
                 dbData = cloudData;
+                console.log("Berjaya muat data dari Firestore laluan asal.");
             } else {
                 janaTarikhTahunBaharu(2026, false);
                 if (typeof window.simpanKeCloud === 'function') {
@@ -1074,7 +1076,6 @@
             document.getElementById('modal-edit').classList.add('hidden');
         }
 
-        // FUNGSI SIMPAN YANG DIBAIKI: Pastikan ia kemaskini objek dengan betul
         async function simpanKemaskini(e) {
             e.preventDefault();
             const kat = document.getElementById('edit-kategori').value;
@@ -1103,14 +1104,13 @@
                 binaJadualUsrahUdm();
             }
 
-            // Hantar data terkini ke Cloud Firestore dengan selamat
             if (typeof window.simpanKeCloud === 'function') {
                 await window.simpanKeCloud(dbData);
             }
             
             tutupModal();
             semakNotifikasiLoceng();
-            paparPesan("Perubahan berjaya disimpan ke pangkalan data awan!");
+            paparPesan("Perubahan berjaya disimpan ke Firestore!");
         }
 
         function semakNotifikasiLoceng() {
