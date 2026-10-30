@@ -485,7 +485,7 @@
         </div>
     </div>
 
-    <!-- FIREBASE MODULE -->
+    <!-- FIREBASE MODULE (DISEMATKAN PADA LALUAN SEBENAR FIRESTORE) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -500,6 +500,8 @@
             appId: "1:495158317965:web:739fedb2b2c024342d23c4"
         };
         
+        // Laluan sebenar mengikut konsol Firebase Ustaz: artifacts -> c_84318e6a865... -> public -> etarbiah_data
+        const appId = 'c_84318e6a865664d99042b36a19f2a244';
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
@@ -515,8 +517,9 @@
 
         window.simpanKeCloud = async function(dataPayload) {
             try {
-                const docRef = doc(db, 'e_tarbiah_data', 'pasir_mas_2026');
+                const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
                 await setDoc(docRef, dataPayload);
+                console.log("Berjaya simpan ke Firestore laluan sebenar.");
             } catch (err) {
                 console.error("Ralat simpan data:", err);
             }
@@ -524,7 +527,7 @@
 
         window.muatDariCloud = async function() {
             try {
-                const docRef = doc(db, 'e_tarbiah_data', 'pasir_mas_2026');
+                const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     return docSnap.data();
@@ -548,11 +551,6 @@
         };
         
         const TETAPAN_NO_TELEFON = "60199467894";
-        const SENARAI_BULAN = [
-            "JANUARI", "FEBRUARI", "MAC", "APRIL", "MEI", "JUN", 
-            "JULAI", "OGOS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DISEMBER"
-        ];
-        
         let targetHapusKat = '';
         let targetHapusIdx = -1;
 
@@ -605,10 +603,10 @@
         };
 
         function kemaskiniStatistik() {
-            document.getElementById('stat-dhuha').innerText = `${dbData.dhuha.length} Sesi`;
-            document.getElementById('stat-iftar').innerText = `${dbData.iftar.length} Sesi`;
-            document.getElementById('stat-usrah-kaw').innerText = `${dbData.usrahKaw.length} Sesi`;
-            document.getElementById('stat-usrah-udm').innerText = `${dbData.usrahUdm.length} UDM`;
+            document.getElementById('stat-dhuha').innerText = `${dbData.dhuha ? dbData.dhuha.length : 0} Sesi`;
+            document.getElementById('stat-iftar').innerText = `${dbData.iftar ? dbData.iftar.length : 0} Sesi`;
+            document.getElementById('stat-usrah-kaw').innerText = `${dbData.usrahKaw ? dbData.usrahKaw.length : 0} Sesi`;
+            document.getElementById('stat-usrah-udm').innerText = `${dbData.usrahUdm ? dbData.usrahUdm.length : 0} UDM`;
         }
 
         function binaJadualDhuha() {
@@ -647,7 +645,7 @@
             dbData.iftar.forEach((row, idx) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
-                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan})</span></td>
+                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan || ''})</span></td>
                         <td class="p-2 border text-gray-600">${row.tazkirah}</td>
                         <td class="p-2 border text-gray-600">${row.tadabbur}</td>
                         <td class="p-2 border text-center no-print">
@@ -673,7 +671,7 @@
             dbData.usrahKaw.forEach((row, idx) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
-                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan})</span></td>
+                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan || ''})</span></td>
                         <td class="p-2 border font-semibold text-emerald-800 text-center">${row.naqibNegeri || '-'}</td>
                         <td class="p-2 border text-gray-700">${row.tafsir}</td>
                         <td class="p-2 border text-gray-700">${row.hadis}</td>
@@ -702,7 +700,7 @@
             dbData.kuliahDun.forEach((row, idx) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
-                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan})</span></td>
+                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan || ''})</span></td>
                         <td class="p-2 border font-medium">${row.pengkuliah}</td>
                         <td class="p-2 border text-gray-600">${row.pengisian}</td>
                         <td class="p-2 border text-gray-600">${row.lokasi}</td>
@@ -729,7 +727,7 @@
             dbData.usrahUdm.forEach((row, idx) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
-                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan})</span></td>
+                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan || ''})</span></td>
                         <td class="p-2 border text-gray-700">${row.senaraiUdm}</td>
                         <td class="p-2 border text-gray-700">${row.naqib}</td>
                         <td class="p-2 border text-center no-print">
@@ -747,7 +745,7 @@
 
         function bukaModalTambah(kategori) {
             document.getElementById('edit-kategori').value = kategori;
-            document.getElementById('edit-index').value = -1; // -1 bermaksud rekod baharu
+            document.getElementById('edit-index').value = -1;
             document.getElementById('modal-title').innerText = "Tambah Rekod Baharu";
             document.getElementById('edit-tarikh').value = "";
             document.getElementById('edit-field-1').value = "";
@@ -845,6 +843,7 @@
             }
 
             if (idx === -1) {
+                if (!dbData[kat]) dbData[kat] = [];
                 dbData[kat].push(objBaru);
             } else {
                 dbData[kat][idx] = objBaru;
@@ -856,7 +855,7 @@
 
             refreshJadualSemua();
             tutupModal();
-            paparPesan("Data berjaya disimpan!");
+            paparPesan("Data berjaya disimpan ke Firestore!");
         }
 
         function konfirmHapus(kat, idx) {
@@ -891,7 +890,7 @@
         }
 
         function bukaPautanWA(mesej) {
-            let tel = TETAPAN_NO_TELEFON.replace(/[^0-9]/g, '');
+            let tel = "60199467894".replace(/[^0-9]/g, '');
             let url = `https://api.whatsapp.com/send?phone=${tel}&text=${encodeURIComponent(mesej)}`;
             window.open(url, '_blank');
         }
