@@ -155,23 +155,6 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center gap-3">
-                <div class="relative">
-                    <button onclick="toggleNotifikasi()" class="relative p-2 rounded-full hover:bg-navy-700 text-white focus:outline-none">
-                        <i class="fa-solid fa-bell text-lg"></i>
-                        <span id="notif-badge" class="hidden absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
-                    </button>
-                    <div id="notif-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-white text-gray-800 rounded-lg shadow-xl border border-gray-200 z-50 overflow-hidden">
-                        <div class="bg-navy-800 text-white px-4 py-2 font-bold text-xs flex justify-between items-center">
-                            <span><i class="fa-solid fa-clock mr-1"></i> Program 3 Hari Akan Datang</span>
-                            <button onclick="toggleNotifikasi()" class="text-gray-200 hover:text-white">&times;</button>
-                        </div>
-                        <div id="notif-list" class="max-h-64 overflow-y-auto divide-y divide-gray-100 text-xs">
-                            <div class="p-3 text-gray-500 text-center">Tiada program berdekatan.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </header>
 
         <div class="p-4 md:p-6 space-y-6 flex-1">
@@ -245,7 +228,7 @@
                             </tr>
                         </thead>
                         <tbody id="tbody-dhuha" class="divide-y divide-gray-200">
-                            <tr><td colspan="4" class="p-4 text-center text-gray-500">Tiada rekod. Sila klik butang "Tambah Dhuha" di atas.</td></tr>
+                            <tr><td colspan="4" class="p-4 text-center text-gray-500">Memuatkan data dari awan...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -271,14 +254,14 @@
                     <table id="table-iftar" class="w-full text-[10px] text-left border-collapse min-w-[700px] cetak-tanpa-wa">
                         <thead>
                             <tr class="bg-navy-800 text-white">
-                                <th class="p-2 border border-navy-700 text-center">Tarikh / Bulan</th>
+                                <th class="p-2 border border-navy-700 text-center">Tarikh</th>
                                 <th class="p-2 border border-navy-700">Tazkirah Maghrib</th>
                                 <th class="p-2 border border-navy-700">Tadabbur Ayat</th>
                                 <th class="p-2 border border-navy-700 text-center no-print">Tindakan</th>
                             </tr>
                         </thead>
                         <tbody id="tbody-iftar" class="divide-y divide-gray-200">
-                            <tr><td colspan="4" class="p-4 text-center text-gray-500">Tiada rekod. Sila klik butang "Tambah Iftar" di atas.</td></tr>
+                            <tr><td colspan="4" class="p-4 text-center text-gray-500">Memuatkan data dari awan...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -304,7 +287,7 @@
                     <table id="table-usrah-kaw" class="w-full text-[10px] text-left border-collapse min-w-[850px] cetak-tanpa-wa">
                         <thead>
                             <tr class="bg-navy-800 text-white">
-                                <th class="p-2 border border-navy-700 text-center">Tarikh / Bulan</th>
+                                <th class="p-2 border border-navy-700 text-center">Tarikh</th>
                                 <th class="p-2 border border-navy-700 text-center">Naqib Negeri</th>
                                 <th class="p-2 border border-navy-700">Naqib Tafsir</th>
                                 <th class="p-2 border border-navy-700">Naqib Hadis</th>
@@ -314,7 +297,7 @@
                             </tr>
                         </thead>
                         <tbody id="tbody-usrah-kaw" class="divide-y divide-gray-200">
-                            <tr><td colspan="7" class="p-4 text-center text-gray-500">Tiada rekod. Sila klik butang "Tambah Usrah" di atas.</td></tr>
+                            <tr><td colspan="7" class="p-4 text-center text-gray-500">Memuatkan data dari awan...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -340,7 +323,7 @@
                     <table id="table-kuliah-dun" class="w-full text-[10px] text-left border-collapse min-w-[700px] cetak-tanpa-wa">
                         <thead>
                             <tr class="bg-navy-800 text-white">
-                                <th class="p-2 border border-navy-700 text-center">Tarikh / Bulan</th>
+                                <th class="p-2 border border-navy-700 text-center">Tarikh</th>
                                 <th class="p-2 border border-navy-700">Pengkuliah Utama</th>
                                 <th class="p-2 border border-navy-700">Tajuk / Pengisian</th>
                                 <th class="p-2 border border-navy-700">Lokasi Masjid/Surau</th>
@@ -348,7 +331,7 @@
                             </tr>
                         </thead>
                         <tbody id="tbody-kuliah-dun" class="divide-y divide-gray-200">
-                            <tr><td colspan="5" class="p-4 text-center text-gray-500">Tiada rekod. Sila klik butang "Tambah Kuliah DUN" di atas.</td></tr>
+                            <tr><td colspan="5" class="p-4 text-center text-gray-500">Memuatkan data dari awan...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -374,14 +357,14 @@
                     <table id="table-usrah-udm" class="w-full text-[10px] text-left border-collapse min-w-[850px] cetak-tanpa-wa">
                         <thead>
                             <tr class="bg-navy-800 text-white">
-                                <th class="p-2 border border-navy-700 text-center">Bulan / Tarikh</th>
+                                <th class="p-2 border border-navy-700 text-center">Tarikh</th>
                                 <th class="p-2 border border-navy-700">Senarai UDM (13 UDM)</th>
                                 <th class="p-2 border border-navy-700">Naqib Terlibat</th>
                                 <th class="p-2 border border-navy-700 text-center no-print">Tindakan</th>
                             </tr>
                         </thead>
                         <tbody id="tbody-usrah-udm" class="divide-y divide-gray-200">
-                            <tr><td colspan="4" class="p-4 text-center text-gray-500">Tiada rekod. Sila klik butang "Tambah UDM" di atas.</td></tr>
+                            <tr><td colspan="4" class="p-4 text-center text-gray-500">Memuatkan data dari awan...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -432,7 +415,7 @@
                 <input type="hidden" id="edit-index" value="-1">
                 <div>
                     <label id="lbl-tarikh" class="block font-bold text-gray-700 mb-1">Tarikh Program:</label>
-                    <input type="text" id="edit-tarikh" placeholder="Cth: 02/01/2026" class="w-full neu-input p-2 rounded border focus:outline-none font-semibold">
+                    <input type="text" id="edit-tarikh" placeholder="Cth: 01/01/2026" class="w-full neu-input p-2 rounded border focus:outline-none font-semibold">
                 </div>
                 <div id="box-field-1">
                     <label id="lbl-field-1" class="block font-bold text-gray-700 mb-1">Pengkuliah / Naqib:</label>
@@ -485,7 +468,7 @@
         </div>
     </div>
 
-    <!-- FIREBASE MODULE (DISEMATKAN PADA LALUAN SEBENAR FIRESTORE) -->
+    <!-- FIREBASE MODULE -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -500,7 +483,6 @@
             appId: "1:495158317965:web:739fedb2b2c024342d23c4"
         };
         
-        // Laluan sebenar mengikut konsol Firebase Ustaz: artifacts -> c_84318e6a865... -> public -> etarbiah_data
         const appId = 'c_84318e6a865664d99042b36a19f2a244';
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
@@ -519,7 +501,6 @@
             try {
                 const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
                 await setDoc(docRef, dataPayload);
-                console.log("Berjaya simpan ke Firestore laluan sebenar.");
             } catch (err) {
                 console.error("Ralat simpan data:", err);
             }
@@ -574,32 +555,26 @@
         window.onload = async function() {
             paparkanTarikhHeaderSemasa();
             
-            let cloudData = null;
             if (typeof window.muatDariCloud === 'function') {
                 try {
-                    cloudData = await window.muatDariCloud();
+                    let cloudData = await window.muatDariCloud();
+                    if (cloudData) {
+                        dbData = {
+                            tahun: cloudData.tahun || 2026,
+                            dhuha: Array.isArray(cloudData.dhuha) ? cloudData.dhuha : [],
+                            iftar: Array.isArray(cloudData.iftar) ? cloudData.iftar : [],
+                            usrahKaw: Array.isArray(cloudData.usrahKaw) ? cloudData.usrahKaw : [],
+                            kuliahDun: Array.isArray(cloudData.kuliahDun) ? cloudData.kuliahDun : [],
+                            usrahUdm: Array.isArray(cloudData.usrahUdm) ? cloudData.usrahUdm : []
+                        };
+                    }
                 } catch (e) {
-                    console.log("Capaian awan gagal.");
+                    console.log("Capaian awan gagal, menggunakan default kosong.");
                 }
             }
 
-            if (cloudData) {
-                dbData = cloudData;
-            } else {
-                if (typeof window.simpanKeCloud === 'function') {
-                    window.simpanKeCloud(dbData);
-                }
-            }
-
-            kemaskiniStatistik();
-            binaJadualDhuha();
-            binaJadualIftar();
-            binaJadualUsrahKaw();
-            binaJadualKuliahDun();
-            binaJadualUsrahUdm();
-            
+            refreshJadualSemua();
             tukarTab('dashboard', false);
-            semakNotifikasiLoceng();
         };
 
         function kemaskiniStatistik() {
@@ -619,9 +594,9 @@
             dbData.dhuha.forEach((row, idx) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
-                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}</td>
-                        <td class="p-2 border font-medium">${row.pengkuliah}</td>
-                        <td class="p-2 border text-gray-600">${row.kitab}</td>
+                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh || ''}</td>
+                        <td class="p-2 border font-medium">${row.pengkuliah || ''}</td>
+                        <td class="p-2 border text-gray-600">${row.kitab || ''}</td>
                         <td class="p-2 border text-center no-print">
                             <div class="flex items-center justify-center gap-1">
                                 <button onclick="bukaModalEdit('dhuha', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200" title="Edit"><i class="fa-solid fa-pen text-xs"></i></button>
@@ -645,9 +620,9 @@
             dbData.iftar.forEach((row, idx) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
-                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan || ''})</span></td>
-                        <td class="p-2 border text-gray-600">${row.tazkirah}</td>
-                        <td class="p-2 border text-gray-600">${row.tadabbur}</td>
+                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh || ''}</td>
+                        <td class="p-2 border text-gray-600">${row.tazkirah || ''}</td>
+                        <td class="p-2 border text-gray-600">${row.tadabbur || ''}</td>
                         <td class="p-2 border text-center no-print">
                             <div class="flex items-center justify-center gap-1">
                                 <button onclick="bukaModalEdit('iftar', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button>
@@ -671,12 +646,12 @@
             dbData.usrahKaw.forEach((row, idx) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
-                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan || ''})</span></td>
+                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh || ''}</td>
                         <td class="p-2 border font-semibold text-emerald-800 text-center">${row.naqibNegeri || '-'}</td>
-                        <td class="p-2 border text-gray-700">${row.tafsir}</td>
-                        <td class="p-2 border text-gray-700">${row.hadis}</td>
-                        <td class="p-2 border text-gray-700">${row.sirah}</td>
-                        <td class="p-2 border text-gray-700">${row.fikrah}</td>
+                        <td class="p-2 border text-gray-700">${row.tafsir || ''}</td>
+                        <td class="p-2 border text-gray-700">${row.hadis || ''}</td>
+                        <td class="p-2 border text-gray-700">${row.sirah || ''}</td>
+                        <td class="p-2 border text-gray-700">${row.fikrah || ''}</td>
                         <td class="p-2 border text-center no-print">
                             <div class="flex items-center justify-center gap-1">
                                 <button onclick="bukaModalEdit('usrahKaw', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button>
@@ -700,10 +675,10 @@
             dbData.kuliahDun.forEach((row, idx) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
-                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan || ''})</span></td>
-                        <td class="p-2 border font-medium">${row.pengkuliah}</td>
-                        <td class="p-2 border text-gray-600">${row.pengisian}</td>
-                        <td class="p-2 border text-gray-600">${row.lokasi}</td>
+                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh || ''}</td>
+                        <td class="p-2 border font-medium">${row.pengkuliah || ''}</td>
+                        <td class="p-2 border text-gray-600">${row.pengisian || ''}</td>
+                        <td class="p-2 border text-gray-600">${row.lokasi || ''}</td>
                         <td class="p-2 border text-center no-print">
                             <div class="flex items-center justify-center gap-1">
                                 <button onclick="bukaModalEdit('kuliahDun', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button>
@@ -727,9 +702,9 @@
             dbData.usrahUdm.forEach((row, idx) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
-                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan || ''})</span></td>
-                        <td class="p-2 border text-gray-700">${row.senaraiUdm}</td>
-                        <td class="p-2 border text-gray-700">${row.naqib}</td>
+                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh || ''}</td>
+                        <td class="p-2 border text-gray-700">${row.senaraiUdm || ''}</td>
+                        <td class="p-2 border text-gray-700">${row.naqib || ''}</td>
                         <td class="p-2 border text-center no-print">
                             <div class="flex items-center justify-center gap-1">
                                 <button onclick="bukaModalEdit('usrahUdm', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button>
@@ -773,8 +748,8 @@
                 document.getElementById('edit-field-2').value = rowData.tadabbur || "";
             } else if (kategori === 'usrahKaw') {
                 document.getElementById('edit-field-1').value = rowData.naqibNegeri || "";
-                document.getElementById('edit-field-2').value = (rowData.tafsir || '') + " / " + (rowData.hadis || '');
-                document.getElementById('edit-field-3').value = (rowData.sirah || '') + " / " + (rowData.fikrah || '');
+                document.getElementById('edit-field-2').value = (rowData.tafsir || '');
+                document.getElementById('edit-field-3').value = (rowData.sirah || '');
             } else if (kategori === 'kuliahDun') {
                 document.getElementById('edit-field-1').value = rowData.pengkuliah || "";
                 document.getElementById('edit-field-2').value = rowData.pengisian || "";
@@ -794,22 +769,22 @@
                 document.getElementById('lbl-field-2').innerText = "Kitab / Tajuk:";
                 document.getElementById('box-field-3').classList.add('hidden');
             } else if (kat === 'iftar') {
-                document.getElementById('lbl-tarikh').innerText = "Tarikh / Bulan:";
+                document.getElementById('lbl-tarikh').innerText = "Tarikh (DD/MM/YYYY):";
                 document.getElementById('lbl-field-1').innerText = "Tazkirah Maghrib:";
                 document.getElementById('lbl-field-2').innerText = "Tadabbur Ayat:";
                 document.getElementById('box-field-3').classList.add('hidden');
             } else if (kat === 'usrahKaw') {
-                document.getElementById('lbl-tarikh').innerText = "Tarikh / Bulan:";
+                document.getElementById('lbl-tarikh').innerText = "Tarikh (DD/MM/YYYY):";
                 document.getElementById('lbl-field-1').innerText = "Naqib Negeri:";
-                document.getElementById('lbl-field-2').innerText = "Naqib Tafsir & Hadis:";
-                document.getElementById('lbl-field-3').innerText = "Naqib Sirah & Fikrah:";
+                document.getElementById('lbl-field-2').innerText = "Naqib Tafsir:";
+                document.getElementById('lbl-field-3').innerText = "Naqib Sirah:";
             } else if (kat === 'kuliahDun') {
-                document.getElementById('lbl-tarikh').innerText = "Tarikh / Bulan:";
+                document.getElementById('lbl-tarikh').innerText = "Tarikh (DD/MM/YYYY):";
                 document.getElementById('lbl-field-1').innerText = "Pengkuliah Utama:";
                 document.getElementById('lbl-field-2').innerText = "Tajuk / Pengisian:";
                 document.getElementById('lbl-field-3').innerText = "Lokasi Masjid/Surau:";
             } else if (kat === 'usrahUdm') {
-                document.getElementById('lbl-tarikh').innerText = "Bulan / Tarikh:";
+                document.getElementById('lbl-tarikh').innerText = "Tarikh (DD/MM/YYYY):";
                 document.getElementById('lbl-field-1').innerText = "Senarai UDM:";
                 document.getElementById('lbl-field-2').innerText = "Naqib Terlibat:";
                 document.getElementById('box-field-3').classList.add('hidden');
@@ -833,17 +808,18 @@
             if (kat === 'dhuha') {
                 objBaru = { tarikh: tarikhVal, pengkuliah: f1, kitab: f2 };
             } else if (kat === 'iftar') {
-                objBaru = { bulan: "SEMASA", tarikh: tarikhVal, tazkirah: f1, tadabbur: f2 };
+                objBaru = { tarikh: tarikhVal, tazkirah: f1, tadabbur: f2 };
             } else if (kat === 'usrahKaw') {
-                objBaru = { bulan: "SEMASA", tarikh: tarikhVal, naqibNegeri: f1, tafsir: f2, hadis: f2, sirah: f3, fikrah: f3 };
+                objBaru = { tarikh: tarikhVal, naqibNegeri: f1, tafsir: f2, hadis: f2, sirah: f3, fikrah: f3 };
             } else if (kat === 'kuliahDun') {
-                objBaru = { bulan: "SEMASA", tarikh: tarikhVal, pengkuliah: f1, pengisian: f2, lokasi: f3 };
+                objBaru = { tarikh: tarikhVal, pengkuliah: f1, pengisian: f2, lokasi: f3 };
             } else if (kat === 'usrahUdm') {
-                objBaru = { bulan: "SEMASA", tarikh: tarikhVal, senaraiUdm: f1, naqib: f2 };
+                objBaru = { tarikh: tarikhVal, senaraiUdm: f1, naqib: f2 };
             }
 
+            if (!dbData[kat]) dbData[kat] = [];
+
             if (idx === -1) {
-                if (!dbData[kat]) dbData[kat] = [];
                 dbData[kat].push(objBaru);
             } else {
                 dbData[kat][idx] = objBaru;
@@ -886,11 +862,10 @@
             binaJadualUsrahKaw();
             binaJadualKuliahDun();
             binaJadualUsrahUdm();
-            semakNotifikasiLoceng();
         }
 
         function bukaPautanWA(mesej) {
-            let tel = "60199467894".replace(/[^0-9]/g, '');
+            let tel = TETAPAN_NO_TELEFON.replace(/[^0-9]/g, '');
             let url = `https://api.whatsapp.com/send?phone=${tel}&text=${encodeURIComponent(mesej)}`;
             window.open(url, '_blank');
         }
@@ -923,17 +898,6 @@
             const item = dbData.usrahUdm[idx];
             let msg = `Assalamualaikum\n*USRAH UDM DUN MERANTI*\nTarikh : *${item.tarikh}*\nNaqib : *${item.naqib}*\nSekian, terima kasih`;
             bukaPautanWA(msg);
-        }
-
-        function semakNotifikasiLoceng() {
-            const badge = document.getElementById('notif-badge');
-            const notifList = document.getElementById('notif-list');
-            badge.classList.add('hidden');
-            notifList.innerHTML = `<div class="p-3 text-gray-500 text-center text-xs">Tiada program berdekatan.</div>`;
-        }
-
-        function toggleNotifikasi() {
-            document.getElementById('notif-dropdown').classList.toggle('hidden');
         }
 
         function pilihMenuSidebar(tabId) {
