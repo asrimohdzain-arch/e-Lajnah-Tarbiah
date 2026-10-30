@@ -468,11 +468,11 @@
         </div>
     </div>
 
-    <!-- FIREBASE MODULE -->
+    <!-- FIREBASE REAL-TIME MODULE -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         
         const firebaseConfig = {
             apiKey: "AIzaSyA_wVb0tuGkca4QD6SnmovJ1eqyqUOr-7g",
@@ -506,23 +506,31 @@
             }
         };
 
-        window.muatDariCloud = async function() {
-            try {
-                const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
-                const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
-                    return docSnap.data();
-                }
-            } catch (err) {
-                console.warn("Gagal memuat turun:", err);
+        // Mendengar perubahan data secara langsung (Real-time listener)
+        const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
+        onSnapshot(docRef, (docSnap) => {
+            if (docSnap.exists()) {
+                const cloudData = docSnap.data();
+                window.dbDataGlobal = {
+                    tahun: cloudData.tahun || 2026,
+                    dhuha: Array.isArray(cloudData.dhuha) ? cloudData.dhuha : [],
+                    iftar: Array.isArray(cloudData.iftar) ? cloudData.iftar : [],
+                    usrahKaw: Array.isArray(cloudData.usrahKaw) ? cloudData.usrahKaw : [],
+                    kuliahDun: Array.isArray(cloudData.kuliahDun) ? cloudData.kuliahDun : [],
+                    usrahUdm: Array.isArray(cloudData.usrahUdm) ? cloudData.usrahUdm : []
+                };
+            } else {
+                window.dbDataGlobal = { tahun: 2026, dhuha: [], iftar: [], usrahKaw: [], kuliahDun: [], usrahUdm: [] };
             }
-            return null;
-        };
+            if (typeof window.renderSemuaJadual === 'function') {
+                window.renderSemuaJadual();
+            }
+        });
     </script>
 
-    <!-- JAVASCRIPT LOGIK -->
+    <!-- JAVASCRIPT LOGIK UTAMA -->
     <script>
-        let dbData = {
+        window.dbDataGlobal = {
             tahun: 2026,
             dhuha: [],
             iftar: [],
@@ -552,46 +560,38 @@
             document.getElementById('modal-custom-alert').classList.add('hidden');
         }
 
-        window.onload = async function() {
+        window.onload = function() {
             paparkanTarikhHeaderSemasa();
-            
-            if (typeof window.muatDariCloud === 'function') {
-                try {
-                    let cloudData = await window.muatDariCloud();
-                    if (cloudData) {
-                        dbData = {
-                            tahun: cloudData.tahun || 2026,
-                            dhuha: Array.isArray(cloudData.dhuha) ? cloudData.dhuha : [],
-                            iftar: Array.isArray(cloudData.iftar) ? cloudData.iftar : [],
-                            usrahKaw: Array.isArray(cloudData.usrahKaw) ? cloudData.usrahKaw : [],
-                            kuliahDun: Array.isArray(cloudData.kuliahDun) ? cloudData.kuliahDun : [],
-                            usrahUdm: Array.isArray(cloudData.usrahUdm) ? cloudData.usrahUdm : []
-                        };
-                    }
-                } catch (e) {
-                    console.log("Capaian awan gagal, menggunakan default kosong.");
-                }
-            }
-
-            refreshJadualSemua();
             tukarTab('dashboard', false);
         };
 
+        window.renderSemuaJadual = function() {
+            binaJadualDhuha();
+            binaJadualIftar();
+            binaJadualUsrahKaw();
+            binaJadualKuliahDun();
+            binaJadualUsrahUdm();
+            kemaskiniStatistik();
+        };
+
         function kemaskiniStatistik() {
-            document.getElementById('stat-dhuha').innerText = `${dbData.dhuha ? dbData.dhuha.length : 0} Sesi`;
-            document.getElementById('stat-iftar').innerText = `${dbData.iftar ? dbData.iftar.length : 0} Sesi`;
-            document.getElementById('stat-usrah-kaw').innerText = `${dbData.usrahKaw ? dbData.usrahKaw.length : 0} Sesi`;
-            document.getElementById('stat-usrah-udm').innerText = `${dbData.usrahUdm ? dbData.usrahUdm.length : 0} UDM`;
+            let data = window.dbDataGlobal;
+            document.getElementById('stat-dhuha').innerText = `${data.dhuha ? data.dhuha.length : 0} Sesi`;
+            document.getElementById('stat-iftar').innerText = `${data.iftar ? data.iftar.length : 0} Sesi`;
+            document.getElementById('stat-usrah-kaw').innerText = `${data.usrahKaw ? data.usrahKaw.length : 0} Sesi`;
+            document.getElementById('stat-usrah-udm').innerText = `${data.usrahUdm ? data.usrahUdm.length : 0} UDM`;
         }
 
         function binaJadualDhuha() {
             const tbody = document.getElementById('tbody-dhuha');
+            if (!tbody) return;
             tbody.innerHTML = '';
-            if (!dbData.dhuha || dbData.dhuha.length === 0) {
+            let list = window.dbDataGlobal.dhuha;
+            if (!list || list.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">Tiada rekod. Sila klik butang "Tambah Dhuha" di atas.</td></tr>`;
                 return;
             }
-            dbData.dhuha.forEach((row, idx) => {
+            list.forEach((row, idx) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
                         <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh || ''}</td>
@@ -607,17 +607,18 @@
                     </tr>
                 `;
             });
-            kemaskiniStatistik();
         }
 
         function binaJadualIftar() {
             const tbody = document.getElementById('tbody-iftar');
+            if (!tbody) return;
             tbody.innerHTML = '';
-            if (!dbData.iftar || dbData.iftar.length === 0) {
+            let list = window.dbDataGlobal.iftar;
+            if (!list || list.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">Tiada rekod. Sila klik butang "Tambah Iftar" di atas.</td></tr>`;
                 return;
             }
-            dbData.iftar.forEach((row, idx) => {
+            list.forEach((row, idx) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
                         <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh || ''}</td>
@@ -633,17 +634,18 @@
                     </tr>
                 `;
             });
-            kemaskiniStatistik();
         }
 
         function binaJadualUsrahKaw() {
             const tbody = document.getElementById('tbody-usrah-kaw');
+            if (!tbody) return;
             tbody.innerHTML = '';
-            if (!dbData.usrahKaw || dbData.usrahKaw.length === 0) {
+            let list = window.dbDataGlobal.usrahKaw;
+            if (!list || list.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-gray-500">Tiada rekod. Sila klik butang "Tambah Usrah" di atas.</td></tr>`;
                 return;
             }
-            dbData.usrahKaw.forEach((row, idx) => {
+            list.forEach((row, idx) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
                         <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh || ''}</td>
@@ -662,17 +664,18 @@
                     </tr>
                 `;
             });
-            kemaskiniStatistik();
         }
 
         function binaJadualKuliahDun() {
             const tbody = document.getElementById('tbody-kuliah-dun');
+            if (!tbody) return;
             tbody.innerHTML = '';
-            if (!dbData.kuliahDun || dbData.kuliahDun.length === 0) {
+            let list = window.dbDataGlobal.kuliahDun;
+            if (!list || list.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-500">Tiada rekod. Sila klik butang "Tambah Kuliah DUN" di atas.</td></tr>`;
                 return;
             }
-            dbData.kuliahDun.forEach((row, idx) => {
+            list.forEach((row, idx) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
                         <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh || ''}</td>
@@ -689,17 +692,18 @@
                     </tr>
                 `;
             });
-            kemaskiniStatistik();
         }
 
         function binaJadualUsrahUdm() {
             const tbody = document.getElementById('tbody-usrah-udm');
+            if (!tbody) return;
             tbody.innerHTML = '';
-            if (!dbData.usrahUdm || dbData.usrahUdm.length === 0) {
+            let list = window.dbDataGlobal.usrahUdm;
+            if (!list || list.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">Tiada rekod. Sila klik butang "Tambah UDM" di atas.</td></tr>`;
                 return;
             }
-            dbData.usrahUdm.forEach((row, idx) => {
+            list.forEach((row, idx) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
                         <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh || ''}</td>
@@ -715,7 +719,6 @@
                     </tr>
                 `;
             });
-            kemaskiniStatistik();
         }
 
         function bukaModalTambah(kategori) {
@@ -736,7 +739,7 @@
             document.getElementById('edit-index').value = index;
             document.getElementById('modal-title').innerText = "Kemaskini Rekod Program";
             
-            let rowData = dbData[kategori][index];
+            let rowData = window.dbDataGlobal[kategori][index];
             document.getElementById('edit-tarikh').value = rowData.tarikh || "";
             
             konfigurasiFieldModal(kategori);
@@ -817,19 +820,18 @@
                 objBaru = { tarikh: tarikhVal, senaraiUdm: f1, naqib: f2 };
             }
 
-            if (!dbData[kat]) dbData[kat] = [];
+            if (!window.dbDataGlobal[kat]) window.dbDataGlobal[kat] = [];
 
             if (idx === -1) {
-                dbData[kat].push(objBaru);
+                window.dbDataGlobal[kat].push(objBaru);
             } else {
-                dbData[kat][idx] = objBaru;
+                window.dbDataGlobal[kat][idx] = objBaru;
             }
 
             if (typeof window.simpanKeCloud === 'function') {
-                await window.simpanKeCloud(dbData);
+                await window.simpanKeCloud(window.dbDataGlobal);
             }
 
-            refreshJadualSemua();
             tutupModal();
             paparPesan("Data berjaya disimpan ke Firestore!");
         }
@@ -846,22 +848,13 @@
 
         async function lulusHapusRekod() {
             if (targetHapusKat && targetHapusIdx > -1) {
-                dbData[targetHapusKat].splice(targetHapusIdx, 1);
+                window.dbDataGlobal[targetHapusKat].splice(targetHapusIdx, 1);
                 if (typeof window.simpanKeCloud === 'function') {
-                    await window.simpanKeCloud(dbData);
+                    await window.simpanKeCloud(window.dbDataGlobal);
                 }
-                refreshJadualSemua();
             }
             tutupModalHapus();
             paparPesan("Rekod telah dipadam.");
-        }
-
-        function refreshJadualSemua() {
-            binaJadualDhuha();
-            binaJadualIftar();
-            binaJadualUsrahKaw();
-            binaJadualKuliahDun();
-            binaJadualUsrahUdm();
         }
 
         function bukaPautanWA(mesej) {
@@ -871,31 +864,31 @@
         }
 
         function hantarWADhuha(idx) {
-            const item = dbData.dhuha[idx];
+            const item = window.dbDataGlobal.dhuha[idx];
             let msg = `Assalamualaikum Wbt\n*KULIAH DHUHA PAGI JUMAAT*\nTarikh : *${item.tarikh}*\nPengkuliah : *${item.pengkuliah}*\nKitab : *${item.kitab}*\nTempat : *Masjid Madrasah Nasrullah, Pohon Buloh*\nSekian, Terima Kasih.`;
             bukaPautanWA(msg);
         }
 
         function hantarWAIFTAR(idx) {
-            const item = dbData.iftar[idx];
+            const item = window.dbDataGlobal.iftar[idx];
             let msg = `Assalamualaikum\n*Iftar Jamaie Ansorullah*\nTarikh : *${item.tarikh}*\nTazkirah : *${item.tazkirah}*\nTadabbur : *${item.tadabbur}*\nSekian, Terima Kasih.`;
             bukaPautanWA(msg);
         }
 
         function hantarWAUsrahKaw(idx) {
-            const item = dbData.usrahKaw[idx];
+            const item = window.dbDataGlobal.usrahKaw[idx];
             let msg = `Assalamualaikum\n*USRAH PIMPINAN PAS KAWASAN*\nTarikh : *${item.tarikh}*\nNaqib Tafsir : *${item.tafsir}*\nSekian, Wassalam`;
             bukaPautanWA(msg);
         }
 
         function hantarWAKuliahDun(idx) {
-            const item = dbData.kuliahDun[idx];
+            const item = window.dbDataGlobal.kuliahDun[idx];
             let msg = `*KULIAH HARAKI DUN MERANTI*\nTarikh : *${item.tarikh}*\nPengkuliah : *${item.pengkuliah}*\nTajuk : *${item.pengisian}*\nSekian`;
             bukaPautanWA(msg);
         }
 
         function hantarWAUsrahUdm(idx) {
-            const item = dbData.usrahUdm[idx];
+            const item = window.dbDataGlobal.usrahUdm[idx];
             let msg = `Assalamualaikum\n*USRAH UDM DUN MERANTI*\nTarikh : *${item.tarikh}*\nNaqib : *${item.naqib}*\nSekian, terima kasih`;
             bukaPautanWA(msg);
         }
@@ -951,7 +944,7 @@
         }
 
         function eksportBackupJSON() {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(dbData, null, 2));
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(window.dbDataGlobal, null, 2));
             const downloadAnchor = document.createElement('a');
             downloadAnchor.setAttribute("href", dataStr);
             downloadAnchor.setAttribute("download", `eTarbiah_Backup.json`);
@@ -966,9 +959,8 @@
                 try {
                     const parsedData = JSON.parse(event.target.result);
                     if (parsedData) {
-                        dbData = parsedData;
-                        if (typeof window.simpanKeCloud === 'function') window.simpanKeCloud(dbData);
-                        refreshJadualSemua();
+                        window.dbDataGlobal = parsedData;
+                        if (typeof window.simpanKeCloud === 'function') window.simpanKeCloud(window.dbDataGlobal);
                         paparPesan("Data berjaya dipulihkan!");
                     }
                 } catch (err) {
