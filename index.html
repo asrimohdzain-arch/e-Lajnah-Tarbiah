@@ -1224,7 +1224,7 @@
 
         function hantarWAUsrahKaw(idx) {
             const item = window.dbDataGlobal.usrahKaw[idx];
-            const msg = `Assalamualaikum\n*USRAH PIMPINAN PAS KAWASAN PASIR MAS*\n\nKe majlis,\n\n*AHLI USRAH PIMPINAN PAS KAWASAN*\n1. AJK PAS Kawasan\n2. Mantan AJK PAS Kawasan\n3. Mantan & AJK Dewan Ulamak PAS Kawasan\n4. Mantan & AJK Dewan Pemuda PAS Kawasan\n5. Mantan & AJK Dewan Muslimat PAS Kawasan\n6. AJK Lajnah Tarbiah PAS Kawasan\n\n*USRAH PIMPINAN PAS KAWASAN PASIR MAS (${item.bulan || ''})*\n\nTarikh : *${item.tarikh}*\nHari : *Rabu*\nMasa : *Bermula Solat Maghrib berjemaah*\n\nTempat :\n*Pejabat PAS Kawasan Pasir Mas*\n\nNaqib Usrah Negeri :\n*${item.naqibNegeri || '-'}*\n\nNaqib & Kitab 1 :\n*${item.kitab1 || '-'}*\n\nNaqib & Kitab 2 :\n*${item.kitab2 || '-'}*\n\nTuan dijemput dan *DIWAJIBKAN hadir*\nSekian, Wassalam`;
+            const msg = `Assalamualaikum\n*USRAH PIMPINAN PAS KAWASAN PASIR MAS*\n\nKe majlis,\n\n*AHLI USRAH PIMPINAN PAS KAWASAN*\n1. AJK PAS Kawasan\n2. Mantan AJK PAS Kawasan\n3. Mantan & AJK Dewan Ulamak PAS Kawasan\n4. Mantan & AJK Dewan Pemuda PAS Kawasan\n5. Mantan & AJK Dewan Muslimat PAS Kawasan\n6. AJK Lajnah Tarbiah PAS Kawasan\n\n*USRAH PIMPINAN PAS KAWASAN PASIR MAS (${item.bulan || ''})*\n\nTarikh : *${item.tarikh}*\nHari : *Rabu*\nMasa : *Bermula Solat Maghrib berjemaah*\n\nTempat :\n*Pejabat PAS Kawasan Pasir Mas*\n\nNaqib Usrah Negeri :\n*${item.naqibNegeri || '-'}*\n\nNaqib Kawasan :\n1. *${item.kitab1 || '-'}*\n2. *${item.kitab2 || '-'}*\n\nTuan dijemput dan *DIWAJIBKAN hadir*\nSekian, Wassalam`;
             bukaPautanWA(msg);
         }
 
