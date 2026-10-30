@@ -515,7 +515,7 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block font-bold text-gray-700 mb-1">Tarikh Program (DD/MM/YYYY):</label>
+                            <label class="block font-bold text-gray-700 mb-1">Tarikh Program:</label>
                             <input type="date" id="input-hapus-tarikh" class="w-full neu-input p-2 rounded-lg border focus:outline-none font-semibold">
                         </div>
                     </div>
@@ -760,10 +760,9 @@
             document.getElementById('stat-usrah-udm').innerText = `13 UDM`;
         }
 
-        // Penukaran Format Tarikh dari DD/MM/YYYY ke YYYY-MM-DD untuk input date
         function formatTarikhInput(strTarikh) {
             if (!strTarikh) return "";
-            if (strTarikh.includes('-')) return strTarikh; // sedia YYYY-MM-DD
+            if (strTarikh.includes('-')) return strTarikh;
             let p = strTarikh.split('/');
             if (p.length === 3) {
                 return `${p[2]}-${p[1]}-${p[0]}`;
@@ -771,10 +770,9 @@
             return "";
         }
 
-        // Penukaran Format Tarikh dari YYYY-MM-DD ke DD/MM/YYYY untuk pameran jadual
         function formatTarikhpamer(strDate) {
             if (!strDate) return "";
-            if (strDate.includes('/')) return strDate; // sedia DD/MM/YYYY
+            if (strDate.includes('/')) return strDate;
             let p = strDate.split('-');
             if (p.length === 3) {
                 return `${p[2]}/${p[1]}/${p[0]}`;
