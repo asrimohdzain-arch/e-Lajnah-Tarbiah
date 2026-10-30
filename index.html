@@ -384,15 +384,13 @@
                     <div id="live-usrah-kaw-btn"></div>
                 </div>
                 <div class="neu-card p-3.5 overflow-x-auto">
-                    <table id="table-usrah-kaw" class="w-full text-[10px] text-left border-collapse min-w-[950px] cetak-tanpa-wa">
+                    <table id="table-usrah-kaw" class="w-full text-[10px] text-left border-collapse min-w-[750px] cetak-tanpa-wa">
                         <thead>
                             <tr class="bg-navy-800 text-white">
                                 <th class="p-2 border border-navy-700 text-center">Tarikh</th>
                                 <th class="p-2 border border-navy-700 text-center">Naqib Negeri</th>
-                                <th class="p-2 border border-navy-700">Naqib Tafsir</th>
-                                <th class="p-2 border border-navy-700">Naqib Hadis</th>
-                                <th class="p-2 border border-navy-700">Naqib Sirah</th>
-                                <th class="p-2 border border-navy-700">Naqib Fikrah</th>
+                                <th class="p-2 border border-navy-700">Naqib & Kitab 1</th>
+                                <th class="p-2 border border-navy-700">Naqib & Kitab 2</th>
                                 <th class="p-2 border border-navy-700 text-center no-print">Hantar WA</th>
                             </tr>
                         </thead>
@@ -515,7 +513,7 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block font-bold text-gray-700 mb-1">Tarikh Program (DD/MM/YYYY):</label>
+                            <label class="block font-bold text-gray-700 mb-1">Tarikh Program:</label>
                             <input type="date" id="input-hapus-tarikh" class="w-full neu-input p-2 rounded-lg border focus:outline-none font-semibold">
                         </div>
                     </div>
@@ -583,12 +581,8 @@
                     <input type="text" id="edit-field-3" class="w-full neu-input p-2 rounded border focus:outline-none">
                 </div>
                 <div id="box-field-4" class="hidden">
-                    <label id="lbl-field-4" class="block font-bold text-gray-700 mb-1">Naqib Hadis:</label>
+                    <label id="lbl-field-4" class="block font-bold text-gray-700 mb-1">Naqib Kitab 2:</label>
                     <input type="text" id="edit-field-4" class="w-full neu-input p-2 rounded border focus:outline-none">
-                </div>
-                <div id="box-field-5" class="hidden">
-                    <label id="lbl-field-5" class="block font-bold text-gray-700 mb-1">Naqib Fikrah:</label>
-                    <input type="text" id="edit-field-5" class="w-full neu-input p-2 rounded border focus:outline-none">
                 </div>
                 <div class="flex justify-end gap-2 pt-2">
                     <button type="button" onclick="tutupModal()" class="px-3 py-1.5 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs hover:bg-gray-300">Batal</button>
@@ -760,10 +754,9 @@
             document.getElementById('stat-usrah-udm').innerText = `13 UDM`;
         }
 
-        // Penukaran Format Tarikh dari DD/MM/YYYY ke YYYY-MM-DD untuk input date
         function formatTarikhInput(strTarikh) {
             if (!strTarikh) return "";
-            if (strTarikh.includes('-')) return strTarikh; // sedia YYYY-MM-DD
+            if (strTarikh.includes('-')) return strTarikh;
             let p = strTarikh.split('/');
             if (p.length === 3) {
                 return `${p[2]}-${p[1]}-${p[0]}`;
@@ -771,10 +764,9 @@
             return "";
         }
 
-        // Penukaran Format Tarikh dari YYYY-MM-DD ke DD/MM/YYYY untuk pameran jadual
         function formatTarikhpamer(strDate) {
             if (!strDate) return "";
-            if (strDate.includes('/')) return strDate; // sedia DD/MM/YYYY
+            if (strDate.includes('/')) return strDate;
             let p = strDate.split('-');
             if (p.length === 3) {
                 return `${p[2]}/${p[1]}/${p[0]}`;
@@ -824,15 +816,31 @@
                 tazkirah: "Ustaz Nik Razi Nik Mat",
                 tadabbur: "Ustaz Hj. Wan Ridzuan"
             }));
+
+            // Usrah Kawasan berasaskan jadual rasmi rujukan (Bergilir Tafsir/Sirah & Hadis/Fikrah)[span_2](start_span)[span_2](end_span)
+            const dataTemplateUsrahKaw = [
+                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Abdul Fatah B Jaafar (TAFSIR)", kitab2: "Ust Ibni B Mat Zin (SIRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "CUTI RAMADHAN", kitab2: "CUTI RAMADHAN" },
+                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Ahmad Shakrun B Ismail (TAFSIR)", kitab2: "Ust Mohd Alias B Sulaiman (SIRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Asri B Mohd Zain (HADIS)", kitab2: "Ust Nasrullah B Mustafa (FIKRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Mohd Suazhar B Abdullah (TAFSIR)", kitab2: "Ust Muhammad Fadhil B Makhtar (SIRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Zulkernain B Tajuddin (HADIS)", kitab2: "Ust Suhaimi Mohamed (FIKRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Ahmad Shakrun B Ismail (TAFSIR)", kitab2: "Ust Dr Hj Zawawi B Zakaria (SIRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Asri B Mohd Zain (HADIS)", kitab2: "Ust Nasrullah B Mustafa (FIKRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Zulkernain B Tajuddin (TAFSIR)", kitab2: "Ust Suhaimi Mohamed (SIRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Abdul Fatah B Jaafar (TAFSIR)", kitab2: "Ust Ibni B Mat Zin (SIRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Mohd Suazhar B Abdullah (TAFSIR)", kitab2: "Ust Muhammad Fadhil B Makhtar (SIRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Dr Hj Zawawi B Zakaria (HADIS)", kitab2: "Ust Mohd Alias B Sulaiman (FIKRAH)" }
+            ];
+
             window.dbDataGlobal.usrahKaw = SENARAI_BULAN.map((bln, idx) => ({
                 bulan: bln,
                 tarikh: cariTarikhHariN(thn, idx, 3, 4),
-                naqibNegeri: "Ustaz Naqib Negeri Kelantan",
-                tafsir: "Ustaz Hj. Ahmad Awang",
-                hadis: "Ustaz Nik Bahrum Nik Abdullah",
-                sirah: "Ustaz Mohd Asri Abdullah",
-                fikrah: "Ustaz Wan Hassan Wan Ibrahim"
+                naqibNegeri: dataTemplateUsrahKaw[idx].naqibNegeri,
+                kitab1: dataTemplateUsrahKaw[idx].kitab1,
+                kitab2: dataTemplateUsrahKaw[idx].kitab2
             }));
+
             window.dbDataGlobal.kuliahDun = SENARAI_BULAN.map((bln, idx) => ({
                 bulan: bln,
                 tarikh: cariTarikhHariN(thn, idx, 1, 2),
@@ -864,7 +872,6 @@
             document.getElementById('edit-field-2').value = "";
             document.getElementById('edit-field-3').value = "";
             document.getElementById('edit-field-4').value = "";
-            document.getElementById('edit-field-5').value = "";
             konfigurasiFieldModal(kategori);
             document.getElementById('modal-edit').classList.remove('hidden');
         }
@@ -884,10 +891,8 @@
                 document.getElementById('edit-field-2').value = rowData.tadabbur || "";
             } else if (kategori === 'usrahKaw') {
                 document.getElementById('edit-field-1').value = rowData.naqibNegeri || "";
-                document.getElementById('edit-field-2').value = rowData.tafsir || "";
-                document.getElementById('edit-field-3').value = rowData.sirah || "";
-                document.getElementById('edit-field-4').value = rowData.hadis || "";
-                document.getElementById('edit-field-5').value = rowData.fikrah || "";
+                document.getElementById('edit-field-2').value = rowData.kitab1 || "";
+                document.getElementById('edit-field-4').value = rowData.kitab2 || "";
             } else if (kategori === 'kuliahDun') {
                 document.getElementById('edit-field-1').value = rowData.pengkuliah || "";
                 document.getElementById('edit-field-2').value = rowData.pengisian || "";
@@ -902,7 +907,6 @@
         function konfigurasiFieldModal(kat) {
             document.getElementById('box-field-3').classList.remove('hidden');
             document.getElementById('box-field-4').classList.add('hidden');
-            document.getElementById('box-field-5').classList.add('hidden');
 
             if (kat === 'dhuha') {
                 document.getElementById('lbl-tarikh').innerText = "Tarikh Program:";
@@ -917,12 +921,10 @@
             } else if (kat === 'usrahKaw') {
                 document.getElementById('lbl-tarikh').innerText = "Tarikh Program:";
                 document.getElementById('lbl-field-1').innerText = "Naqib Negeri:";
-                document.getElementById('lbl-field-2').innerText = "Naqib Tafsir:";
-                document.getElementById('lbl-field-3').innerText = "Naqib Sirah:";
+                document.getElementById('lbl-field-2').innerText = "Naqib & Kitab 1 (Cth: TAFSIR/HADIS):";
+                document.getElementById('box-field-3').classList.add('hidden');
                 document.getElementById('box-field-4').classList.remove('hidden');
-                document.getElementById('box-field-5').classList.remove('hidden');
-                document.getElementById('lbl-field-4').innerText = "Naqib Hadis:";
-                document.getElementById('lbl-field-5').innerText = "Naqib Fikrah:";
+                document.getElementById('lbl-field-4').innerText = "Naqib & Kitab 2 (Cth: SIRAH/FIKRAH):";
             } else if (kat === 'kuliahDun') {
                 document.getElementById('lbl-tarikh').innerText = "Tarikh Program:";
                 document.getElementById('lbl-field-1').innerText = "Pengkuliah Utama:";
@@ -950,7 +952,6 @@
             const f2 = document.getElementById('edit-field-2').value;
             const f3 = document.getElementById('edit-field-3').value;
             const f4 = document.getElementById('edit-field-4').value;
-            const f5 = document.getElementById('edit-field-5').value;
 
             let objBaru = {};
             if (kat === 'dhuha') {
@@ -958,7 +959,7 @@
             } else if (kat === 'iftar') {
                 objBaru = { tarikh: tarikhVal, tazkirah: f1, tadabbur: f2 };
             } else if (kat === 'usrahKaw') {
-                objBaru = { tarikh: tarikhVal, naqibNegeri: f1, tafsir: f2, hadis: f4, sirah: f3, fikrah: f5 };
+                objBaru = { tarikh: tarikhVal, naqibNegeri: f1, kitab1: f2, kitab2: f4 };
             } else if (kat === 'kuliahDun') {
                 objBaru = { tarikh: tarikhVal, pengkuliah: f1, pengisian: f2, lokasi: f3 };
             } else if (kat === 'usrahUdm') {
@@ -1100,7 +1101,7 @@
             tbody.innerHTML = '';
             let list = window.dbDataGlobal.usrahKaw || [];
             if (list.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-gray-500">Tiada rekod.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-500">Tiada rekod.</td></tr>`;
                 return;
             }
             list.forEach((row, idx) => {
@@ -1109,10 +1110,8 @@
                     <tr class="hover:bg-gray-50">
                         <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}${labelBulan}</td>
                         <td class="p-2 border font-semibold text-emerald-800 text-center">${row.naqibNegeri || '-'}</td>
-                        <td class="p-2 border text-gray-700">${row.tafsir || '-'}</td>
-                        <td class="p-2 border text-gray-700">${row.hadis || '-'}</td>
-                        <td class="p-2 border text-gray-700">${row.sirah || '-'}</td>
-                        <td class="p-2 border text-gray-700">${row.fikrah || '-'}</td>
+                        <td class="p-2 border text-gray-700">${row.kitab1 || '-'}</td>
+                        <td class="p-2 border text-gray-700">${row.kitab2 || '-'}</td>
                         <td class="p-2 border text-center no-print">
                             <div class="flex items-center justify-center gap-1">
                                 <button onclick="bukaModalEdit('usrahKaw', ${idx})" class="p-1.5 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button>
@@ -1126,7 +1125,7 @@
             if (terkini) {
                 const idxReal = list.indexOf(terkini);
                 let labelBulanTerkini = terkini.bulan ? ` (${terkini.bulan})` : '';
-                document.getElementById('live-usrah-kaw-info').innerText = `Tarikh: ${terkini.tarikh}${labelBulanTerkini} | Naqib Tafsir: ${terkini.tafsir || '-'}`;
+                document.getElementById('live-usrah-kaw-info').innerText = `Tarikh: ${terkini.tarikh}${labelBulanTerkini} | Naqib 1: ${terkini.kitab1 || '-'}`;
                 document.getElementById('live-usrah-kaw-btn').innerHTML = `<button onclick="hantarWAUsrahKaw(${idxReal})" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Hantar WA</button>`;
             }
         }
@@ -1225,7 +1224,7 @@
 
         function hantarWAUsrahKaw(idx) {
             const item = window.dbDataGlobal.usrahKaw[idx];
-            const msg = `Assalamualaikum\n*USRAH PIMPINAN PAS KAWASAN PASIR MAS*\n\nKe majlis,\n\n*AHLI USRAH PIMPINAN PAS KAWASAN*\n1. AJK PAS Kawasan\n2. Mantan AJK PAS Kawasan\n3. Mantan & AJK Dewan Ulamak PAS Kawasan\n4. Mantan & AJK Dewan Pemuda PAS Kawasan\n5. Mantan & AJK Dewan Muslimat PAS Kawasan\n6. AJK Lajnah Tarbiah PAS Kawasan\n\n*USRAH PIMPINAN PAS KAWASAN PASIR MAS (${item.bulan || ''})*\n\nTarikh : *${item.tarikh}*\nHari : *Rabu*\nMasa : *Bermula Solat Maghrib berjemaah*\n\nTempat :\n*Pejabat PAS Kawasan Pasir Mas*\n\nNaqib Usrah Negeri :\n*${item.naqibNegeri || '-'}*\n\nNaqib Kawasan :\n1. *${item.tafsir || '-'}* (TAFSIR)\n2. *${item.hadis || '-'}* (HADIS)\n3. *${item.sirah || '-'}* (SIRAH)\n4. *${item.fikrah || '-'}* (FIKRAH)\n\nTuan dijemput dan *DIWAJIBKAN hadir*\nSekian, Wassalam`;
+            const msg = `Assalamualaikum\n*USRAH PIMPINAN PAS KAWASAN PASIR MAS*\n\nKe majlis,\n\n*AHLI USRAH PIMPINAN PAS KAWASAN*\n1. AJK PAS Kawasan\n2. Mantan AJK PAS Kawasan\n3. Mantan & AJK Dewan Ulamak PAS Kawasan\n4. Mantan & AJK Dewan Pemuda PAS Kawasan\n5. Mantan & AJK Dewan Muslimat PAS Kawasan\n6. AJK Lajnah Tarbiah PAS Kawasan\n\n*USRAH PIMPINAN PAS KAWASAN PASIR MAS (${item.bulan || ''})*\n\nTarikh : *${item.tarikh}*\nHari : *Rabu*\nMasa : *Bermula Solat Maghrib berjemaah*\n\nTempat :\n*Pejabat PAS Kawasan Pasir Mas*\n\nNaqib Usrah Negeri :\n*${item.naqibNegeri || '-'}*\n\nNaqib & Kitab 1 :\n*${item.kitab1 || '-'}*\n\nNaqib & Kitab 2 :\n*${item.kitab2 || '-'}*\n\nTuan dijemput dan *DIWAJIBKAN hadir*\nSekian, Wassalam`;
             bukaPautanWA(msg);
         }
 
