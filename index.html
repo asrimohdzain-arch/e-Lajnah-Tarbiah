@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ms">
 <head>
@@ -582,7 +583,7 @@
         </div>
     </div>
 
-    <!-- FIREBASE MODULE (DISELARASKAN DENGAN ID SEBENAR DI KONSOL FIRESTORE) -->
+    <!-- FIREBASE MODULE (DISELARASKAN PADA KOLEKSI e_tarbiah_data & DOKUMEN pasir_mas_2026) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -597,8 +598,6 @@
             appId: "1:495158317965:web:739fedb2b2c024342d23c4"
         };
         
-        // Diselaraskan mengikut ID laluan folder sebenar yang Ustaz paparkan dalam gambar Firestore
-        const appId = 'c_84318e6a865664d99042b36a19f2a244';
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
@@ -614,7 +613,8 @@
 
         window.simpanKeCloud = async function(dataPayload) {
             try {
-                const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
+                // Laluan langsung tanpa artifact bertingkat: e_tarbiah_data -> pasir_mas_2026
+                const docRef = doc(db, 'e_tarbiah_data', 'pasir_mas_2026');
                 await setDoc(docRef, dataPayload);
                 console.log("Berjaya simpan ke Firestore.");
             } catch (err) {
@@ -624,7 +624,7 @@
 
         window.muatDariCloud = async function() {
             try {
-                const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
+                const docRef = doc(db, 'e_tarbiah_data', 'pasir_mas_2026');
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     return docSnap.data();
@@ -686,7 +686,7 @@
 
             if (cloudData && cloudData.dhuha && Array.isArray(cloudData.dhuha) && cloudData.dhuha.length > 0) {
                 dbData = cloudData;
-                console.log("Berjaya muat data dari Firestore laluan asal.");
+                console.log("Berjaya muat data dari koleksi e_tarbiah_data.");
             } else {
                 janaTarikhTahunBaharu(2026, false);
                 if (typeof window.simpanKeCloud === 'function') {
