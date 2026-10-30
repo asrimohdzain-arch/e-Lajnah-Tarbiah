@@ -1,1222 +1,1407 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>e - Lajnah Tarbiah PAS Kawasan Pasir Mas</title>
-<!-- Tailwind CSS CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
-<!-- FontAwesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Google Font (Inter) -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-​<script>
-tailwind.config = {
-theme: {
-extend: {
-colors: {
-navy: {
-800: '#0b132b',
-900: '#04080f',
-700: '#1c2541',
-600: '#3a506b',
-},
-pasgreen: '#008751'
-},
-fontFamily: {
-sans: ['Inter', 'sans-serif'],
-}
-}
-}
-}
-</script>
-<style>
-body {
-background-color: #f3f4f6;
-font-family: 'Inter', sans-serif;
-}
-.neu-card {
-background: #ffffff;
-box-shadow: 4px 4px 12px #d1d5db, -4px -4px 12px #ffffff;
-border-radius: 1rem;
-}
-.neu-input {
-background: #f9fafb;
-box-shadow: inset 2px 2px 5px #e5e7eb, inset -2px -2px 5px #ffffff;
-}
-.btn-navy-pill {
-background-color: #0b132b;
-color: #ffffff;
-border-radius: 9999px;
-box-shadow: 0 4px 10px rgba(11, 19, 43, 0.25);
-transition: all 0.2s ease;
-}
-.btn-navy-pill:hover {
-background-color: #1c2541;
-box-shadow: 0 6px 15px rgba(11, 19, 43, 0.35);
-transform: translateY(-1px);
-}
-.btn-red-pill {
-background-color: #dc2626;
-color: #ffffff;
-border-radius: 9999px;
-box-shadow: 0 4px 10px rgba(220, 38, 38, 0.25);
-transition: all 0.2s ease;
-}
-.btn-red-pill:hover {
-background-color: #b91c1c;
-box-shadow: 0 6px 15px rgba(220, 38, 38, 0.35);
-transform: translateY(-1px);
-}
-::-webkit-scrollbar {
-width: 6px;
-height: 6px;
-}
-::-webkit-scrollbar-track {
-background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-background: #c1c1c1;
-border-radius: 4px;
-}
-@media print {
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; font-size: 11pt !important; background: white !important; color: black !important; }
-aside, header, button, .no-print { display: none !important; }
-main { overflow: visible !important; }
-table { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; font-size: 11pt !important; width: 100% !important; border-collapse: collapse !important; }
-th, td { border: 1px solid #000 !important; padding: 6px !important; }
-.cetak-tanpa-wa th:last-child, .cetak-tanpa-wa td:last-child { display: none !important; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e - Lajnah Tarbiah PAS Kawasan Pasir Mas</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0b132b',
+                            900: '#04080f',
+                            700: '#1c2541',
+                            600: '#3a506b',
+                        },
+                        pasgreen: '#008751'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            touch-action: manipulation;
+        }
+        .neu-card {
+            background: #ffffff;
+            box-shadow: 4px 4px 12px #d1d5db, -4px -4px 12px #ffffff;
+            border-radius: 1rem;
+        }
+        .neu-input {
+            background: #f9fafb;
+            box-shadow: inset 2px 2px 5px #e5e7eb, inset -2px -2px 5px #ffffff;
+        }
+        .btn-navy-pill {
+            background-color: #0b132b;
+            color: #ffffff;
+            border-radius: 9999px;
+            box-shadow: 0 4px 10px rgba(11, 19, 43, 0.25);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .btn-navy-pill:hover {
+            background-color: #1c2541;
+            box-shadow: 0 6px 15px rgba(11, 19, 43, 0.35);
+            transform: translateY(-1px);
+        }
+        .btn-red-pill {
+            background-color: #dc2626;
+            color: #ffffff;
+            border-radius: 9999px;
+            box-shadow: 0 4px 10px rgba(220, 38, 38, 0.25);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .btn-red-pill:hover {
+            background-color: #b91c1c;
+            box-shadow: 0 6px 15px rgba(220, 38, 38, 0.35);
+            transform: translateY(-1px);
+        }
+        button, a {
+            position: relative;
+            z-index: 20;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        @media print {
+            body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; font-size: 11pt !important; background: white !important; color: black !important; }
+            aside, header, button, .no-print { display: none !important; }
+            main { overflow: visible !important; }
+            table { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; font-size: 11pt !important; width: 100% !important; border-collapse: collapse !important; }
+            th, td { border: 1px solid #000 !important; padding: 6px !important; }
+            .cetak-tanpa-wa th:last-child, .cetak-tanpa-wa td:last-child { display: none !important; }
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-800 antialiased min-h-screen flex flex-col md:flex-row">
-<!-- SIDEBAR NAVIGASI -->
-<aside class="w-full md:w-64 bg-navy-800 text-white flex-shrink-0 flex flex-col justify-between shadow-xl">
-<div>
-<div class="p-4 bg-navy-900 flex items-center gap-3 border-b border-navy-700">
-<div class="w-10 h-10 bg-pasgreen flex items-center justify-center shrink-0 border border-white/30 rounded-none">
-<svg viewBox="0 0 100 100" class="w-7 h-7">
-<rect x="5" y="5" width="90" height="90" fill="#008751" stroke="#ffffff" stroke-width="4"/>
-<circle cx="50" cy="50" r="35" fill="#ffffff" />
-</svg>
-</div>
-<div>
-<h1 class="font-bold text-base leading-tight text-white">e - Lajnah Tarbiah</h1>
-<p class="text-[11px] text-amber-300 font-medium">PAS Kawasan Pasir Mas</p>
-</div>
-</div>
-<nav class="p-3 space-y-1.5 text-xs">
-<button onclick="pilihMenuSidebar('dashboard')" id="nav-dashboard" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-sky-200 text-navy-900 font-bold transition hover:bg-navy-700 hover:text-white">
-<i class="fa-solid fa-chart-line w-4 text-center"></i>
-<span>Analisis & Takwim</span>
-</button>
-<button onclick="pilihMenuSidebar('dhuha')" id="nav-dhuha" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
-<i class="fa-solid fa-sun w-4 text-center text-amber-400"></i>
-<span>Kuliah Dhuha</span>
-</button>
-<button onclick="pilihMenuSidebar('iftar')" id="nav-iftar" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
-<i class="fa-solid fa-utensils w-4 text-center text-emerald-400"></i>
-<span>Iftar Jamaie (12K)</span>
-</button>
-<button onclick="pilihMenuSidebar('usrah-kaw')" id="nav-usrah-kaw" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
-<i class="fa-solid fa-users w-4 text-center text-blue-400"></i>
-<span>Usrah PAS Kawasan</span>
-</button>
-<button onclick="pilihMenuSidebar('kuliah-dun')" id="nav-kuliah-dun" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
-<i class="fa-solid fa-book-open w-4 text-center text-purple-400"></i>
-<span>Kuliah Haraki DUN</span>
-</button>
-<button onclick="pilihMenuSidebar('usrah-udm')" id="nav-usrah-udm" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
-<i class="fa-solid fa-map-location-dot w-4 text-center text-rose-400"></i>
-<span>Usrah UDM Meranti</span>
-</button>
-<button onclick="pilihMenuSidebar('tetapan')" id="nav-tetapan" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200 mt-4 border-t border-navy-700 pt-3">
-<i class="fa-solid fa-gears w-4 text-center text-gray-300"></i>
-<span>Tetapan & Awan</span>
-</button>
-</nav>
-</div>
-<div class="p-3 bg-navy-900 text-[9px] text-center text-gray-300 border-t border-navy-700">
-Lajnah Tarbiah © asri 2026
-</div>
-</aside>
-​<!-- KANDUNGAN UTAMA -->
-<main id="main-content-area" class="flex-1 flex flex-col min-w-0 overflow-y-auto">
-<header class="bg-navy-800 text-white shadow-sm border-b border-navy-700 px-4 md:px-6 py-4 flex items-center justify-between sticky top-0 z-10">
-<div>
-<h2 id="page-title" class="text-base md:text-xl font-bold text-amber-300">Analisis & Ringkasan Takwim Tarbiah</h2>
-<div class="flex flex-col text-xs text-gray-300 mt-1 gap-1.5">
-<span>Tahun Semasa: <span id="lbl-tahun-semasa" class="font-bold text-pasgreen">2026</span></span>
-<div class="inline-flex items-center gap-1.5 px-3 py-1 bg-navy-900 border border-navy-700 rounded-full text-xs font-semibold text-gray-200 w-fit shadow-inner">
-<i class="fa-solid fa-calendar-days text-pasgreen text-[11px]"></i>
-<span id="header-current-date" class="whitespace-nowrap">Rabu, 28 Oktober 2026</span>
-</div>
-</div>
-</div>
-<!-- NOTIFIKASI LOCENG -->
-<div class="flex items-center gap-3">
-<div class="relative">
-<button onclick="toggleNotifikasi()" class="relative p-2 rounded-full hover:bg-navy-700 text-white focus:outline-none">
-<i class="fa-solid fa-bell text-lg"></i>
-<span id="notif-badge" class="hidden absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
-</button>
-<div id="notif-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-white text-gray-800 rounded-lg shadow-xl border border-gray-200 z-50 overflow-hidden">
-<div class="bg-navy-800 text-white px-4 py-2 font-bold text-xs flex justify-between items-center">
-<span><i class="fa-solid fa-clock mr-1"></i> Program 3 Hari Akan Datang</span>
-<button onclick="toggleNotifikasi()" class="text-gray-200 hover:text-white">×</button>
-</div>
-<div id="notif-list" class="max-h-64 overflow-y-auto divide-y divide-gray-100 text-xs">
-<div class="p-3 text-gray-500 text-center">Tiada program berdekatan.</div>
-</div>
-</div>
-</div>
-</div>
-</header>
-​<div class="p-4 md:p-6 space-y-6 flex-1">
-<!-- DASHBOARD -->
-<section id="tab-dashboard" class="tab-content space-y-5">
-<div class="neu-card p-4 border-l-4 border-navy-800 flex flex-col md:flex-row justify-between items-center gap-3">
-<div>
-<h3 class="text-sm font-bold text-gray-800">Selamat Datang ke Sistem e-Tarbiah</h3>
-<p class="text-xs text-gray-600 mt-0.5">Sistem Pengurusan Takwim Bulanan & Automasi Sebaran WhatsApp Lajnah Tarbiah PAS Kawasan Pasir Mas.</p>
-</div>
-<div>
-<span class="px-3 py-1 bg-green-100 text-pasgreen text-[11px] font-bold rounded-full border border-green-300">Pangkalan Data Aktif (Real-Time)</span>
-</div>
-</div>
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-<div class="neu-card p-2.5 flex items-center gap-2">
-<div class="p-1.5 bg-amber-100 text-amber-600 rounded-md shrink-0"><i class="fa-solid fa-sun text-xs"></i></div>
-<div class="min-w-0">
-<p class="text-[9px] text-gray-500 font-medium truncate">Kuliah Dhuha</p>
-<h4 id="stat-dhuha" class="text-xs font-bold text-gray-800 leading-tight">0 Sesi</h4>
-</div>
-</div>
-<div class="neu-card p-2.5 flex items-center gap-2">
-<div class="p-1.5 bg-emerald-100 text-emerald-600 rounded-md shrink-0"><i class="fa-solid fa-utensils text-xs"></i></div>
-<div class="min-w-0">
-<p class="text-[9px] text-gray-500 font-medium truncate">Iftar Jamaie 12K</p>
-<h4 id="stat-iftar" class="text-xs font-bold text-gray-800 leading-tight">0 Sesi</h4>
-</div>
-</div>
-<div class="neu-card p-2.5 flex items-center gap-2">
-<div class="p-1.5 bg-blue-100 text-blue-600 rounded-md shrink-0"><i class="fa-solid fa-users text-xs"></i></div>
-<div class="min-w-0">
-<p class="text-[9px] text-gray-500 font-medium truncate">Usrah Kawasan</p>
-<h4 id="stat-usrah-kaw" class="text-xs font-bold text-gray-800 leading-tight">0 Sesi</h4>
-</div>
-</div>
-<div class="neu-card p-2.5 flex items-center gap-2">
-<div class="p-1.5 bg-rose-100 text-rose-600 rounded-md shrink-0"><i class="fa-solid fa-map-location-dot text-xs"></i></div>
-<div class="min-w-0">
-<p class="text-[9px] text-gray-500 font-medium truncate">Usrah UDM</p>
-<h4 id="stat-usrah-udm" class="text-xs font-bold text-gray-800 leading-tight">13 UDM</h4>
-</div>
-</div>
-</div>
-​<!-- MATRIKS TAKWIM -->
-<div class="neu-card p-4 overflow-hidden">
-<div class="flex justify-between items-center mb-3">
-<h4 class="font-bold text-gray-800 text-xs"><i class="fa-solid fa-calendar-days text-navy-800 mr-1.5"></i>Matriks Takwim Program Tarbiah</h4>
-<span class="text-[9px] text-gray-500">Jadual Pusingan Bulanan Staf & AJK</span>
-</div>
-<div class="overflow-x-auto">
-<table class="w-full text-[10px] text-left border-collapse min-w-[500px]">
-<thead>
-<tr class="bg-navy-800 text-white uppercase text-center font-bold tracking-tight">
-<th class="px-2 py-1.5 border border-navy-700">Minggu</th>
-<th class="px-2 py-1.5 border border-navy-700">Hari Target</th>
-<th class="px-2 py-1.5 border border-navy-700">Nama Program Utama</th>
-<th class="px-2 py-1.5 border border-navy-700">Lokasi Penempatan</th>
-<th class="px-2 py-1.5 border border-navy-700">Masa Program</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-gray-200 text-center leading-tight">
-<tr>
-<td class="px-2 py-1.5 font-bold border">Setiap Minggu</td>
-<td class="px-2 py-1.5 border bg-amber-50 font-semibold text-amber-800">Jumaat</td>
-<td class="px-2 py-1.5 font-bold text-navy-800 border">Kuliah Dhuha Pagi Jumaat</td>
-<td class="px-2 py-1.5 border">Pusat Tarbiah Pohon Buloh</td>
-<td class="px-2 py-1.5 border">9.30 pg - 10.30 pg</td>
-</tr>
-<tr>
-<td class="px-2 py-1.5 font-bold border">Minggu Ke-2</td>
-<td class="px-2 py-1.5 border bg-blue-50 font-semibold text-blue-800">Isnin</td>
-<td class="px-2 py-1.5 font-bold text-purple-800 border">Kuliah Haraki DUN Meranti</td>
-<td class="px-2 py-1.5 border">Pejabat DUN Meranti</td>
-<td class="px-2 py-1.5 border">Bermula Maghrib</td>
-</tr>
-<tr>
-<td class="px-2 py-1.5 font-bold border">Minggu Ke-3</td>
-<td class="px-2 py-1.5 border bg-amber-50 font-semibold text-amber-800">Khamis / Malam Jumaat</td>
-<td class="px-2 py-1.5 font-bold text-emerald-800 border">Iftar Jamaie 12K Ansorullah</td>
-<td class="px-2 py-1.5 border">Pusat Tarbiah Pohon Buloh</td>
-<td class="px-2 py-1.5 border">6.30 ptg - 10.00 mlm</td>
-</tr>
-<tr>
-<td class="px-2 py-1.5 font-bold border">Minggu Ke-4</td>
-<td class="px-2 py-1.5 border bg-purple-50 font-semibold text-purple-800">Rabu</td>
-<td class="px-2 py-1.5 font-bold text-blue-800 border">Usrah PAS Kawasan Pasir Mas</td>
-<td class="px-2 py-1.5 border">Pejabat PAS Kawasan P. Mas</td>
-<td class="px-2 py-1.5 border">6.30 ptg - 10.00 mlm</td>
-</tr>
-<tr>
-<td class="px-2 py-1.5 font-bold border">Minggu Ke-4</td>
-<td class="px-2 py-1.5 border bg-blue-50 font-semibold text-blue-800">Isnin</td>
-<td class="px-2 py-1.5 font-bold text-rose-800 border">Usrah UDM DUN Meranti (13 UDM)</td>
-<td class="px-2 py-1.5 border">Ditentukan oleh UDM</td>
-<td class="px-2 py-1.5 border">Bermula Maghrib</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-​<!-- KULIAH DHUHA -->
-<section id="tab-dhuha" class="tab-content space-y-4 hidden">
-<div class="neu-card p-4 space-y-3">
-<div>
-<h3 class="font-bold text-sm text-navy-800">Kuliah Dhuha Pagi Jumaat</h3>
-<p class="text-[11px] text-gray-500 mt-0.5">Masa: 9.30 pg - 10.30 pg | Lokasi: Pusat Tarbiah Pohon Buloh</p>
-</div>
-<div class="flex items-center gap-2 pt-1">
-<button onclick="bukaModalTambah('dhuha')" class="px-4 py-2 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-<i class="fa-solid fa-plus text-xs"></i> Tambah Dhuha
-</button>
-<button onclick="cetakJadual('table-dhuha', 'KULIAH DHUHA PAGI JUMAAT')" class="px-4 py-2 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-<i class="fa-solid fa-print text-xs"></i> Cetak
-</button>
-</div>
-</div>
-<div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-<div>
-<span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
-<h4 id="live-dhuha-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Pengkuliah: -</h4>
-</div>
-<div id="live-dhuha-btn"></div>
-</div>
-<div class="neu-card p-3.5 overflow-x-auto">
-<table id="table-dhuha" class="w-full text-[10px] text-left border-collapse min-w-[700px]">
-<thead>
-<tr class="bg-navy-800 text-white">
-<th class="p-2 border border-navy-700 text-center">Tarikh</th>
-<th class="p-2 border border-navy-700">Pengkuliah</th>
-<th class="p-2 border border-navy-700">Kitab / Tajuk</th>
-<th class="p-2 border border-navy-700 text-center no-print">Tindakan / WA</th>
-</tr>
-</thead>
-<tbody id="tbody-dhuha" class="divide-y divide-gray-200"></tbody>
-</table>
-</div>
-</section>
-​<!-- IFTAR JAMAIE 12K -->
-<section id="tab-iftar" class="tab-content space-y-4 hidden">
-<div class="neu-card p-4 space-y-3">
-<div>
-<h3 class="font-bold text-sm text-navy-800">Iftar Jamaie 12K Ansorullah</h3>
-<p class="text-[11px] text-gray-500 mt-0.5">Masa: 6.30 ptg - 10.00 mlm | Lokasi: Pusat Tarbiah Pohon Buloh</p>
-</div>
-<div class="flex items-center gap-2 pt-1">
-<button onclick="bukaModalTambah('iftar')" class="px-4 py-2 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-<i class="fa-solid fa-plus text-xs"></i> Tambah Iftar
-</button>
-<button onclick="cetakJadual('table-iftar', 'IFTAR JAMAIE 12K ANSORULLAH')" class="px-4 py-2 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-<i class="fa-solid fa-print text-xs"></i> Cetak
-</button>
-</div>
-</div>
-<div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-<div>
-<span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
-<h4 id="live-iftar-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Tazkirah: -</h4>
-</div>
-<div id="live-iftar-btn"></div>
-</div>
-<div class="neu-card p-3.5 overflow-x-auto">
-<table id="table-iftar" class="w-full text-[10px] text-left border-collapse min-w-[700px] cetak-tanpa-wa">
-<thead>
-<tr class="bg-navy-800 text-white">
-<th class="p-2 border border-navy-700 text-center">Tarikh</th>
-<th class="p-2 border border-navy-700">Tazkirah Maghrib</th>
-<th class="p-2 border border-navy-700">Tadabbur Ayat</th>
-<th class="p-2 border border-navy-700 text-center no-print">Hantar WA</th>
-</tr>
-</thead>
-<tbody id="tbody-iftar" class="divide-y divide-gray-200"></tbody>
-</table>
-</div>
-</section>
-​<!-- USRAH PAS KAWASAN -->
-<section id="tab-usrah-kaw" class="tab-content space-y-4 hidden">
-<div class="neu-card p-4 space-y-3">
-<div>
-<h3 class="font-bold text-sm text-navy-800">Usrah PAS Kawasan Pasir Mas</h3>
-<p class="text-[11px] text-gray-500 mt-0.5">Masa: 6.30 ptg - 10.00 mlm | Lokasi: Pejabat PAS Kawasan Pasir Mas</p>
-</div>
-<div class="flex items-center gap-2 pt-1">
-<button onclick="bukaModalTambah('usrahKaw')" class="px-4 py-2 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-<i class="fa-solid fa-plus text-xs"></i> Tambah Usrah
-</button>
-<button onclick="cetakJadual('table-usrah-kaw', 'USRAH PIMPINAN PAS KAWASAN PASIR MAS')" class="px-4 py-2 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-<i class="fa-solid fa-print text-xs"></i> Cetak
-</button>
-</div>
-</div>
-<div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-<div>
-<span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
-<h4 id="live-usrah-kaw-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Naqib: -</h4>
-</div>
-<div id="live-usrah-kaw-btn"></div>
-</div>
-<div class="neu-card p-3.5 overflow-x-auto">
-<table id="table-usrah-kaw" class="w-full text-[10px] text-left border-collapse min-w-[850px] cetak-tanpa-wa">
-<thead>
-<tr class="bg-navy-800 text-white">
-<th class="p-2 border border-navy-700 text-center">Tarikh</th>
-<th class="p-2 border border-navy-700 text-center">Naqib Negeri</th>
-<th class="p-2 border border-navy-700">Naqib Tafsir</th>
-<th class="p-2 border border-navy-700">Naqib Hadis</th>
-<th class="p-2 border border-navy-700">Naqib Sirah</th>
-<th class="p-2 border border-navy-700">Naqib Fikrah</th>
-<th class="p-2 border border-navy-700 text-center no-print">Hantar WA</th>
-</tr>
-</thead>
-<tbody id="tbody-usrah-kaw" class="divide-y divide-gray-200"></tbody>
-</table>
-</div>
-</section>
-​<!-- KULIAH HARAKI DUN -->
-<section id="tab-kuliah-dun" class="tab-content space-y-4 hidden">
-<div class="neu-card p-4 space-y-3">
-<div>
-<h3 class="font-bold text-sm text-navy-800">Kuliah Haraki DUN Meranti</h3>
-<p class="text-[11px] text-gray-500 mt-0.5">Masa: Bermula Maghrib | Lokasi: Pejabat DUN Meranti</p>
-</div>
-<div class="flex items-center gap-2 pt-1">
-<button onclick="bukaModalTambah('kuliahDun')" class="px-4 py-2 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-<i class="fa-solid fa-plus text-xs"></i> Tambah Kuliah DUN
-</button>
-<button onclick="cetakJadual('table-kuliah-dun', 'KULIAH HARAKI DUN MERANTI')" class="px-4 py-2 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-<i class="fa-solid fa-print text-xs"></i> Cetak
-</button>
-</div>
-</div>
-<div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-<div>
-<span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
-<h4 id="live-kuliah-dun-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Pengkuliah: -</h4>
-</div>
-<div id="live-kuliah-dun-btn"></div>
-</div>
-<div class="neu-card p-3.5 overflow-x-auto">
-<table id="table-kuliah-dun" class="w-full text-[10px] text-left border-collapse min-w-[700px] cetak-tanpa-wa">
-<thead>
-<tr class="bg-navy-800 text-white">
-<th class="p-2 border border-navy-700 text-center">Tarikh</th>
-<th class="p-2 border border-navy-700">Pengkuliah Utama</th>
-<th class="p-2 border border-navy-700">Tajuk / Pengisian</th>
-<th class="p-2 border border-navy-700">Lokasi Masjid/Surau</th>
-<th class="p-2 border border-navy-700 text-center no-print">Hantar WA</th>
-</tr>
-</thead>
-<tbody id="tbody-kuliah-dun" class="divide-y divide-gray-200"></tbody>
-</table>
-</div>
-</section>
-​<!-- USRAH UDM MERANTI -->
-<section id="tab-usrah-udm" class="tab-content space-y-4 hidden">
-<div class="neu-card p-4 space-y-3">
-<div>
-<h3 class="font-bold text-sm text-navy-800">Usrah UDM DUN Meranti (13 UDM)</h3>
-<p class="text-[11px] text-gray-500 mt-0.5">Masa: Bermula Maghrib | Lokasi: Ditentukan oleh UDM</p>
-</div>
-<div class="flex items-center gap-2 pt-1">
-<button onclick="bukaModalTambah('usrahUdm')" class="px-4 py-2 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-<i class="fa-solid fa-plus text-xs"></i> Tambah UDM
-</button>
-<button onclick="cetakJadual('table-usrah-udm', 'USRAH UDM DUN MERANTI (13 UDM)')" class="px-4 py-2 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
-<i class="fa-solid fa-print text-xs"></i> Cetak
-</button>
-</div>
-</div>
-<div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-<div>
-<span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
-<h4 id="live-usrah-udm-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Naqib: -</h4>
-</div>
-<div id="live-usrah-udm-btn"></div>
-</div>
-<div class="neu-card p-3.5 overflow-x-auto">
-<table id="table-usrah-udm" class="w-full text-[10px] text-left border-collapse min-w-[850px] cetak-tanpa-wa">
-<thead>
-<tr class="bg-navy-800 text-white">
-<th class="p-2 border border-navy-700 text-center">Bulan / Tarikh</th>
-<th class="p-2 border border-navy-700">Senarai UDM (13 UDM)</th>
-<th class="p-2 border border-navy-700">Naqib Terlibat</th>
-<th class="p-2 border border-navy-700 text-center no-print">Pilihan Butang WhatsApp</th>
-</tr>
-</thead>
-<tbody id="tbody-usrah-udm" class="divide-y divide-gray-200"></tbody>
-</table>
-</div>
-</section>
-​<!-- TETAPAN & AWAN -->
-<section id="tab-tetapan" class="tab-content space-y-4 hidden">
-<div class="neu-card p-4 bg-white space-y-3">
-<div class="border-b pb-2">
-<h3 class="font-bold text-xs text-navy-800"><i class="fa-solid fa-calendar-plus text-pasgreen mr-1.5"></i>Peralihan & Penjanaan Tahun Semasa</h3>
-<p class="text-[11px] text-gray-500 mt-0.5">Sistem mengekalkan senarai pengkuliah & naqib tetapi mengira semula tarikh bagi tahun semasa secara dinamik.</p>
-</div>
-<div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-<div>
-<label class="block text-[11px] font-bold text-gray-700 mb-1">Tahun Sasaran Sistem:</label>
-<input type="number" id="input-tahun-tetapan" value="2026" class="neu-input px-3 py-1.5 rounded-lg text-xs font-bold w-28 border focus:outline-none">
-</div>
-<div class="pt-4">
-<button onclick="janaTarikhTahunBaharu()" class="px-4 py-2 btn-navy-pill font-semibold text-xs flex items-center gap-1.5 shadow-sm">
-<i class="fa-solid fa-arrows-rotate text-xs"></i>
-<span>Jana Kalendar Tahun Baru</span>
-</button>
-</div>
-</div>
-</div>
-<div class="neu-card p-4 bg-white space-y-3">
-<div class="border-b pb-2">
-<h3 class="font-bold text-xs text-red-700"><i class="fa-solid fa-trash-can mr-1.5"></i>Hapus Rekod / Sesi Program</h3>
-<p class="text-[11px] text-gray-500 mt-0.5">Pilih modul program dan masukkan tarikh sesi yang ingin dipadam.</p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-<div>
-<label class="block font-bold text-gray-700 mb-1">Modul Program:</label>
-<select id="select-hapus-kategori" class="w-full neu-input p-2 rounded-lg border focus:outline-none font-semibold">
-<option value="dhuha">Kuliah Dhuha Pagi Jumaat</option>
-<option value="iftar">Iftar Jamaie 12K</option>
-<option value="usrahKaw">Usrah PAS Kawasan</option>
-<option value="kuliahDun">Kuliah Haraki DUN Meranti</option>
-<option value="usrahUdm">Usrah UDM Meranti</option>
-</select>
-</div>
-<div>
-<label class="block font-bold text-gray-700 mb-1">Tarikh Program (DD/MM/YYYY):</label>
-<input type="text" id="input-hapus-tarikh" placeholder="Cth: 16/01/2026" class="w-full neu-input p-2 rounded-lg border focus:outline-none font-semibold">
-</div>
-</div>
-<div class="pt-1">
-<button onclick="bukaModalHapusRekod()" class="px-4 py-2 btn-red-pill font-semibold text-xs flex items-center gap-1.5 shadow-sm">
-<i class="fa-solid fa-trash text-xs"></i>
-<span>Hapus Rekod</span>
-</button>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-<div class="neu-card p-3.5 space-y-2 flex flex-col items-center text-center">
-<h4 class="font-bold text-xs text-gray-800"><i class="fa-solid fa-download text-blue-600 mr-1.5"></i>Sandaran Data (Backup JSON)</h4>
-<p class="text-[10px] text-gray-500">Muat turun seluruh fail pangkalan data e-Tarbiah sebagai fail JSON.</p>
-<button onclick="eksportBackupJSON()" class="px-4 py-2 btn-navy-pill font-semibold text-xs shadow-sm">
-<i class="fa-solid fa-file-export text-xs mr-1"></i> Muat Turun JSON
-</button>
-</div>
-<div class="neu-card p-3.5 space-y-2 flex flex-col items-center text-center">
-<h4 class="font-bold text-xs text-gray-800"><i class="fa-solid fa-upload text-purple-600 mr-1.5"></i>Pulihkan Data (Restore JSON)</h4>
-<p class="text-[10px] text-gray-500">Muat naik fail sandaran JSON untuk mengembalikan data.</p>
-<input type="file" id="file-restore" accept=".json" class="hidden" onchange="importBackupJSON(event)">
-<button onclick="document.getElementById('file-restore').click()" class="px-4 py-2 btn-navy-pill font-semibold text-xs shadow-sm">
-<i class="fa-solid fa-file-import text-xs mr-1"></i> Pilih Fail & Pulihkan
-</button>
-</div>
-</div>
-</section>
-</div>
-</main>
-​<!-- MODAL EDIT / TAMBAH -->
-<div id="modal-edit" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-<div class="bg-white rounded-2xl w-full max-w-md p-5 shadow-2xl space-y-3">
-<div class="flex justify-between items-center border-b pb-2">
-<h3 id="modal-title" class="font-bold text-navy-800 text-sm">Kemaskini Rekod Program</h3>
-<button onclick="tutupModal()" class="text-gray-400 hover:text-gray-700 text-base font-bold">×</button>
-</div>
-<form id="form-edit" onsubmit="simpanDataForm(event)" class="space-y-3 text-xs">
-<input type="hidden" id="edit-kategori">
-<input type="hidden" id="edit-index" value="-1">
-<div>
-<label id="lbl-tarikh" class="block font-bold text-gray-700 mb-1">Tarikh Program:</label>
-<input type="text" id="edit-tarikh" placeholder="Cth: 01/01/2026" class="w-full neu-input p-2 rounded border focus:outline-none font-semibold">
-</div>
-<div id="box-field-1">
-<label id="lbl-field-1" class="block font-bold text-gray-700 mb-1">Pengkuliah / Naqib:</label>
-<input type="text" id="edit-field-1" class="w-full neu-input p-2 rounded border focus:outline-none">
-</div>
-<div id="box-field-2">
-<label id="lbl-field-2" class="block font-bold text-gray-700 mb-1">Kitab / Tajuk / Pengisian:</label>
-<input type="text" id="edit-field-2" class="w-full neu-input p-2 rounded border focus:outline-none">
-</div>
-<div id="box-field-3">
-<label id="lbl-field-3" class="block font-bold text-gray-700 mb-1">Lokasi / Catatan:</label>
-<input type="text" id="edit-field-3" class="w-full neu-input p-2 rounded border focus:outline-none">
-</div>
-<div class="flex justify-end gap-2 pt-2">
-<button type="button" onclick="tutupModal()" class="px-3 py-1.5 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs hover:bg-gray-300">Batal</button>
-<button type="submit" class="px-3 py-1.5 bg-navy-800 text-white rounded-lg font-bold text-xs hover:bg-navy-900 shadow">Simpan Data</button>
-</div>
-</form>
-</div>
-</div>
-​<div id="modal-confirm-hapus" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-<div class="bg-white rounded-2xl w-full max-w-xs p-5 shadow-2xl space-y-3 text-center">
-<div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto text-base">
-<i class="fa-solid fa-triangle-exclamation"></i>
-</div>
-<div>
-<h3 class="font-bold text-navy-800 text-sm">Pengesahan Pemadaman</h3>
-<p id="confirm-hapus-desc" class="text-xs text-gray-600 mt-1">Adakah Ustaz pasti untuk memadam rekod program ini?</p>
-</div>
-<div class="flex justify-center gap-2 pt-2">
-<button type="button" onclick="tutupModalHapus()" class="w-1/2 py-2 bg-gray-200 text-gray-700 rounded-xl font-bold text-[11px] hover:bg-gray-300">Batal</button>
-<button type="button" onclick="lulusHapusRekod()" class="w-1/2 py-2 btn-red-pill font-bold text-[11px]">Ya, Hapus</button>
-</div>
-</div>
-</div>
-​<div id="modal-custom-alert" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-<div class="bg-white rounded-2xl w-full max-w-xs p-5 shadow-2xl space-y-3 text-center">
-<div class="w-10 h-10 rounded-full bg-blue-100 text-navy-800 flex items-center justify-center mx-auto text-base">
-<i class="fa-solid fa-circle-info"></i>
-</div>
-<div>
-<h3 class="font-bold text-navy-800 text-sm">Makluman Sistem</h3>
-<p id="custom-alert-msg" class="text-xs text-gray-600 mt-1"></p>
-</div>
-<div class="pt-1">
-<button type="button" onclick="tutupCustomAlert()" class="w-full py-2 btn-navy-pill font-bold text-[11px] uppercase">Faham / Tutup</button>
-</div>
-</div>
-</div>
-​<!-- FIREBASE REAL-TIME MODULE -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-​const firebaseConfig = typeof __firebase_config !== 'undefined'
-? JSON.parse(__firebase_config)
-: {
-apiKey: "AIzaSyA_wVb0tuGkca4QD6SnmovJ1eqyqUOr-7g",
-authDomain: "e-lajnah-tarbiah.firebaseapp.com",
-projectId: "e-lajnah-tarbiah",
-storageBucket: "e-lajnah-tarbiah.firebasestorage.app",
-messagingSenderId: "495158317965",
-appId: "1:495158317965:web:739fedb2b2c024342d23c4"
-};
-const appId = typeof __app_id !== 'undefined' ? __app_id : 'c_84318e6a865664d99042b36a19f2a244';
-​const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-​async function initAuth() {
-try {
-if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-await signInWithCustomToken(auth, __initial_auth_token);
-} else {
-await signInAnonymously(auth);
-}
-} catch (err) {
-console.warn("Auth fallback active:", err);
-}
-}
-await initAuth();
-​window.simpanKeCloud = async function(dataPayload) {
-try {
-const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
-await setDoc(docRef, dataPayload);
-} catch (err) {
-console.error("Ralat simpan data:", err);
-}
-};
-​// Real-time listener
-const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
-onSnapshot(docRef, (docSnap) => {
-if (docSnap.exists()) {
-const cloudData = docSnap.data();
-window.dbDataGlobal = {
-tahun: cloudData.tahun || 2026,
-dhuha: Array.isArray(cloudData.dhuha) ? cloudData.dhuha : [],
-iftar: Array.isArray(cloudData.iftar) ? cloudData.iftar : [],
-usrahKaw: Array.isArray(cloudData.usrahKaw) ? cloudData.usrahKaw : [],
-kuliahDun: Array.isArray(cloudData.kuliahDun) ? cloudData.kuliahDun : [],
-usrahUdm: Array.isArray(cloudData.usrahUdm) ? cloudData.usrahUdm : []
-};
-} else {
-// Jika kosong di awan, jana automatik jadual tahun 2026 mengikut matriks
-window.dbDataGlobal = { tahun: 2026, dhuha: [], iftar: [], usrahKaw: [], kuliahDun: [], usrahUdm: [] };
-janaTarikhTahunBaharu(2026, false);
-}
-if (typeof window.renderSemuaJadual === 'function') {
-window.renderSemuaJadual();
-}
-});
-</script>
-​<!-- JAVASCRIPT LOGIK UTAMA -->
-<script>
-window.dbDataGlobal = {
-tahun: 2026,
-dhuha: [],
-iftar: [],
-usrahKaw: [],
-kuliahDun: [],
-usrahUdm: []
-};
-​const TETAPAN_NO_TELEFON = "60199467894";
-const SENARAI_BULAN = [
-"JANUARI", "FEBRUARI", "MAC", "APRIL", "MEI", "JUN",
-"JULAI", "OGOS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DISEMBER"
-];
-​function paparkanTarikhHeaderSemasa() {
-const hariList = ["Ahad", "Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu"];
-const bulanList = ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Desember"];
-const d = new Date();
-const formatStr = ${hariList[d.getDay()]}, ${d.getDate()} ${bulanList[d.getMonth()]} ${d.getFullYear()};
-const el = document.getElementById('header-current-date');
-if (el) el.innerText = formatStr;
-}
-​function paparPesan(pesan) {
-document.getElementById('custom-alert-msg').innerText = pesan;
-document.getElementById('modal-custom-alert').classList.remove('hidden');
-}
-function tutupCustomAlert() {
-document.getElementById('modal-custom-alert').classList.add('hidden');
-}
-​window.onload = function() {
-paparkanTarikhHeaderSemasa();
-tukarTab('dashboard', false);
-};
-​window.renderSemuaJadual = function() {
-kemaskiniPaparanTetapan();
-binaJadualDhuha();
-binaJadualIftar();
-binaJadualUsrahKaw();
-binaJadualKuliahDun();
-binaJadualUsrahUdm();
-kemaskiniStatistik();
-semakNotifikasiLoceng();
-};
-​function kemaskiniPaparanTetapan() {
-const lblTahun = document.getElementById('lbl-tahun-semasa');
-const inputTahun = document.getElementById('input-tahun-tetapan');
-if (lblTahun) lblTahun.innerText = window.dbDataGlobal.tahun || 2026;
-if (inputTahun) inputTahun.value = window.dbDataGlobal.tahun || 2026;
-}
-​function kemaskiniStatistik() {
-let data = window.dbDataGlobal;
-document.getElementById('stat-dhuha').innerText = ${data.dhuha ? data.dhuha.length : 0} Sesi;
-document.getElementById('stat-iftar').innerText = ${data.iftar ? data.iftar.length : 0} Sesi;
-document.getElementById('stat-usrah-kaw').innerText = ${data.usrahKaw ? data.usrahKaw.length : 0} Sesi;
-document.getElementById('stat-usrah-udm').innerText = 13 UDM;
-}
-​// Pengiraan tarikh mengikut Matriks Takwim Pasir Mas
-function cariTarikhHariN(tahun, bulanIdx, hariTarget, mingguKe) {
-let d = new Date(tahun, bulanIdx, 1);
-while (d.getDay() !== hariTarget) {
-d.setDate(d.getDate() + 1);
-}
-d.setDate(d.getDate() + (7 * (mingguKe - 1)));
-let tggl = String(d.getDate()).padStart(2, '0');
-let bln = String(d.getMonth() + 1).padStart(2, '0');
-return ${tggl}/${bln}/${tahun};
-}
-​function janaTarikhTahunBaharu(thnInput, showPopup = true) {
-const thn = thnInput || parseInt(document.getElementById('input-tahun-tetapan').value) || 2026;
-window.dbDataGlobal.tahun = thn;
-​// Kuliah Dhuha: Setiap Jumaat (Minggu 1, 2, 3, 4)
-window.dbDataGlobal.dhuha = [];
-for (let b = 0; b < 12; b++) {
-for (let m = 1; m <= 4; m++) {
-window.dbDataGlobal.dhuha.push({
-tarikh: cariTarikhHariN(thn, b, 5, m),
-pengkuliah: "Ustaz Hj. Ahmad Awang",
-kitab: "Tafsir Ayat Ahkam / Riyadhus Shalihin"
-});
-}
-}
-if (thn === 2026) {
-window.dbDataGlobal.dhuha.push({
-tarikh: "30/10/2026",
-pengkuliah: "Ustaz Hj. Ahmad Awang",
-kitab: "Tafsir Ayat Ahkam / Riyadhus Shalihin"
-});
-window.dbDataGlobal.dhuha.sort((a, b) => {
-let pA = a.tarikh.split('/');
-let pB = b.tarikh.split('/');
-return new Date(pA[2], pA[1]-1, pA[0]) - new Date(pB[2], pB[1]-1, pB[0]);
-});
-}
-​// Iftar Jamaie 12K: Minggu ke-3 Hari Khamis
-window.dbDataGlobal.iftar = SENARAI_BULAN.map((bln, idx) => ({
-bulan: bln,
-tarikh: cariTarikhHariN(thn, idx, 4, 3),
-tazkirah: "Ustaz Nik Razi Nik Mat",
-tadabbur: "Ustaz Hj. Wan Ridzuan"
-}));
-​// Usrah PAS Kawasan: Minggu ke-4 Hari Rabu
-window.dbDataGlobal.usrahKaw = SENARAI_BULAN.map((bln, idx) => ({
-bulan: bln,
-tarikh: cariTarikhHariN(thn, idx, 3, 4),
-naqibNegeri: "Ustaz Naqib Negeri Kelantan",
-tafsir: "Ustaz Hj. Ahmad Awang",
-hadis: "Ustaz Nik Bahrum Nik Abdullah",
-sirah: "Ustaz Mohd Asri Abdullah",
-fikrah: "Ustaz Wan Hassan Wan Ibrahim"
-}));
-​// Kuliah Haraki DUN Meranti: Minggu ke-2 Hari Isnin
-window.dbDataGlobal.kuliahDun = SENARAI_BULAN.map((bln, idx) => ({
-bulan: bln,
-tarikh: cariTarikhHariN(thn, idx, 1, 2),
-pengkuliah: "YAB Ustaz Dato' Ahmad Yakob",
-pengisian: "Fiqh Haraki & Isu Semasa",
-lokasi: "Pejabat DUN Meranti"
-}));
-​// Usrah UDM Meranti: Minggu ke-4 Hari Isnin
-window.dbDataGlobal.usrahUdm = SENARAI_BULAN.map((bln, idx) => ({
-bulan: bln,
-tarikh: cariTarikhHariN(thn, idx, 1, 4),
-senaraiUdm: "Meranti, Bakong, Pohon Buloh, Pohon Tanjong, Meranti Renang, Gelam, Kenor, Banggol Chicha, Alor Pasir, Tepi Sungai, Jejawi, Lubok Kuin, Kasar",
-naqib: "13 Naqib UDM Lantikan Kawasan"
-}));
-​if (typeof window.simpanKeCloud === 'function') {
-window.simpanKeCloud(window.dbDataGlobal);
-}
-if (showPopup) {
-paparPesan(Jadual Takwim bagi Tahun ${thn} telah berjaya dijana!);
-}
-}
-​// Modul Hapus Rekod
-function bukaModalHapusRekod() {
-const kat = document.getElementById('select-hapus-kategori').value;
-const tggl = document.getElementById('input-hapus-tarikh').value.trim();
-if (!tggl) {
-paparPesan("Sila masukkan tarikh program yang ingin dipadam.");
-return;
-}
-let senarai = window.dbDataGlobal[kat] || [];
-let jumpa = senarai.some(item => item.tarikh === tggl);
-if (!jumpa) {
-paparPesan(Tiada rekod dijumpai untuk tarikh "${tggl}".);
-return;
-}
-document.getElementById('confirm-hapus-desc').innerText = Adakah Ustaz pasti untuk memadam rekod bertarikh ${tggl}?;
-document.getElementById('modal-confirm-hapus').classList.remove('hidden');
-}
-function tutupModalHapus() {
-document.getElementById('modal-confirm-hapus').classList.add('hidden');
-}
-async function lulusHapusRekod() {
-const kat = document.getElementById('select-hapus-kategori').value;
-const tggl = document.getElementById('input-hapus-tarikh').value.trim();
-window.dbDataGlobal[kat] = window.dbDataGlobal[kat].filter(item => item.tarikh !== tggl);
-if (typeof window.simpanKeCloud === 'function') {
-await window.simpanKeCloud(window.dbDataGlobal);
-}
-tutupModalHapus();
-paparPesan(Rekod bertarikh ${tggl} telah dipadam.);
-document.getElementById('input-hapus-tarikh').value = '';
-}
-​function cariDataTerkini(senarai) {
-if (!senarai || senarai.length === 0) return null;
-const hariIni = new Date();
-hariIni.setHours(0,0,0,0);
-let mendatang = senarai.filter(item => {
-const p = item.tarikh.split('/');
-if (p.length === 3) {
-const dObj = new Date(p[2], p[1]-1, p[0]);
-return dObj >= hariIni;
-}
-return false;
-});
-if (mendatang.length > 0) return mendatang[0];
-return senarai[senarai.length - 1] || null;
-}
-​function binaJadualDhuha() {
-const tbody = document.getElementById('tbody-dhuha');
-if (!tbody) return;
-tbody.innerHTML = '';
-let list = window.dbDataGlobal.dhuha || [];
-if (list.length === 0) {
-tbody.innerHTML = <tr><td colspan="4" class="p-4 text-center text-gray-500">Tiada rekod.</td></tr>;
-return;
-}
-list.forEach((row, idx) => {
-tbody.innerHTML += <tr class="hover:bg-gray-50"> <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}</td> <td class="p-2 border font-medium">${row.pengkuliah}</td> <td class="p-2 border text-gray-600">${row.kitab}</td> <td class="p-2 border text-center no-print"> <div class="flex items-center justify-center gap-1"> <button onclick="bukaModalEdit('dhuha', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200" title="Edit"><i class="fa-solid fa-pen text-xs"></i></button> <button onclick="hantarWADhuha(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> WA</button> </div> </td> </tr>;
-});
-const terkini = cariDataTerkini(list);
-if (terkini) {
-const idxReal = list.indexOf(terkini);
-document.getElementById('live-dhuha-info').innerText = Tarikh: ${terkini.tarikh} | Pengkuliah: ${terkini.pengkuliah} (${terkini.kitab});
-document.getElementById('live-dhuha-btn').innerHTML = <button onclick="hantarWADhuha(${idxReal})" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Hantar WA</button>;
-}
-}
-​function binaJadualIftar() {
-const tbody = document.getElementById('tbody-iftar');
-if (!tbody) return;
-tbody.innerHTML = '';
-let list = window.dbDataGlobal.iftar || [];
-if (list.length === 0) {
-tbody.innerHTML = <tr><td colspan="4" class="p-4 text-center text-gray-500">Tiada rekod.</td></tr>;
-return;
-}
-list.forEach((row, idx) => {
-tbody.innerHTML += <tr class="hover:bg-gray-50"> <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan})</span></td> <td class="p-2 border text-gray-600">${row.tazkirah}</td> <td class="p-2 border text-gray-600">${row.tadabbur}</td> <td class="p-2 border text-center no-print"> <div class="flex items-center justify-center gap-1"> <button onclick="bukaModalEdit('iftar', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button> <button onclick="hantarWAIFTAR(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> WA 12K</button> </div> </td> </tr>;
-});
-const terkini = cariDataTerkini(list);
-if (terkini) {
-const idxReal = list.indexOf(terkini);
-document.getElementById('live-iftar-info').innerText = Tarikh: ${terkini.tarikh} (${terkini.bulan}) | Tazkirah: ${terkini.tazkirah};
-document.getElementById('live-iftar-btn').innerHTML = <button onclick="hantarWAIFTAR(${idxReal})" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Hantar WA</button>;
-}
-}
-​function binaJadualUsrahKaw() {
-const tbody = document.getElementById('tbody-usrah-kaw');
-if (!tbody) return;
-tbody.innerHTML = '';
-let list = window.dbDataGlobal.usrahKaw || [];
-if (list.length === 0) {
-tbody.innerHTML = <tr><td colspan="7" class="p-4 text-center text-gray-500">Tiada rekod.</td></tr>;
-return;
-}
-list.forEach((row, idx) => {
-tbody.innerHTML += <tr class="hover:bg-gray-50"> <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan})</span></td> <td class="p-2 border font-semibold text-emerald-800 text-center">${row.naqibNegeri || '-'}</td> <td class="p-2 border text-gray-700">${row.tafsir}</td> <td class="p-2 border text-gray-700">${row.hadis}</td> <td class="p-2 border text-gray-700">${row.sirah}</td> <td class="p-2 border text-gray-700">${row.fikrah}</td> <td class="p-2 border text-center no-print"> <div class="flex items-center justify-center gap-1"> <button onclick="bukaModalEdit('usrahKaw', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button> <button onclick="hantarWAUsrahKaw(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> WA</button> </div> </td> </tr>;
-});
-const terkini = cariDataTerkini(list);
-if (terkini) {
-const idxReal = list.indexOf(terkini);
-document.getElementById('live-usrah-kaw-info').innerText = Tarikh: ${terkini.tarikh} (${terkini.bulan}) | Naqib: ${terkini.tafsir};
-document.getElementById('live-usrah-kaw-btn').innerHTML = <button onclick="hantarWAUsrahKaw(${idxReal})" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Hantar WA</button>;
-}
-}
-​function binaJadualKuliahDun() {
-const tbody = document.getElementById('tbody-kuliah-dun');
-if (!tbody) return;
-tbody.innerHTML = '';
-let list = window.dbDataGlobal.kuliahDun || [];
-if (list.length === 0) {
-tbody.innerHTML = <tr><td colspan="5" class="p-4 text-center text-gray-500">Tiada rekod.</td></tr>;
-return;
-}
-list.forEach((row, idx) => {
-tbody.innerHTML += <tr class="hover:bg-gray-50"> <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan})</span></td> <td class="p-2 border font-medium">${row.pengkuliah}</td> <td class="p-2 border text-gray-600">${row.pengisian}</td> <td class="p-2 border text-gray-600">${row.lokasi}</td> <td class="p-2 border text-center no-print"> <div class="flex items-center justify-center gap-1"> <button onclick="bukaModalEdit('kuliahDun', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button> <button onclick="hantarWAKuliahDun(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> WA</button> </div> </td> </tr>;
-});
-const terkini = cariDataTerkini(list);
-if (terkini) {
-const idxReal = list.indexOf(terkini);
-document.getElementById('live-kuliah-dun-info').innerText = Tarikh: ${terkini.tarikh} (${terkini.bulan}) | Pengkuliah: ${terkini.pengkuliah};
-document.getElementById('live-kuliah-dun-btn').innerHTML = <button onclick="hantarWAKuliahDun(${idxReal})" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Hantar WA</button>;
-}
-}
-​function binaJadualUsrahUdm() {
-const tbody = document.getElementById('tbody-usrah-udm');
-if (!tbody) return;
-tbody.innerHTML = '';
-let list = window.dbDataGlobal.usrahUdm || [];
-if (list.length === 0) {
-tbody.innerHTML = <tr><td colspan="4" class="p-4 text-center text-gray-500">Tiada rekod.</td></tr>;
-return;
-}
-list.forEach((row, idx) => {
-tbody.innerHTML += <tr class="hover:bg-gray-50"> <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan})</span></td> <td class="p-2 border text-gray-700">${row.senaraiUdm}</td> <td class="p-2 border text-gray-700">${row.naqib}</td> <td class="p-2 border text-center no-print"> <div class="flex flex-col sm:flex-row items-center justify-center gap-1"> <button onclick="bukaModalEdit('usrahUdm', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200" title="Edit"><i class="fa-solid fa-pen text-xs"></i></button> <button onclick="hantarWAUsrahUdm(${idx}, 1)" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> UDM</button> <button onclick="hantarWAUsrahUdm(${idx}, 2)" class="px-2 py-0.5 bg-teal-600 text-white rounded text-[10px] font-bold hover:bg-teal-700"><i class="fa-brands fa-whatsapp"></i> Tanjong</button> <button onclick="hantarWAUsrahUdm(${idx}, 3)" class="px-2 py-0.5 bg-emerald-700 text-white rounded text-[10px] font-bold hover:bg-emerald-800"><i class="fa-brands fa-whatsapp"></i> Naqib</button> </div> </td> </tr>;
-});
-const terkini = cariDataTerkini(list);
-if (terkini) {
-const idxReal = list.indexOf(terkini);
-document.getElementById('live-usrah-udm-info').innerText = Tarikh: ${terkini.tarikh} (${terkini.bulan}) | Naqib: ${terkini.naqib};
-document.getElementById('live-usrah-udm-btn').innerHTML = <button onclick="hantarWAUsrahUdm(${idxReal}, 1)" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Jemputan UDM</button>;
-}
-}
-​// WhatsApp Templates
-function bukaPautanWA(mesej) {
-let tel = TETAPAN_NO_TELEFON.replace(/[^0-9]/g, '');
-let url = https://api.whatsapp.com/send?phone=${tel}&text=${encodeURIComponent(mesej)};
-window.open(url, '_blank');
-}
-​function hantarWADhuha(idx) {
-const item = window.dbDataGlobal.dhuha[idx];
-const parts = item.tarikh.split('/');
-let namaBulanStr = parts.length === 3 ? SENARAI_BULAN[parseInt(parts[1]) - 1] || "" : "";
-const dObj = new Date(parts[2], parts[1] - 1, parts[0]);
-const mingguKe = Math.ceil(dObj.getDate() / 7);
-let msg = Assalamualaikum Wbt\n*KULIAH DHUHA PAGI JUMAAT*\n\nKe Majlis,\n• YB/Ustaz/Tuan/Puan AJK PAS Kawasan Pasir Mas\n• AJK Dewan Ulama'/Muslimat/Pemuda\n• Semua Lantikan Politik\n• Penghulu /Halaqat/PPAD/PICT\n• Peserta Ladang Rakyat\n\nDengan segala hormatnya, dijemput hadir ke Kuliah Dhuha Pagi Jumaat sebagaimana berikut:\n\nBulan : *${namaBulanStr}*\nTarikh : *${item.tarikh}*\nMinggu : *${mingguKe}*\nMasa : *9:30 - 10:30 Pagi*\n\nTempat :\n*Masjid Madrasah Nasrullah,\nPohon Buloh.*\n\nPengkuliah :\n*${item.pengkuliah}*\n-------------------------\n\nSemua dijemput hadir.\nSekian, Terima Kasih.;
-bukaPautanWA(msg);
-}
-​function hantarWAIFTAR(idx) {
-const item = window.dbDataGlobal.iftar[idx];
-const msg = Assalamualaikum\n*Iftar Jamaie 12K Ansorullah PAS Kawasan Pasir Mas*\n\n*Peserta Program 12K Ansorullah PAS Kawasan Pasir Mas Bulan ${item.bulan}:*\n• AJK PAS Kawasan Pasir Mas\n• Ketua & AJK Dewan Ulama\n• Ketua & AJK Dewan Muslimat\n• Ketua & AJK Dewan Pemuda\n• AJK Lajnah Tarbiah\n• Ahli Projek 12K Kawasan PAS Pasir Mas\n• Penghulu Parlimen Pasir Mas\n\nSukacita dimaklumkan bahawa kami Jawatankuasa Program 12K Ansorullah akan mengadakan Iftar Jamaie secara bulanan (minggu ke-3) dan Qiamullail setiap 3 bulan.\n\nMaklumat sepertimana berikut :\nTarikh : *${item.tarikh} (${item.bulan.charAt(0) + item.bulan.slice(1).toLowerCase()})*\nMasa : *6.30 ptg - 9.30 mlm*\nTempat : *Masjid Madrasah Nasrullah, Pohon Buloh.*\n\nPengkuliah & Sukatan :\n1. *${item.tazkirah}* -\nTazkirah 15 minit (Maghrib - Isya')\n2. *${item.tadabbur}* -\nTadabbur Ayat (Selepas Isya' 30 minit)\n\nOleh yang demikian, tuan adalah ahli 12K Ansorullah PAS Kawasan Pasir Mas dan *DIWAJIBKAN HADIR* pada program tersebut.\n\n_Peserta program dikehendaki berpuasa Sunat pada hari Khamis tersebut._\n\n*Kehadiran adalah WAJIB kecuali uzur syar'ie.*\n\nSekian, Terima Kasih.;
-bukaPautanWA(msg);
-}
-​function hantarWAUsrahKaw(idx) {
-const item = window.dbDataGlobal.usrahKaw[idx];
-const msg = Assalamualaikum\n*USRAH PIMPINAN PAS KAWASAN PASIR MAS*\n\nKe majlis,\n\n*AHLI USRAH PIMPINAN PAS KAWASAN*\n1. AJK PAS Kawasan\n2. Mantan AJK PAS Kawasan\n3. Mantan & AJK Dewan Ulamak PAS Kawasan\n4. Mantan & AJK Dewan Pemuda PAS Kawasan\n5. Mantan & AJK Dewan Muslimat PAS Kawasan\n6. AJK Lajnah Tarbiah PAS Kawasan\n\n*USRAH PIMPINAN PAS KAWASAN PASIR MAS (${item.bulan})*\n\nTarikh : *${item.tarikh}*\nHari : *Rabu*\nMasa : *Bermula Solat Maghrib berjemaah*\n\nTempat :\n*Pejabat PAS Kawasan Pasir Mas*\n\nNaqib Usrah Negeri :\n*${item.naqibNegeri || '-'}*\n\nNaqib Kawasan :\n1. *${item.tafsir}* (TAFSIR)\n2. *${item.hadis}* (SIRAH)\n\nTuan dijemput dan *DIWAJIBKAN hadir*\nSekian, Wassalam;
-bukaPautanWA(msg);
-}
-​function hantarWAKuliahDun(idx) {
-const item = window.dbDataGlobal.kuliahDun[idx];
-const msg = *KULIAH HARAKI DUN MERANTI*\n\nالسلام عليكم ورحمة الله وبركاته\n\nKe majlis,\n\n*AHLI USRAH KULIAH HARAKI*\n\n👉 AJK MTD\n👉 AJK Pemuda DUN\n👉 AJK Muslimat DUN\n👉 AJK Amerah DUN\n👉 AJK Nuqaba DUN\n👉 semua lantikan politik DUN Meranti\n\n📝 *KULIAH HARAKI DUN MERANTI BULAN ${item.bulan} 2026* :\n\n📅 *${item.tarikh} (Rabu)*\n\n⏳ *Bermula Solat Maghrib Berjemaah*\n\n🏛️ *Tempat :\nPUSAT KHIDMAT DUN MERANTI*\n\nTajuk :\n*${item.pengisian}*\n\nTuan dijemput dan *DIWAJIBKAN hadir*\nSekian, Wassalam\n\nالواجبات أكثر من الأوقات\n\nSekian;
-bukaPautanWA(msg);
-}
-​function hantarWAUsrahUdm(idx, pilihan) {
-const item = window.dbDataGlobal.usrahUdm[idx];
-let msg = '';
-let tahunVal = window.dbDataGlobal.tahun || 2026;
-if (pilihan === 1) {
-msg = Assalamualaikum\n*USRAH UDM DUN MERANTI BULAN ${item.bulan} ${tahunVal}*\n\nKe majlis,\n*Ketua UDM :*\n1. Meranti\n2. Bakong\n3. Meranti Kechik\n4. Pohon Buloh\n5. Bayu Lalang\n6. Pohon Tanjong\n7. Siram\n8. Jejawi\n9. Banggol Setol\n10. Tok Sangkut\n11. Tasek Berangan\n12. Banggol Chica\n13. Gajah Mati\n\n*Usrah UDM bulan ${item.bulan} ${tahunVal}*\nTarikh : *${item.tarikh} | Hari : Isnin*\n\nMasa :\nBermula solat maghrib berjemaah\n\nTempat :\nDitentukan oleh UDM\n\nPastikan usrah UDM berjalan mengikut jadual yang ditetapkan\n\nSekian, terima kasih;
-} else if (pilihan === 2) {
-msg = Assalamualaikum\n*USRAH UDM DUN MERANTI BULAN ${item.bulan} ${tahunVal}*\n\nKe majlis,\nAhli usrah UDM Pohon Tanjong :\n\nUsrah UDM bulan ${item.bulan} ${tahunVal}\nTarikh : *${item.tarikh}*\n\nHari : Isnin (mlm Selasa)\n\nMasa :\n9.00 mlm\n\nTempat :\nBalaisah Wok Abas\n\nSemua ahli usrah dijemput hadir\n\nSekian, terima kasih;
-} else {
-msg = Assalamualaikum\n*USRAH UDM DUN MERANTI*\nBulan : *${item.bulan}* | Tarikh : *${item.tarikh}*\n\nDimaklumkan bahawa Usrah UDM bagi bulan *${item.bulan}* hendaklah dilaksanakan mengikut jadual dan tempat yang telah ditetapkan. Mohon kerjasama semua Naqib untuk bersedia dan memastikan kehadiran serta kelancaran usrah di UDM masing-masing.\n\nSekiranya terdapat sebarang perubahan, sila maklum kepada ketua Naqib.\n\n*Berikut adalah Naqib UDM dalam DUN Meranti :*\n\n*Meranti*\nUst Ahmad Syakir B Dato' Hj Mohd Nassurudin\n*Bakong*\nUst Mohd Yusof Bahji B Mohd Shargawi\n*Meranti Kechik*\nUst Muhammad B Mohd Shah\n*Pohon Buloh*\nUst Mohd Zulkernain B Tajuddin\n*Bayu Lalang*\nUst Mohd Nasrullah B Mustafa\n*Pohon Tanjong*\nUst Asri B Mohd Zain\n*Siram*\nUst Mohamad Rosni B Harun\n*Jejawi*\nUst Mad B Omar\n*Banggol Setol*\nUst Ibni B Mat Zin\n*Tok Sangkut*\nUst Mohd Izrul Hariz B Mohd Rafi\n*Tasek Berangan*\nUst Othman B Che Yeeng\n*Banggol Chica*\nUst Zakaria Bin Jusoh\n*Bgl Gajah Mati*\nUst Abdul Fatah B Jaafar\n\nTerima kasih atas komitmen dan kerjasama semua.;
-}
-bukaPautanWA(msg);
-}
-​// Modal Edit & Tambah
-function bukaModalTambah(kategori) {
-document.getElementById('edit-kategori').value = kategori;
-document.getElementById('edit-index').value = -1;
-document.getElementById('modal-title').innerText = "Tambah Rekod Baharu";
-document.getElementById('edit-tarikh').value = "";
-document.getElementById('edit-field-1').value = "";
-document.getElementById('edit-field-2').value = "";
-document.getElementById('edit-field-3').value = "";
-konfigurasiFieldModal(kategori);
-document.getElementById('modal-edit').classList.remove('hidden');
-}
-​function bukaModalEdit(kategori, index) {
-document.getElementById('edit-kategori').value = kategori;
-document.getElementById('edit-index').value = index;
-document.getElementById('modal-title').innerText = "Kemaskini Rekod Program";
-let rowData = window.dbDataGlobal[kategori][index];
-document.getElementById('edit-tarikh').value = rowData.tarikh || "";
-konfigurasiFieldModal(kategori);
-if (kategori === 'dhuha') {
-document.getElementById('edit-field-1').value = rowData.pengkuliah || "";
-document.getElementById('edit-field-2').value = rowData.kitab || "";
-} else if (kategori === 'iftar') {
-document.getElementById('edit-field-1').value = rowData.tazkirah || "";
-document.getElementById('edit-field-2').value = rowData.tadabbur || "";
-} else if (kategori === 'usrahKaw') {
-document.getElementById('edit-field-1').value = rowData.naqibNegeri || "";
-document.getElementById('edit-field-2').value = rowData.tafsir || "";
-document.getElementById('edit-field-3').value = rowData.sirah || "";
-} else if (kategori === 'kuliahDun') {
-document.getElementById('edit-field-1').value = rowData.pengkuliah || "";
-document.getElementById('edit-field-2').value = rowData.pengisian || "";
-document.getElementById('edit-field-3').value = rowData.lokasi || "";
-} else if (kategori === 'usrahUdm') {
-document.getElementById('edit-field-1').value = rowData.senaraiUdm || "";
-document.getElementById('edit-field-2').value = rowData.naqib || "";
-}
-document.getElementById('modal-edit').classList.remove('hidden');
-}
-​function konfigurasiFieldModal(kat) {
-document.getElementById('box-field-3').classList.remove('hidden');
-if (kat === 'dhuha') {
-document.getElementById('lbl-tarikh').innerText = "Tarikh (DD/MM/YYYY):";
-document.getElementById('lbl-field-1').innerText = "Pengkuliah:";
-document.getElementById('lbl-field-2').innerText = "Kitab / Tajuk:";
-document.getElementById('box-field-3').classList.add('hidden');
-} else if (kat === 'iftar') {
-document.getElementById('lbl-tarikh').innerText = "Tarikh (DD/MM/YYYY):";
-document.getElementById('lbl-field-1').innerText = "Tazkirah Maghrib:";
-document.getElementById('lbl-field-2').innerText = "Tadabbur Ayat:";
-document.getElementById('box-field-3').classList.add('hidden');
-} else if (kat === 'usrahKaw') {
-document.getElementById('lbl-tarikh').innerText = "Tarikh (DD/MM/YYYY):";
-document.getElementById('lbl-field-1').innerText = "Naqib Negeri:";
-document.getElementById('lbl-field-2').innerText = "Naqib Tafsir:";
-document.getElementById('lbl-field-3').innerText = "Naqib Sirah:";
-} else if (kat === 'kuliahDun') {
-document.getElementById('lbl-tarikh').innerText = "Tarikh (DD/MM/YYYY):";
-document.getElementById('lbl-field-1').innerText = "Pengkuliah Utama:";
-document.getElementById('lbl-field-2').innerText = "Tajuk / Pengisian:";
-document.getElementById('lbl-field-3').innerText = "Lokasi Masjid/Surau:";
-} else if (kat === 'usrahUdm') {
-document.getElementById('lbl-tarikh').innerText = "Tarikh (DD/MM/YYYY):";
-document.getElementById('lbl-field-1').innerText = "Senarai UDM:";
-document.getElementById('lbl-field-2').innerText = "Naqib Terlibat:";
-document.getElementById('box-field-3').classList.add('hidden');
-}
-}
-​function tutupModal() {
-document.getElementById('modal-edit').classList.add('hidden');
-}
-​async function simpanDataForm(e) {
-e.preventDefault();
-const kat = document.getElementById('edit-kategori').value;
-const idx = parseInt(document.getElementById('edit-index').value);
-const tarikhVal = document.getElementById('edit-tarikh').value;
-const f1 = document.getElementById('edit-field-1').value;
-const f2 = document.getElementById('edit-field-2').value;
-const f3 = document.getElementById('edit-field-3').value;
-​let objBaru = {};
-if (kat === 'dhuha') {
-objBaru = { tarikh: tarikhVal, pengkuliah: f1, kitab: f2 };
-} else if (kat === 'iftar') {
-objBaru = { bulan: "SEMASA", tarikh: tarikhVal, tazkirah: f1, tadabbur: f2 };
-} else if (kat === 'usrahKaw') {
-objBaru = { bulan: "SEMASA", tarikh: tarikhVal, naqibNegeri: f1, tafsir: f2, hadis: f2, sirah: f3, fikrah: f3 };
-} else if (kat === 'kuliahDun') {
-objBaru = { bulan: "SEMASA", tarikh: tarikhVal, pengkuliah: f1, pengisian: f2, lokasi: f3 };
-} else if (kat === 'usrahUdm') {
-objBaru = { bulan: "SEMASA", tarikh: tarikhVal, senaraiUdm: f1, naqib: f2 };
-}
-​if (!window.dbDataGlobal[kat]) window.dbDataGlobal[kat] = [];
-​if (idx === -1) {
-window.dbDataGlobal[kat].push(objBaru);
-} else {
-window.dbDataGlobal[kat][idx] = objBaru;
-}
-​if (typeof window.simpanKeCloud === 'function') {
-await window.simpanKeCloud(window.dbDataGlobal);
-}
-​tutupModal();
-paparPesan("Data berjaya disimpan ke Firestore!");
-}
-​// Notifikasi Loceng
-function semakNotifikasiLoceng() {
-const hariIni = new Date();
-let senaraiPeringatan = [];
-function tukarKeTarikh(strTarikh) {
-const parts = strTarikh.split('/');
-return parts.length === 3 ? new Date(parts[2], parts[1] - 1, parts[0]) : null;
-}
-const gabunganProgram = [
-...(window.dbDataGlobal.dhuha || []).map(i => ({ tajuk: 'Kuliah Dhuha', tarikh: i.tarikh })),
-...(window.dbDataGlobal.iftar || []).map(i => ({ tajuk: 'Iftar Jamaie', tarikh: i.tarikh })),
-...(window.dbDataGlobal.usrahKaw || []).map(i => ({ tajuk: 'Usrah Kawasan', tarikh: i.tarikh })),
-...(window.dbDataGlobal.kuliahDun || []).map(i => ({ tajuk: 'Kuliah Haraki', tarikh: i.tarikh })),
-...(window.dbDataGlobal.usrahUdm || []).map(i => ({ tajuk: 'Usrah UDM', tarikh: i.tarikh }))
-];
-gabunganProgram.forEach(prog => {
-const dProg = tukarKeTarikh(prog.tarikh);
-if (dProg) {
-const diffMasa = dProg.getTime() - hariIni.getTime();
-const diffHari = Math.ceil(diffMasa / (1000 * 3600 * 24));
-if (diffHari >= 0 && diffHari <= 3) {
-senaraiPeringatan.push({
-tajuk: prog.tajuk,
-tarikh: prog.tarikh,
-baki: diffHari === 0 ? "HARI INI!" : ${diffHari} hari lagi
-});
-}
-}
-});
-const badge = document.getElementById('notif-badge');
-const notifList = document.getElementById('notif-list');
-if (senaraiPeringatan.length > 0) {
-badge.classList.remove('hidden');
-badge.innerText = senaraiPeringatan.length;
-notifList.innerHTML = '';
-senaraiPeringatan.forEach(item => {
-notifList.innerHTML += <div class="p-3 hover:bg-gray-50 flex justify-between items-center text-xs"> <div> <p class="font-bold text-navy-800">${item.tajuk}</p> <p class="text-[10px] text-gray-500">${item.tarikh}</p> </div> <span class="px-2 py-0.5 bg-red-100 text-red-700 font-bold text-[10px] rounded-full">${item.baki}</span> </div>;
-});
-} else {
-badge.classList.add('hidden');
-notifList.innerHTML = <div class="p-3 text-gray-500 text-center text-xs">Tiada program berdekatan.</div>;
-}
-}
-​function toggleNotifikasi() {
-document.getElementById('notif-dropdown').classList.toggle('hidden');
-}
-​function pilihMenuSidebar(tabId) {
-tukarTab(tabId, true);
-}
-​function tukarTab(tabId, shouldScroll = false) {
-document.querySelectorAll('.nav-link').forEach(el => {
-el.classList.remove('bg-sky-200', 'text-navy-900', 'font-bold');
-el.classList.add('text-gray-200', 'font-medium');
-});
-const activeBtn = document.getElementById(nav-${tabId});
-if (activeBtn) {
-activeBtn.classList.remove('text-gray-200', 'font-medium');
-activeBtn.classList.add('bg-sky-200', 'text-navy-900', 'font-bold');
-}
-document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-const targetTab = document.getElementById(tab-${tabId});
-if (targetTab) {
-targetTab.classList.remove('hidden');
-}
-const tajukMap = {
-'dashboard': 'Analisis & Ringkasan Takwim Tarbiah',
-'dhuha': 'Kuliah Dhuha Pagi Jumaat',
-'iftar': 'Iftar Jamaie 12K Ansorullah',
-'usrah-kaw': 'Usrah PAS Kawasan Pasir Mas',
-'kuliah-dun': 'Kuliah Haraki DUN Meranti',
-'usrah-udm': 'Usrah UDM Meranti (13 UDM)',
-'tetapan': 'Tetapan & Integrasi Pangkalan Data Awan'
-};
-document.getElementById('page-title').innerText = tajukMap[tabId] || 'e - Lajnah Tarbiah';
-if (shouldScroll) {
-const mainArea = document.getElementById('main-content-area');
-setTimeout(() => {
-const targetEl = document.getElementById(tab-${tabId});
-if (targetEl) {
-const firstCard = targetEl.querySelector('.neu-card, table');
-if (firstCard) {
-const rect = firstCard.getBoundingClientRect();
-const mainRect = mainArea.getBoundingClientRect();
-const scrollTop = mainArea.scrollTop + (rect.top - mainRect.top) - 10;
-mainArea.scrollTo({ top: Math.max(0, scrollTop), behavior: 'smooth' });
-}
-}
-}, 50);
-}
-}
-​function cetakJadual(tableId, namaProgram) {
-const win = window.open('', '', 'height=700,width=900');
-win.document.write('<!DOCTYPE html><html><head><title>Cetak Takwim</title>');
-win.document.write('<style>body{font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;font-size:11pt;padding:20px;} h2{text-align:center;font-size:14pt;font-weight:bold;margin:2px 0;} h3{text-align:center;font-size:12pt;font-weight:bold;margin-bottom:15px;color:#333;} table{width:100%;border-collapse:collapse;margin-top:5px;} th,td{border:1px solid #000;padding:6px;text-align:left;} th{background-color:#f2f2f2;}</style>');
-win.document.write('</head><body>');
-win.document.write('<h2>LAJNAH TARBIAH PAS KAWASAN PASIR MAS</h2>');
-win.document.write(<h3>${namaProgram}</h3>);
-​const tableEl = document.getElementById(tableId).cloneNode(true);
-const rows = tableEl.querySelectorAll('tr');
-rows.forEach(r => {
-const cells = r.querySelectorAll('th, td');
-if (cells.length > 0) {
-cells[cells.length - 1].remove();
-}
-});
-win.document.write(tableEl.outerHTML);
-win.document.write('</body></html>');
-win.document.close();
-win.print();
-}
-​function eksportBackupJSON() {
-const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(window.dbDataGlobal, null, 2));
-const downloadAnchor = document.createElement('a');
-downloadAnchor.setAttribute("href", dataStr);
-downloadAnchor.setAttribute("download", eTarbiah_PasirMas_Backup_${window.dbDataGlobal.tahun || 2026}.json);
-document.body.appendChild(downloadAnchor);
-downloadAnchor.click();
-downloadAnchor.remove();
-}
-​function importBackupJSON(e) {
-const fileReader = new FileReader();
-fileReader.onload = async function (event) {
-try {
-const parsedData = JSON.parse(event.target.result);
-if (parsedData && parsedData.tahun) {
-window.dbDataGlobal = parsedData;
-if (typeof window.simpanKeCloud === 'function') {
-await window.simpanKeCloud(window.dbDataGlobal);
-}
-kemaskiniPaparanTetapan();
-binaJadualDhuha();
-binaJadualIftar();
-binaJadualUsrahKaw();
-binaJadualKuliahDun();
-binaJadualUsrahUdm();
-semakNotifikasiLoceng();
-paparPesan("Data berjaya dipulihkan!");
-}
-} catch (err) {
-paparPesan("Fail JSON tidak sah!");
-}
-};
-fileReader.readAsText(e.target.files[0]);
-}
-</script>
+<body class="bg-gray-100 text-gray-800 antialiased min-h-screen flex flex-col md:flex-row relative">
+    <!-- SIDEBAR NAVIGASI -->
+    <aside class="w-full md:w-64 bg-navy-800 text-white flex-shrink-0 flex flex-col justify-between shadow-xl relative z-30">
+        <div>
+            <div class="p-4 bg-navy-900 flex items-center gap-3 border-b border-navy-700">
+                <div class="w-10 h-10 bg-pasgreen flex items-center justify-center shrink-0 border border-white/30 rounded-none">
+                    <svg viewBox="0 0 100 100" class="w-7 h-7">
+                        <rect x="5" y="5" width="90" height="90" fill="#008751" stroke="#ffffff" stroke-width="4"/>
+                        <circle cx="50" cy="50" r="35" fill="#ffffff" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-bold text-base leading-tight text-white">e - Lajnah Tarbiah</h1>
+                    <p class="text-[11px] text-amber-300 font-medium">PAS Kawasan Pasir Mas</p>
+                </div>
+            </div>
+            <nav class="p-3 space-y-1.5 text-xs">
+                <button onclick="pilihMenuSidebar('dashboard')" id="nav-dashboard" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-sky-200 text-navy-900 font-bold transition hover:bg-navy-700 hover:text-white">
+                    <i class="fa-solid fa-chart-line w-4 text-center"></i>
+                    <span>Analisis & Takwim</span>
+                </button>
+                <button onclick="pilihMenuSidebar('dhuha')" id="nav-dhuha" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                    <i class="fa-solid fa-sun w-4 text-center text-amber-400"></i>
+                    <span>Kuliah Dhuha</span>
+                </button>
+                <button onclick="pilihMenuSidebar('iftar')" id="nav-iftar" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                    <i class="fa-solid fa-utensils w-4 text-center text-emerald-400"></i>
+                    <span>Iftar Jamaie (12K)</span>
+                </button>
+                <button onclick="pilihMenuSidebar('usrah-kaw')" id="nav-usrah-kaw" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                    <i class="fa-solid fa-users w-4 text-center text-blue-400"></i>
+                    <span>Usrah PAS Kawasan</span>
+                </button>
+                <button onclick="pilihMenuSidebar('kuliah-dun')" id="nav-kuliah-dun" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                    <i class="fa-solid fa-book-open w-4 text-center text-purple-400"></i>
+                    <span>Kuliah Haraki DUN</span>
+                </button>
+                <button onclick="pilihMenuSidebar('usrah-udm')" id="nav-usrah-udm" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200">
+                    <i class="fa-solid fa-map-location-dot w-4 text-center text-rose-400"></i>
+                    <span>Usrah UDM Meranti</span>
+                </button>
+                <button onclick="pilihMenuSidebar('tetapan')" id="nav-tetapan" class="nav-link w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition hover:bg-navy-700 text-gray-200 mt-4 border-t border-navy-700 pt-3">
+                    <i class="fa-solid fa-gears w-4 text-center text-gray-300"></i>
+                    <span>Tetapan & Awan</span>
+                </button>
+            </nav>
+        </div>
+        <div class="p-3 bg-navy-900 text-[9px] text-center text-gray-300 border-t border-navy-700">
+            Lajnah Tarbiah &copy; asri 2026
+        </div>
+    </aside>
+
+    <!-- KANDUNGAN UTAMA -->
+    <main id="main-content-area" class="flex-1 flex flex-col min-w-0 overflow-y-auto relative z-10">
+        <header class="bg-navy-800 text-white shadow-sm border-b border-navy-700 px-4 md:px-6 py-4 flex items-center justify-between sticky top-0 z-20">
+            <div>
+                <h2 id="page-title" class="text-base md:text-xl font-bold text-amber-300">Analisis & Ringkasan Takwim Tarbiah</h2>
+                <div class="flex flex-col text-xs text-gray-300 mt-1 gap-1.5">
+                    <span>Tahun Semasa: <span id="lbl-tahun-semasa" class="font-bold text-pasgreen">2026</span></span>
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-navy-900 border border-navy-700 rounded-full text-xs font-semibold text-gray-200 w-fit shadow-inner">
+                        <i class="fa-solid fa-calendar-days text-pasgreen text-[11px]"></i>
+                        <span id="header-current-date" class="whitespace-nowrap">Rabu, 28 Oktober 2026</span>
+                    </div>
+                </div>
+            </div>
+            <!-- NOTIFIKASI LOCENG -->
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <button onclick="toggleNotifikasi()" class="relative p-2 rounded-full hover:bg-navy-700 text-white focus:outline-none">
+                        <i class="fa-solid fa-bell text-lg"></i>
+                        <span id="notif-badge" class="hidden absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
+                    </button>
+                    <div id="notif-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-white text-gray-800 rounded-lg shadow-xl border border-gray-200 z-50 overflow-hidden">
+                        <div class="bg-navy-800 text-white px-4 py-2 font-bold text-xs flex justify-between items-center">
+                            <span><i class="fa-solid fa-clock mr-1"></i> Program 3 Hari Akan Datang</span>
+                            <button onclick="toggleNotifikasi()" class="text-gray-200 hover:text-white">&times;</button>
+                        </div>
+                        <div id="notif-list" class="max-h-64 overflow-y-auto divide-y divide-gray-100 text-xs">
+                            <div class="p-3 text-gray-500 text-center">Tiada program berdekatan.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="p-4 md:p-6 space-y-6 flex-1">
+            <!-- DASHBOARD -->
+            <section id="tab-dashboard" class="tab-content space-y-5">
+                <div class="neu-card p-4 border-l-4 border-navy-800 flex flex-col md:flex-row justify-between items-center gap-3">
+                    <div>
+                        <h3 class="text-sm font-bold text-gray-800">Selamat Datang ke Sistem e-Tarbiah</h3>
+                        <p class="text-xs text-gray-600 mt-0.5">Sistem Pengurusan Takwim Bulanan & Automasi Sebaran WhatsApp Lajnah Tarbiah PAS Kawasan Pasir Mas.</p>
+                    </div>
+                    <div>
+                        <span class="px-3 py-1 bg-green-100 text-pasgreen text-[11px] font-bold rounded-full border border-green-300">Pangkalan Data Aktif (Real-Time)</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    <div class="neu-card p-2.5 flex items-center gap-2">
+                        <div class="p-1.5 bg-amber-100 text-amber-600 rounded-md shrink-0"><i class="fa-solid fa-sun text-xs"></i></div>
+                        <div class="min-w-0">
+                            <p class="text-[9px] text-gray-500 font-medium truncate">Kuliah Dhuha</p>
+                            <h4 id="stat-dhuha" class="text-xs font-bold text-gray-800 leading-tight">0 Sesi</h4>
+                        </div>
+                    </div>
+                    <div class="neu-card p-2.5 flex items-center gap-2">
+                        <div class="p-1.5 bg-emerald-100 text-emerald-600 rounded-md shrink-0"><i class="fa-solid fa-utensils text-xs"></i></div>
+                        <div class="min-w-0">
+                            <p class="text-[9px] text-gray-500 font-medium truncate">Iftar Jamaie 12K</p>
+                            <h4 id="stat-iftar" class="text-xs font-bold text-gray-800 leading-tight">0 Sesi</h4>
+                        </div>
+                    </div>
+                    <div class="neu-card p-2.5 flex items-center gap-2">
+                        <div class="p-1.5 bg-blue-100 text-blue-600 rounded-md shrink-0"><i class="fa-solid fa-users text-xs"></i></div>
+                        <div class="min-w-0">
+                            <p class="text-[9px] text-gray-500 font-medium truncate">Usrah Kawasan</p>
+                            <h4 id="stat-usrah-kaw" class="text-xs font-bold text-gray-800 leading-tight">0 Sesi</h4>
+                        </div>
+                    </div>
+                    <div class="neu-card p-2.5 flex items-center gap-2">
+                        <div class="p-1.5 bg-rose-100 text-rose-600 rounded-md shrink-0"><i class="fa-solid fa-map-location-dot text-xs"></i></div>
+                        <div class="min-w-0">
+                            <p class="text-[9px] text-gray-500 font-medium truncate">Usrah UDM</p>
+                            <h4 id="stat-usrah-udm" class="text-xs font-bold text-gray-800 leading-tight">13 UDM</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MATRIKS TAKWIM -->
+                <div class="neu-card p-4 overflow-hidden">
+                    <div class="flex justify-between items-center mb-3">
+                        <h4 class="font-bold text-gray-800 text-xs"><i class="fa-solid fa-calendar-days text-navy-800 mr-1.5"></i>Matriks Takwim Program Tarbiah</h4>
+                        <span class="text-[9px] text-gray-500">Jadual Pusingan Bulanan Staf & AJK</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-[10px] text-left border-collapse min-w-[500px]">
+                            <thead>
+                                <tr class="bg-navy-800 text-white uppercase text-center font-bold tracking-tight">
+                                    <th class="px-2 py-1.5 border border-navy-700">Minggu</th>
+                                    <th class="px-2 py-1.5 border border-navy-700">Hari Target</th>
+                                    <th class="px-2 py-1.5 border border-navy-700">Nama Program Utama</th>
+                                    <th class="px-2 py-1.5 border border-navy-700">Lokasi Penempatan</th>
+                                    <th class="px-2 py-1.5 border border-navy-700">Masa Program</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 text-center leading-tight">
+                                <tr>
+                                    <td class="px-2 py-1.5 font-bold border">Setiap Minggu</td>
+                                    <td class="px-2 py-1.5 border bg-amber-50 font-semibold text-amber-800">Jumaat</td>
+                                    <td class="px-2 py-1.5 font-bold text-navy-800 border">Kuliah Dhuha Pagi Jumaat</td>
+                                    <td class="px-2 py-1.5 border">Pusat Tarbiah Pohon Buloh</td>
+                                    <td class="px-2 py-1.5 border">9.30 pg - 10.30 pg</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-1.5 font-bold border">Minggu Ke-2</td>
+                                    <td class="px-2 py-1.5 border bg-blue-50 font-semibold text-blue-800">Isnin</td>
+                                    <td class="px-2 py-1.5 font-bold text-purple-800 border">Kuliah Haraki DUN Meranti</td>
+                                    <td class="px-2 py-1.5 border">Pejabat DUN Meranti</td>
+                                    <td class="px-2 py-1.5 border">Bermula Maghrib</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-1.5 font-bold border">Minggu Ke-3</td>
+                                    <td class="px-2 py-1.5 border bg-amber-50 font-semibold text-amber-800">Khamis / Malam Jumaat</td>
+                                    <td class="px-2 py-1.5 font-bold text-emerald-800 border">Iftar Jamaie 12K Ansorullah</td>
+                                    <td class="px-2 py-1.5 border">Pusat Tarbiah Pohon Buloh</td>
+                                    <td class="px-2 py-1.5 border">6.30 ptg - 10.00 mlm</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-1.5 font-bold border">Minggu Ke-4</td>
+                                    <td class="px-2 py-1.5 border bg-purple-50 font-semibold text-purple-800">Rabu</td>
+                                    <td class="px-2 py-1.5 font-bold text-blue-800 border">Usrah PAS Kawasan Pasir Mas</td>
+                                    <td class="px-2 py-1.5 border">Pejabat PAS Kawasan P. Mas</td>
+                                    <td class="px-2 py-1.5 border">6.30 ptg - 10.00 mlm</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-2 py-1.5 font-bold border">Minggu Ke-4</td>
+                                    <td class="px-2 py-1.5 border bg-blue-50 font-semibold text-blue-800">Isnin</td>
+                                    <td class="px-2 py-1.5 font-bold text-rose-800 border">Usrah UDM DUN Meranti (13 UDM)</td>
+                                    <td class="px-2 py-1.5 border">Ditentukan oleh UDM</td>
+                                    <td class="px-2 py-1.5 border">Bermula Maghrib</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- KULIAH DHUHA -->
+            <section id="tab-dhuha" class="tab-content space-y-4 hidden">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-3.5 rounded-xl shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-sm text-navy-800">Kuliah Dhuha Pagi Jumaat</h3>
+                        <p class="text-[11px] text-gray-500">Masa: 9.30 pg - 10.30 pg | Lokasi: Pusat Tarbiah Pohon Buloh</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="bukaModalTambah('dhuha')" class="px-3.5 py-1.5 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-plus text-xs"></i> Tambah Dhuha
+                        </button>
+                        <button onclick="cetakJadual('table-dhuha', 'KULIAH DHUHA PAGI JUMAAT')" class="px-3.5 py-1.5 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-print text-xs"></i> Cetak
+                        </button>
+                    </div>
+                </div>
+                <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                        <span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
+                        <h4 id="live-dhuha-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Pengkuliah: -</h4>
+                    </div>
+                    <div id="live-dhuha-btn"></div>
+                </div>
+                <div class="neu-card p-3.5 overflow-x-auto">
+                    <table id="table-dhuha" class="w-full text-[10px] text-left border-collapse min-w-[700px]">
+                        <thead>
+                            <tr class="bg-navy-800 text-white">
+                                <th class="p-2 border border-navy-700 text-center">Tarikh</th>
+                                <th class="p-2 border border-navy-700">Pengkuliah</th>
+                                <th class="p-2 border border-navy-700">Kitab / Tajuk</th>
+                                <th class="p-2 border border-navy-700 text-center no-print">Tindakan / WA</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-dhuha" class="divide-y divide-gray-200"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- IFTAR JAMAIE 12K -->
+            <section id="tab-iftar" class="tab-content space-y-4 hidden">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-3.5 rounded-xl shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-sm text-navy-800">Iftar Jamaie 12K Ansorullah</h3>
+                        <p class="text-[11px] text-gray-500">Masa: 6.30 ptg - 10.00 mlm | Lokasi: Pusat Tarbiah Pohon Buloh</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="bukaModalTambah('iftar')" class="px-3.5 py-1.5 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-plus text-xs"></i> Tambah Iftar
+                        </button>
+                        <button onclick="cetakJadual('table-iftar', 'IFTAR JAMAIE 12K ANSORULLAH')" class="px-3.5 py-1.5 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-print text-xs"></i> Cetak
+                        </button>
+                    </div>
+                </div>
+                <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                        <span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
+                        <h4 id="live-iftar-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Tazkirah: -</h4>
+                    </div>
+                    <div id="live-iftar-btn"></div>
+                </div>
+                <div class="neu-card p-3.5 overflow-x-auto">
+                    <table id="table-iftar" class="w-full text-[10px] text-left border-collapse min-w-[700px] cetak-tanpa-wa">
+                        <thead>
+                            <tr class="bg-navy-800 text-white">
+                                <th class="p-2 border border-navy-700 text-center">Tarikh</th>
+                                <th class="p-2 border border-navy-700">Tazkirah Maghrib</th>
+                                <th class="p-2 border border-navy-700">Tadabbur Ayat</th>
+                                <th class="p-2 border border-navy-700 text-center no-print">Hantar WA</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-iftar" class="divide-y divide-gray-200"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- USRAH PAS KAWASAN -->
+            <section id="tab-usrah-kaw" class="tab-content space-y-4 hidden">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-3.5 rounded-xl shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-sm text-navy-800">Usrah PAS Kawasan Pasir Mas</h3>
+                        <p class="text-[11px] text-gray-500">Masa: 6.30 ptg - 10.00 mlm | Lokasi: Pejabat PAS Kawasan P. Mas</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="bukaModalTambah('usrahKaw')" class="px-3.5 py-1.5 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-plus text-xs"></i> Tambah Usrah
+                        </button>
+                        <button onclick="cetakJadual('table-usrah-kaw', 'USRAH PIMPINAN PAS KAWASAN PASIR MAS')" class="px-3.5 py-1.5 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-print text-xs"></i> Cetak
+                        </button>
+                    </div>
+                </div>
+                <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                        <span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
+                        <h4 id="live-usrah-kaw-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Naqib: -</h4>
+                    </div>
+                    <div id="live-usrah-kaw-btn"></div>
+                </div>
+                <div class="neu-card p-3.5 overflow-x-auto">
+                    <table id="table-usrah-kaw" class="w-full text-[10px] text-left border-collapse min-w-[850px] cetak-tanpa-wa">
+                        <thead>
+                            <tr class="bg-navy-800 text-white">
+                                <th class="p-2 border border-navy-700 text-center">Tarikh</th>
+                                <th class="p-2 border border-navy-700 text-center">Naqib Negeri</th>
+                                <th class="p-2 border border-navy-700">Naqib Tafsir</th>
+                                <th class="p-2 border border-navy-700">Naqib Hadis</th>
+                                <th class="p-2 border border-navy-700">Naqib Sirah</th>
+                                <th class="p-2 border border-navy-700">Naqib Fikrah</th>
+                                <th class="p-2 border border-navy-700 text-center no-print">Hantar WA</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-usrah-kaw" class="divide-y divide-gray-200"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- KULIAH HARAKI DUN -->
+            <section id="tab-kuliah-dun" class="tab-content space-y-4 hidden">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-3.5 rounded-xl shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-sm text-navy-800">Kuliah Haraki DUN Meranti</h3>
+                        <p class="text-[11px] text-gray-500">Masa: Bermula Maghrib | Lokasi: Pejabat DUN Meranti</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="bukaModalTambah('kuliahDun')" class="px-3.5 py-1.5 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-plus text-xs"></i> Tambah Kuliah DUN
+                        </button>
+                        <button onclick="cetakJadual('table-kuliah-dun', 'KULIAH HARAKI DUN MERANTI')" class="px-3.5 py-1.5 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-print text-xs"></i> Cetak
+                        </button>
+                    </div>
+                </div>
+                <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                        <span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
+                        <h4 id="live-kuliah-dun-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Pengkuliah: -</h4>
+                    </div>
+                    <div id="live-kuliah-dun-btn"></div>
+                </div>
+                <div class="neu-card p-3.5 overflow-x-auto">
+                    <table id="table-kuliah-dun" class="w-full text-[10px] text-left border-collapse min-w-[700px] cetak-tanpa-wa">
+                        <thead>
+                            <tr class="bg-navy-800 text-white">
+                                <th class="p-2 border border-navy-700 text-center">Tarikh</th>
+                                <th class="p-2 border border-navy-700">Pengkuliah Utama</th>
+                                <th class="p-2 border border-navy-700">Tajuk / Pengisian</th>
+                                <th class="p-2 border border-navy-700">Lokasi Masjid/Surau</th>
+                                <th class="p-2 border border-navy-700 text-center no-print">Hantar WA</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-kuliah-dun" class="divide-y divide-gray-200"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- USRAH UDM MERANTI -->
+            <section id="tab-usrah-udm" class="tab-content space-y-4 hidden">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-3.5 rounded-xl shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-sm text-navy-800">Usrah UDM DUN Meranti (13 UDM)</h3>
+                        <p class="text-[11px] text-gray-500">Masa: Bermula Maghrib | Lokasi: Ditentukan oleh UDM</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="bukaModalTambah('usrahUdm')" class="px-3.5 py-1.5 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-plus text-xs"></i> Tambah UDM
+                        </button>
+                        <button onclick="cetakJadual('table-usrah-udm', 'USRAH UDM DUN MERANTI (13 UDM)')" class="px-3.5 py-1.5 btn-navy-pill text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-print text-xs"></i> Cetak
+                        </button>
+                    </div>
+                </div>
+                <div class="neu-card p-3.5 bg-emerald-50/60 border border-emerald-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                        <span class="px-2 py-0.5 bg-emerald-600 text-white text-[9px] font-bold rounded uppercase tracking-wide">Data Terkini / Seterusnya</span>
+                        <h4 id="live-usrah-udm-info" class="text-xs font-bold text-gray-800 mt-1">Tarikh: - | Naqib: -</h4>
+                    </div>
+                    <div id="live-usrah-udm-btn"></div>
+                </div>
+                <div class="neu-card p-3.5 overflow-x-auto">
+                    <table id="table-usrah-udm" class="w-full text-[10px] text-left border-collapse min-w-[850px] cetak-tanpa-wa">
+                        <thead>
+                            <tr class="bg-navy-800 text-white">
+                                <th class="p-2 border border-navy-700 text-center">Bulan / Tarikh</th>
+                                <th class="p-2 border border-navy-700">Senarai UDM (13 UDM)</th>
+                                <th class="p-2 border border-navy-700">Naqib Terlibat</th>
+                                <th class="p-2 border border-navy-700 text-center no-print">Pilihan Butang WhatsApp</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-usrah-udm" class="divide-y divide-gray-200"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- TETAPAN & AWAN -->
+            <section id="tab-tetapan" class="tab-content space-y-4 hidden">
+                <div class="neu-card p-4 bg-white space-y-3">
+                    <div class="border-b pb-2">
+                        <h3 class="font-bold text-xs text-navy-800"><i class="fa-solid fa-calendar-plus text-pasgreen mr-1.5"></i>Peralihan & Penjanaan Tahun Semasa</h3>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Sistem mengira semula tarikh bagi tahun semasa secara dinamik mengikut takwim rasmi.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-gray-700 mb-1">Tahun Sasaran Sistem:</label>
+                            <input type="number" id="input-tahun-tetapan" value="2026" class="neu-input px-3 py-1.5 rounded-lg text-xs font-bold w-28 border focus:outline-none">
+                        </div>
+                        <div class="pt-4">
+                            <button onclick="janaTarikhTahunBaharu()" class="px-4 py-2 btn-navy-pill font-semibold text-xs flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-arrows-rotate text-xs"></i>
+                                <span>Jana Kalendar Tahun Baru</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="neu-card p-4 bg-white space-y-3">
+                    <div class="border-b pb-2">
+                        <h3 class="font-bold text-xs text-red-700"><i class="fa-solid fa-trash-can mr-1.5"></i>Hapus Rekod / Sesi Program</h3>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Pilih modul program dan masukkan tarikh sesi yang ingin dipadam.</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div>
+                            <label class="block font-bold text-gray-700 mb-1">Modul Program:</label>
+                            <select id="select-hapus-kategori" class="w-full neu-input p-2 rounded-lg border focus:outline-none font-semibold">
+                                <option value="dhuha">Kuliah Dhuha Pagi Jumaat</option>
+                                <option value="iftar">Iftar Jamaie 12K</option>
+                                <option value="usrahKaw">Usrah PAS Kawasan</option>
+                                <option value="kuliahDun">Kuliah Haraki DUN Meranti</option>
+                                <option value="usrahUdm">Usrah UDM Meranti</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-bold text-gray-700 mb-1">Tarikh Program (DD/MM/YYYY):</label>
+                            <input type="text" id="input-hapus-tarikh" placeholder="Cth: 16/01/2026" class="w-full neu-input p-2 rounded-lg border focus:outline-none font-semibold">
+                        </div>
+                    </div>
+                    <div class="pt-1">
+                        <button onclick="bukaModalHapusRekod()" class="px-4 py-2 btn-red-pill font-semibold text-xs flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-trash text-xs"></i>
+                            <span>Hapus Rekod</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="neu-card p-3.5 space-y-2 flex flex-col items-center text-center">
+                        <h4 class="font-bold text-xs text-gray-800"><i class="fa-solid fa-download text-blue-600 mr-1.5"></i>Sandaran Data (Backup JSON)</h4>
+                        <button onclick="eksportBackupJSON()" class="px-4 py-2 btn-navy-pill font-semibold text-xs shadow-sm">
+                            <i class="fa-solid fa-file-export text-xs mr-1"></i> Muat Turun JSON
+                        </button>
+                    </div>
+                    <div class="neu-card p-3.5 space-y-2 flex flex-col items-center text-center">
+                        <h4 class="font-bold text-xs text-gray-800"><i class="fa-solid fa-upload text-purple-600 mr-1.5"></i>Pulihkan Data (Restore JSON)</h4>
+                        <input type="file" id="file-restore" accept=".json" class="hidden" onchange="importBackupJSON(event)">
+                        <button onclick="document.getElementById('file-restore').click()" class="px-4 py-2 btn-navy-pill font-semibold text-xs shadow-sm">
+                            <i class="fa-solid fa-file-import text-xs mr-1"></i> Pilih Fail & Pulihkan
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- MODAL EDIT / TAMBAH -->
+    <div id="modal-edit" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-md p-5 shadow-2xl space-y-3">
+            <div class="flex justify-between items-center border-b pb-2">
+                <h3 id="modal-title" class="font-bold text-navy-800 text-sm">Kemaskini Rekod Program</h3>
+                <button onclick="tutupModal()" class="text-gray-400 hover:text-gray-700 text-base font-bold">&times;</button>
+            </div>
+            <form id="form-edit" onsubmit="simpanDataForm(event)" class="space-y-3 text-xs">
+                <input type="hidden" id="edit-kategori">
+                <input type="hidden" id="edit-index" value="-1">
+                <div>
+                    <label id="lbl-tarikh" class="block font-bold text-gray-700 mb-1">Tarikh Program:</label>
+                    <input type="text" id="edit-tarikh" placeholder="Cth: 01/01/2026" class="w-full neu-input p-2 rounded border focus:outline-none font-semibold">
+                </div>
+                <div id="box-field-1">
+                    <label id="lbl-field-1" class="block font-bold text-gray-700 mb-1">Pengkuliah / Naqib:</label>
+                    <input type="text" id="edit-field-1" class="w-full neu-input p-2 rounded border focus:outline-none">
+                </div>
+                <div id="box-field-2">
+                    <label id="lbl-field-2" class="block font-bold text-gray-700 mb-1">Kitab / Tajuk / Pengisian:</label>
+                    <input type="text" id="edit-field-2" class="w-full neu-input p-2 rounded border focus:outline-none">
+                </div>
+                <div id="box-field-3">
+                    <label id="lbl-field-3" class="block font-bold text-gray-700 mb-1">Lokasi / Catatan:</label>
+                    <input type="text" id="edit-field-3" class="w-full neu-input p-2 rounded border focus:outline-none">
+                </div>
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="tutupModal()" class="px-3 py-1.5 bg-gray-200 text-gray-700 rounded-lg font-bold text-xs hover:bg-gray-300">Batal</button>
+                    <button type="submit" class="px-3 py-1.5 bg-navy-800 text-white rounded-lg font-bold text-xs hover:bg-navy-900 shadow">Simpan Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-confirm-hapus" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-xs p-5 shadow-2xl space-y-3 text-center">
+            <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto text-base">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div>
+                <h3 class="font-bold text-navy-800 text-sm">Pengesahan Pemadaman</h3>
+                <p id="confirm-hapus-desc" class="text-xs text-gray-600 mt-1">Adakah Ustaz pasti untuk memadam rekod program ini?</p>
+            </div>
+            <div class="flex justify-center gap-2 pt-2">
+                <button type="button" onclick="tutupModalHapus()" class="w-1/2 py-2 bg-gray-200 text-gray-700 rounded-xl font-bold text-[11px] hover:bg-gray-300">Batal</button>
+                <button type="button" onclick="lulusHapusRekod()" class="w-1/2 py-2 btn-red-pill font-bold text-[11px]">Ya, Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-custom-alert" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-xs p-5 shadow-2xl space-y-3 text-center">
+            <div class="w-10 h-10 rounded-full bg-blue-100 text-navy-800 flex items-center justify-center mx-auto text-base">
+                <i class="fa-solid fa-circle-info"></i>
+            </div>
+            <div>
+                <h3 class="font-bold text-navy-800 text-sm">Makluman Sistem</h3>
+                <p id="custom-alert-msg" class="text-xs text-gray-600 mt-1"></p>
+            </div>
+            <div class="pt-1">
+                <button type="button" onclick="tutupCustomAlert()" class="w-full py-2 btn-navy-pill font-bold text-[11px] uppercase">Faham / Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIREBASE REAL-TIME MODULE -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        
+        const firebaseConfig = typeof __firebase_config !== 'undefined' 
+            ? JSON.parse(__firebase_config) 
+            : { 
+                apiKey: "AIzaSyA_wVb0tuGkca4QD6SnmovJ1eqyqUOr-7g", 
+                authDomain: "e-lajnah-tarbiah.firebaseapp.com", 
+                projectId: "e-lajnah-tarbiah",
+                storageBucket: "e-lajnah-tarbiah.firebasestorage.app",
+                messagingSenderId: "495158317965",
+                appId: "1:495158317965:web:739fedb2b2c024342d23c4"
+            };
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'c_84318e6a865664d99042b36a19f2a244';
+        
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        async function initAuth() {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            } catch (err) {
+                console.warn("Auth fallback active:", err);
+            }
+        }
+        await initAuth();
+
+        window.simpanKeCloud = async function(dataPayload) {
+            try {
+                const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
+                await setDoc(docRef, dataPayload);
+            } catch (err) {
+                console.error("Ralat simpan data:", err);
+            }
+        };
+
+        // Real-time sync listener
+        const docRef = doc(db, 'artifacts', appId, 'public', 'etarbiah_data');
+        onSnapshot(docRef, (docSnap) => {
+            if (docSnap.exists()) {
+                const cloudData = docSnap.data();
+                window.dbDataGlobal = {
+                    tahun: cloudData.tahun || 2026,
+                    dhuha: Array.isArray(cloudData.dhuha) ? cloudData.dhuha : [],
+                    iftar: Array.isArray(cloudData.iftar) ? cloudData.iftar : [],
+                    usrahKaw: Array.isArray(cloudData.usrahKaw) ? cloudData.usrahKaw : [],
+                    kuliahDun: Array.isArray(cloudData.kuliahDun) ? cloudData.kuliahDun : [],
+                    usrahUdm: Array.isArray(cloudData.usrahUdm) ? cloudData.usrahUdm : []
+                };
+            } else {
+                window.dbDataGlobal = { tahun: 2026, dhuha: [], iftar: [], usrahKaw: [], kuliahDun: [], usrahUdm: [] };
+            }
+            if (typeof window.renderSemuaJadual === 'function') {
+                window.renderSemuaJadual();
+            }
+        });
+    </script>
+
+    <!-- JAVASCRIPT LOGIK UTAMA -->
+    <script>
+        window.dbDataGlobal = {
+            tahun: 2026,
+            dhuha: [],
+            iftar: [],
+            usrahKaw: [],
+            kuliahDun: [],
+            usrahUdm: []
+        };
+        
+        const TETAPAN_NO_TELEFON = "60199467894";
+        const SENARAI_BULAN = [
+            "JANUARI", "FEBRUARI", "MAC", "APRIL", "MEI", "JUN", 
+            "JULAI", "OGOS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DISEMBER"
+        ];
+        
+        function paparkanTarikhHeaderSemasa() {
+            const hariList = ["Ahad", "Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu"];
+            const bulanList = ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Desember"];
+            const d = new Date();
+            const formatStr = `${hariList[d.getDay()]}, ${d.getDate()} ${bulanList[d.getMonth()]} ${d.getFullYear()}`;
+            const el = document.getElementById('header-current-date');
+            if (el) el.innerText = formatStr;
+        }
+
+        function paparPesan(pesan) {
+            document.getElementById('custom-alert-msg').innerText = pesan;
+            document.getElementById('modal-custom-alert').classList.remove('hidden');
+        }
+        function tutupCustomAlert() {
+            document.getElementById('modal-custom-alert').classList.add('hidden');
+        }
+
+        window.onload = function() {
+            paparkanTarikhHeaderSemasa();
+            tukarTab('dashboard', false);
+        };
+
+        window.renderSemuaJadual = function() {
+            kemaskiniPaparanTetapan();
+            binaJadualDhuha();
+            binaJadualIftar();
+            binaJadualUsrahKaw();
+            binaJadualKuliahDun();
+            binaJadualUsrahUdm();
+            kemaskiniStatistik();
+            semakNotifikasiLoceng();
+        };
+
+        function kemaskiniPaparanTetapan() {
+            const lblTahun = document.getElementById('lbl-tahun-semasa');
+            const inputTahun = document.getElementById('input-tahun-tetapan');
+            if (lblTahun) lblTahun.innerText = window.dbDataGlobal.tahun || 2026;
+            if (inputTahun) inputTahun.value = window.dbDataGlobal.tahun || 2026;
+        }
+
+        function kemaskiniStatistik() {
+            let data = window.dbDataGlobal;
+            document.getElementById('stat-dhuha').innerText = `${data.dhuha ? data.dhuha.length : 0} Sesi`;
+            document.getElementById('stat-iftar').innerText = `${data.iftar ? data.iftar.length : 0} Sesi`;
+            document.getElementById('stat-usrah-kaw').innerText = `${data.usrahKaw ? data.usrahKaw.length : 0} Sesi`;
+            document.getElementById('stat-usrah-udm').innerText = `13 UDM`;
+        }
+
+        function cariTarikhHariN(tahun, bulanIdx, hariTarget, mingguKe) {
+            let d = new Date(tahun, bulanIdx, 1);
+            while (d.getDay() !== hariTarget) {
+                d.setDate(d.getDate() + 1);
+            }
+            d.setDate(d.getDate() + (7 * (mingguKe - 1)));
+            let tggl = String(d.getDate()).padStart(2, '0');
+            let bln = String(d.getMonth() + 1).padStart(2, '0');
+            return `${tggl}/${bln}/${tahun}`;
+        }
+
+        function janaTarikhTahunBaharu(thnInput, showPopup = true) {
+            const thn = thnInput || parseInt(document.getElementById('input-tahun-tetapan').value) || 2026;
+            window.dbDataGlobal.tahun = thn;
+            window.dbDataGlobal.dhuha = [];
+            for (let b = 0; b < 12; b++) {
+                for (let m = 1; m <= 4; m++) {
+                    window.dbDataGlobal.dhuha.push({
+                        tarikh: cariTarikhHariN(thn, b, 5, m),
+                        pengkuliah: "Ustaz Hj. Ahmad Awang",
+                        kitab: "Tafsir Ayat Ahkam / Riyadhus Shalihin"
+                    });
+                }
+            }
+            if (thn === 2026) {
+                window.dbDataGlobal.dhuha.push({
+                    tarikh: "30/10/2026",
+                    pengkuliah: "Ustaz Hj. Ahmad Awang",
+                    kitab: "Tafsir Ayat Ahkam / Riyadhus Shalihin"
+                });
+                window.dbDataGlobal.dhuha.sort((a, b) => {
+                    let pA = a.tarikh.split('/');
+                    let pB = b.tarikh.split('/');
+                    return new Date(pA[2], pA[1]-1, pA[0]) - new Date(pB[2], pB[1]-1, pB[0]);
+                });
+            }
+            window.dbDataGlobal.iftar = SENARAI_BULAN.map((bln, idx) => ({
+                bulan: bln,
+                tarikh: cariTarikhHariN(thn, idx, 4, 3),
+                tazkirah: "Ustaz Nik Razi Nik Mat",
+                tadabbur: "Ustaz Hj. Wan Ridzuan"
+            }));
+            window.dbDataGlobal.usrahKaw = SENARAI_BULAN.map((bln, idx) => ({
+                bulan: bln,
+                tarikh: cariTarikhHariN(thn, idx, 3, 4),
+                naqibNegeri: "Ustaz Naqib Negeri Kelantan",
+                tafsir: "Ustaz Hj. Ahmad Awang",
+                hadis: "Ustaz Nik Bahrum Nik Abdullah",
+                sirah: "Ustaz Mohd Asri Abdullah",
+                fikrah: "Ustaz Wan Hassan Wan Ibrahim"
+            }));
+            window.dbDataGlobal.kuliahDun = SENARAI_BULAN.map((bln, idx) => ({
+                bulan: bln,
+                tarikh: cariTarikhHariN(thn, idx, 1, 2),
+                pengkuliah: "YAB Ustaz Dato' Ahmad Yakob",
+                pengisian: "Fiqh Haraki & Isu Semasa",
+                lokasi: "Pejabat DUN Meranti"
+            }));
+            window.dbDataGlobal.usrahUdm = SENARAI_BULAN.map((bln, idx) => ({
+                bulan: bln,
+                tarikh: cariTarikhHariN(thn, idx, 1, 4),
+                senaraiUdm: "Meranti, Bakong, Pohon Buloh, Pohon Tanjong, Meranti Renang, Gelam, Kenor, Banggol Chicha, Alor Pasir, Tepi Sungai, Jejawi, Lubok Kuin, Kasar",
+                naqib: "13 Naqib UDM Lantikan Kawasan"
+            }));
+
+            if (typeof window.simpanKeCloud === 'function') {
+                window.simpanKeCloud(window.dbDataGlobal);
+            }
+            if (showPopup) {
+                paparPesan(`Jadual Tarbiah bagi Tahun ${thn} telah berjaya dijana!`);
+            }
+        }
+
+        function bukaModalTambah(kategori) {
+            document.getElementById('edit-kategori').value = kategori;
+            document.getElementById('edit-index').value = -1;
+            document.getElementById('modal-title').innerText = "Tambah Rekod Baharu";
+            document.getElementById('edit-tarikh').value = "";
+            document.getElementById('edit-field-1').value = "";
+            document.getElementById('edit-field-2').value = "";
+            document.getElementById('edit-field-3').value = "";
+            konfigurasiFieldModal(kategori);
+            document.getElementById('modal-edit').classList.remove('hidden');
+        }
+
+        function bukaModalEdit(kategori, index) {
+            document.getElementById('edit-kategori').value = kategori;
+            document.getElementById('edit-index').value = index;
+            document.getElementById('modal-title').innerText = "Kemaskini Rekod Program";
+            let rowData = window.dbDataGlobal[kategori][index];
+            document.getElementById('edit-tarikh').value = rowData.tarikh || "";
+            konfigurasiFieldModal(kategori);
+            if (kategori === 'dhuha') {
+                document.getElementById('edit-field-1').value = rowData.pengkuliah || "";
+                document.getElementById('edit-field-2').value = rowData.kitab || "";
+            } else if (kategori === 'iftar') {
+                document.getElementById('edit-field-1').value = rowData.tazkirah || "";
+                document.getElementById('edit-field-2').value = rowData.tadabbur || "";
+            } else if (kategori === 'usrahKaw') {
+                document.getElementById('edit-field-1').value = rowData.naqibNegeri || "";
+                document.getElementById('edit-field-2').value = rowData.tafsir || "";
+                document.getElementById('edit-field-3').value = rowData.sirah || "";
+            } else if (kategori === 'kuliahDun') {
+                document.getElementById('edit-field-1').value = rowData.pengkuliah || "";
+                document.getElementById('edit-field-2').value = rowData.pengisian || "";
+                document.getElementById('edit-field-3').value = rowData.lokasi || "";
+            } else if (kategori === 'usrahUdm') {
+                document.getElementById('edit-field-1').value = rowData.senaraiUdm || "";
+                document.getElementById('edit-field-2').value = rowData.naqib || "";
+            }
+            document.getElementById('modal-edit').classList.remove('hidden');
+        }
+
+        function konfigurasiFieldModal(kat) {
+            document.getElementById('box-field-3').classList.remove('hidden');
+            if (kat === 'dhuha') {
+                document.getElementById('lbl-tarikh').innerText = "Tarikh (DD/MM/YYYY):";
+                document.getElementById('lbl-field-1').innerText = "Pengkuliah:";
+                document.getElementById('lbl-field-2').innerText = "Kitab / Tajuk:";
+                document.getElementById('box-field-3').classList.add('hidden');
+            } else if (kat === 'iftar') {
+                document.getElementById('lbl-tarikh').innerText = "Tarikh (DD/MM/YYYY):";
+                document.getElementById('lbl-field-1').innerText = "Tazkirah Maghrib:";
+                document.getElementById('lbl-field-2').innerText = "Tadabbur Ayat:";
+                document.getElementById('box-field-3').classList.add('hidden');
+            } else if (kat === 'usrahKaw') {
+                document.getElementById('lbl-tarikh').innerText = "Tarikh (DD/MM/YYYY):";
+                document.getElementById('lbl-field-1').innerText = "Naqib Negeri:";
+                document.getElementById('lbl-field-2').innerText = "Naqib Tafsir:";
+                document.getElementById('lbl-field-3').innerText = "Naqib Sirah:";
+            } else if (kat === 'kuliahDun') {
+                document.getElementById('lbl-tarikh').innerText = "Tarikh (DD/MM/YYYY):";
+                document.getElementById('lbl-field-1').innerText = "Pengkuliah Utama:";
+                document.getElementById('lbl-field-2').innerText = "Tajuk / Pengisian:";
+                document.getElementById('lbl-field-3').innerText = "Lokasi Masjid/Surau:";
+            } else if (kat === 'usrahUdm') {
+                document.getElementById('lbl-tarikh').innerText = "Tarikh (DD/MM/YYYY):";
+                document.getElementById('lbl-field-1').innerText = "Senarai UDM:";
+                document.getElementById('lbl-field-2').innerText = "Naqib Terlibat:";
+                document.getElementById('box-field-3').classList.add('hidden');
+            }
+        }
+
+        function tutupModal() {
+            document.getElementById('modal-edit').classList.add('hidden');
+        }
+
+        async function simpanDataForm(e) {
+            e.preventDefault();
+            const kat = document.getElementById('edit-kategori').value;
+            const idx = parseInt(document.getElementById('edit-index').value);
+            const tarikhVal = document.getElementById('edit-tarikh').value;
+            const f1 = document.getElementById('edit-field-1').value;
+            const f2 = document.getElementById('edit-field-2').value;
+            const f3 = document.getElementById('edit-field-3').value;
+
+            let objBaru = {};
+            if (kat === 'dhuha') {
+                objBaru = { tarikh: tarikhVal, pengkuliah: f1, kitab: f2 };
+            } else if (kat === 'iftar') {
+                objBaru = { tarikh: tarikhVal, tazkirah: f1, tadabbur: f2 };
+            } else if (kat === 'usrahKaw') {
+                objBaru = { tarikh: tarikhVal, naqibNegeri: f1, tafsir: f2, hadis: f2, sirah: f3, fikrah: f3 };
+            } else if (kat === 'kuliahDun') {
+                objBaru = { tarikh: tarikhVal, pengkuliah: f1, pengisian: f2, lokasi: f3 };
+            } else if (kat === 'usrahUdm') {
+                objBaru = { tarikh: tarikhVal, senaraiUdm: f1, naqib: f2 };
+            }
+
+            if (!window.dbDataGlobal[kat]) window.dbDataGlobal[kat] = [];
+            if (idx === -1) {
+                window.dbDataGlobal[kat].push(objBaru);
+            } else {
+                window.dbDataGlobal[kat][idx] = objBaru;
+            }
+
+            if (typeof window.simpanKeCloud === 'function') {
+                await window.simpanKeCloud(window.dbDataGlobal);
+            }
+            tutupModal();
+            paparPesan("Data berjaya disimpan ke Firestore!");
+        }
+
+        function bukaModalHapusRekod() {
+            const kat = document.getElementById('select-hapus-kategori').value;
+            const tggl = document.getElementById('input-hapus-tarikh').value.trim();
+            if (!tggl) {
+                paparPesan("Sila masukkan tarikh program yang ingin dipadam terlebih dahulu.");
+                return;
+            }
+            let senarai = window.dbDataGlobal[kat] || [];
+            let jumpa = senarai.some(item => item.tarikh === tggl);
+            if (!jumpa) {
+                paparPesan(`Tiada rekod dijumpai untuk tarikh "${tggl}".`);
+                return;
+            }
+            document.getElementById('confirm-hapus-desc').innerText = `Adakah Ustaz pasti untuk memadam rekod program bertarikh ${tggl}?`;
+            document.getElementById('modal-confirm-hapus').classList.remove('hidden');
+        }
+        function tutupModalHapus() {
+            document.getElementById('modal-confirm-hapus').classList.add('hidden');
+        }
+        async function lulusHapusRekod() {
+            const kat = document.getElementById('select-hapus-kategori').value;
+            const tggl = document.getElementById('input-hapus-tarikh').value.trim();
+            window.dbDataGlobal[kat] = window.dbDataGlobal[kat].filter(item => item.tarikh !== tggl);
+            if (typeof window.simpanKeCloud === 'function') {
+                await window.simpanKeCloud(window.dbDataGlobal);
+            }
+            tutupModalHapus();
+            paparPesan(`Rekod bertarikh ${tggl} telah berjaya dihapuskan!`);
+            document.getElementById('input-hapus-tarikh').value = '';
+        }
+
+        let targetHapusKat = '';
+        let targetHapusIdx = -1;
+        function konfirmHapus(kat, idx) {
+            targetHapusKat = kat;
+            targetHapusIdx = idx;
+            document.getElementById('confirm-hapus-desc').innerText = `Adakah Ustaz pasti untuk memadam rekod ini?`;
+            document.getElementById('modal-confirm-hapus').classList.remove('hidden');
+        }
+        async function lulusHapusRekodBaris() {
+            if (targetHapusKat && targetHapusIdx > -1) {
+                window.dbDataGlobal[targetHapusKat].splice(targetHapusIdx, 1);
+                if (typeof window.simpanKeCloud === 'function') {
+                    await window.simpanKeCloud(window.dbDataGlobal);
+                }
+            }
+            tutupModalHapus();
+            paparPesan("Rekod telah dipadam.");
+        }
+
+        function cariDataTerkini(senarai) {
+            if (!senarai || senarai.length === 0) return null;
+            const hariIni = new Date();
+            hariIni.setHours(0,0,0,0);
+            let mendatang = senarai.filter(item => {
+                const p = item.tarikh.split('/');
+                if (p.length === 3) {
+                    const dObj = new Date(p[2], p[1]-1, p[0]);
+                    return dObj >= hariIni;
+                }
+                return false;
+            });
+            if (mendatang.length > 0) return mendatang[0];
+            return senarai[senarai.length - 1] || null;
+        }
+
+        function binaJadualDhuha() {
+            const tbody = document.getElementById('tbody-dhuha');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            let list = window.dbDataGlobal.dhuha || [];
+            if (list.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">Tiada rekod. Sila klik butang "Tambah Dhuha".</td></tr>`;
+                return;
+            }
+            list.forEach((row, idx) => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}</td>
+                        <td class="p-2 border font-medium">${row.pengkuliah}</td>
+                        <td class="p-2 border text-gray-600">${row.kitab}</td>
+                        <td class="p-2 border text-center no-print">
+                            <div class="flex items-center justify-center gap-1">
+                                <button onclick="bukaModalEdit('dhuha', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200" title="Edit"><i class="fa-solid fa-pen text-xs"></i></button>
+                                <button onclick="targetHapusKat='dhuha'; targetHapusIdx=${idx}; document.getElementById('confirm-hapus-desc').innerText='Adakah Ustaz pasti untuk memadam rekod ini?'; document.getElementById('modal-confirm-hapus').classList.remove('hidden');" class="p-1 bg-red-100 text-red-700 rounded hover:bg-red-200" title="Hapus"><i class="fa-solid fa-trash text-xs"></i></button>
+                                <button onclick="hantarWADhuha(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> WA</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+            const terkini = cariDataTerkini(list);
+            if (terkini) {
+                const idxReal = list.indexOf(terkini);
+                document.getElementById('live-dhuha-info').innerText = `Tarikh: ${terkini.tarikh} | Pengkuliah: ${terkini.pengkuliah} (${terkini.kitab})`;
+                document.getElementById('live-dhuha-btn').innerHTML = `<button onclick="hantarWADhuha(${idxReal})" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Hantar WA</button>`;
+            }
+        }
+
+        function binaJadualIftar() {
+            const tbody = document.getElementById('tbody-iftar');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            let list = window.dbDataGlobal.iftar || [];
+            if (list.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">Tiada rekod.</td></tr>`;
+                return;
+            }
+            list.forEach((row, idx) => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan})</span></td>
+                        <td class="p-2 border text-gray-600">${row.tazkirah}</td>
+                        <td class="p-2 border text-gray-600">${row.tadabbur}</td>
+                        <td class="p-2 border text-center no-print">
+                            <div class="flex items-center justify-center gap-1">
+                                <button onclick="bukaModalEdit('iftar', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button>
+                                <button onclick="targetHapusKat='iftar'; targetHapusIdx=${idx}; document.getElementById('confirm-hapus-desc').innerText='Adakah Ustaz pasti untuk memadam rekod ini?'; document.getElementById('modal-confirm-hapus').classList.remove('hidden');" class="p-1 bg-red-100 text-red-700 rounded hover:bg-red-200"><i class="fa-solid fa-trash text-xs"></i></button>
+                                <button onclick="hantarWAIFTAR(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> WA</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+            const terkini = cariDataTerkini(list);
+            if (terkini) {
+                const idxReal = list.indexOf(terkini);
+                document.getElementById('live-iftar-info').innerText = `Tarikh: ${terkini.tarikh} (${terkini.bulan}) | Tazkirah: ${terkini.tazkirah}`;
+                document.getElementById('live-iftar-btn').innerHTML = `<button onclick="hantarWAIFTAR(${idxReal})" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Hantar WA</button>`;
+            }
+        }
+
+        function binaJadualUsrahKaw() {
+            const tbody = document.getElementById('tbody-usrah-kaw');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            let list = window.dbDataGlobal.usrahKaw || [];
+            if (list.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-gray-500">Tiada rekod.</td></tr>`;
+                return;
+            }
+            list.forEach((row, idx) => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan})</span></td>
+                        <td class="p-2 border font-semibold text-emerald-800 text-center">${row.naqibNegeri || '-'}</td>
+                        <td class="p-2 border text-gray-700">${row.tafsir}</td>
+                        <td class="p-2 border text-gray-700">${row.hadis}</td>
+                        <td class="p-2 border text-gray-700">${row.sirah}</td>
+                        <td class="p-2 border text-gray-700">${row.fikrah}</td>
+                        <td class="p-2 border text-center no-print">
+                            <div class="flex items-center justify-center gap-1">
+                                <button onclick="bukaModalEdit('usrahKaw', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button>
+                                <button onclick="targetHapusKat='usrahKaw'; targetHapusIdx=${idx}; document.getElementById('confirm-hapus-desc').innerText='Adakah Ustaz pasti untuk memadam rekod ini?'; document.getElementById('modal-confirm-hapus').classList.remove('hidden');" class="p-1 bg-red-100 text-red-700 rounded hover:bg-red-200"><i class="fa-solid fa-trash text-xs"></i></button>
+                                <button onclick="hantarWAUsrahKaw(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> WA</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+            const terkini = cariDataTerkini(list);
+            if (terkini) {
+                const idxReal = list.indexOf(terkini);
+                document.getElementById('live-usrah-kaw-info').innerText = `Tarikh: ${terkini.tarikh} (${terkini.bulan}) | Naqib Tafsir: ${terkini.tafsir}`;
+                document.getElementById('live-usrah-kaw-btn').innerHTML = `<button onclick="hantarWAUsrahKaw(${idxReal})" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Hantar WA</button>`;
+            }
+        }
+
+        function binaJadualKuliahDun() {
+            const tbody = document.getElementById('tbody-kuliah-dun');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            let list = window.dbDataGlobal.kuliahDun || [];
+            if (list.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-500">Tiada rekod.</td></tr>`;
+                return;
+            }
+            list.forEach((row, idx) => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan})</span></td>
+                        <td class="p-2 border font-medium">${row.pengkuliah}</td>
+                        <td class="p-2 border text-gray-600">${row.pengisian}</td>
+                        <td class="p-2 border text-gray-600">${row.lokasi}</td>
+                        <td class="p-2 border text-center no-print">
+                            <div class="flex items-center justify-center gap-1">
+                                <button onclick="bukaModalEdit('kuliahDun', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200"><i class="fa-solid fa-pen text-xs"></i></button>
+                                <button onclick="targetHapusKat='kuliahDun'; targetHapusIdx=${idx}; document.getElementById('confirm-hapus-desc').innerText='Adakah Ustaz pasti untuk memadam rekod ini?'; document.getElementById('modal-confirm-hapus').classList.remove('hidden');" class="p-1 bg-red-100 text-red-700 rounded hover:bg-red-200"><i class="fa-solid fa-trash text-xs"></i></button>
+                                <button onclick="hantarWAKuliahDun(${idx})" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> WA</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+            const terkini = cariDataTerkini(list);
+            if (terkini) {
+                const idxReal = list.indexOf(terkini);
+                document.getElementById('live-kuliah-dun-info').innerText = `Tarikh: ${terkini.tarikh} (${terkini.bulan}) | Pengkuliah: ${terkini.pengkuliah}`;
+                document.getElementById('live-kuliah-dun-btn').innerHTML = `<button onclick="hantarWAKuliahDun(${idxReal})" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Hantar WA</button>`;
+            }
+        }
+
+        function binaJadualUsrahUdm() {
+            const tbody = document.getElementById('tbody-usrah-udm');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            let list = window.dbDataGlobal.usrahUdm || [];
+            if (list.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">Tiada rekod.</td></tr>`;
+                return;
+            }
+            list.forEach((row, idx) => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-2 border text-center font-bold text-navy-800">${row.tarikh}<br><span class="text-[10px] text-gray-500">(${row.bulan})</span></td>
+                        <td class="p-2 border text-gray-700">${row.senaraiUdm}</td>
+                        <td class="p-2 border text-gray-700">${row.naqib}</td>
+                        <td class="p-2 border text-center no-print">
+                            <div class="flex flex-wrap items-center justify-center gap-1">
+                                <button onclick="bukaModalEdit('usrahUdm', ${idx})" class="p-1 bg-amber-100 text-amber-700 rounded hover:bg-amber-200" title="Edit"><i class="fa-solid fa-pen text-xs"></i></button>
+                                <button onclick="targetHapusKat='usrahUdm'; targetHapusIdx=${idx}; document.getElementById('confirm-hapus-desc').innerText='Adakah Ustaz pasti untuk memadam rekod ini?'; document.getElementById('modal-confirm-hapus').classList.remove('hidden');" class="p-1 bg-red-100 text-red-700 rounded hover:bg-red-200" title="Hapus"><i class="fa-solid fa-trash text-xs"></i></button>
+                                <button onclick="hantarWAUsrahUdm(${idx}, 1)" class="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i> UDM</button>
+                                <button onclick="hantarWAUsrahUdm(${idx}, 2)" class="px-2 py-0.5 bg-teal-600 text-white rounded text-[10px] font-bold hover:bg-teal-700"><i class="fa-brands fa-whatsapp"></i> Tanjong</button>
+                                <button onclick="hantarWAUsrahUdm(${idx}, 3)" class="px-2 py-0.5 bg-emerald-700 text-white rounded text-[10px] font-bold hover:bg-emerald-800"><i class="fa-brands fa-whatsapp"></i> Naqib</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+            const terkini = cariDataTerkini(list);
+            if (terkini) {
+                const idxReal = list.indexOf(terkini);
+                document.getElementById('live-usrah-udm-info').innerText = `Tarikh: ${terkini.tarikh} (${terkini.bulan}) | Naqib: ${terkini.naqib}`;
+                document.getElementById('live-usrah-udm-btn').innerHTML = `<button onclick="hantarWAUsrahUdm(${idxReal}, 1)" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Jemputan UDM</button>`;
+            }
+        }
+
+        function bukaPautanWA(mesej) {
+            let tel = TETAPAN_NO_TELEFON.replace(/[^0-9]/g, '');
+            let url = `https://api.whatsapp.com/send?phone=${tel}&text=${encodeURIComponent(mesej)}`;
+            window.open(url, '_blank');
+        }
+
+        function hantarWADhuha(idx) {
+            const item = window.dbDataGlobal.dhuha[idx];
+            const parts = item.tarikh.split('/');
+            let namaBulanStr = parts.length === 3 ? SENARAI_BULAN[parseInt(parts[1]) - 1] || "" : "";
+            const dObj = new Date(parts[2], parts[1] - 1, parts[0]);
+            const mingguKe = Math.ceil(dObj.getDate() / 7);
+            let msg = `Assalamualaikum Wbt\n*KULIAH DHUHA PAGI JUMAAT*\n\nKe Majlis,\n• YB/Ustaz/Tuan/Puan AJK PAS Kawasan Pasir Mas\n• AJK Dewan Ulama'/Muslimat/Pemuda\n• Semua Lantikan Politik\n• Penghulu /Halaqat/PPAD/PICT\n• Peserta Ladang Rakyat\n\nDengan segala hormatnya, dijemput hadir ke Kuliah Dhuha Pagi Jumaat sebagaimana berikut:\n\nBulan : *${namaBulanStr}*\nTarikh : *${item.tarikh}*\nMinggu : *${mingguKe}*\nMasa : *9:30 - 10:30 Pagi*\n\nTempat :\n*Masjid Madrasah Nasrullah,\nPohon Buloh.*\n\nPengkuliah :\n*${item.pengkuliah}*\n-------------------------\n\nSemua dijemput hadir.\nSekian, Terima Kasih.`;
+            bukaPautanWA(msg);
+        }
+
+        function hantarWAIFTAR(idx) {
+            const item = window.dbDataGlobal.iftar[idx];
+            const msg = `Assalamualaikum\n*Iftar Jamaie 12K Ansorullah PAS Kawasan Pasir Mas*\n\n*Peserta Program 12K Ansorullah PAS Kawasan Pasir Mas Bulan ${item.bulan}:*\n• AJK PAS Kawasan Pasir Mas\n• Ketua & AJK Dewan Ulama\n• Ketua & AJK Dewan Muslimat\n• Ketua & AJK Dewan Pemuda\n• AJK Lajnah Tarbiah\n• Ahli Projek 12K Kawasan PAS Pasir Mas\n• Penghulu Parlimen Pasir Mas\n\nSukacita dimaklumkan bahawa kami Jawatankuasa Program 12K Ansorullah akan mengadakan Iftar Jamaie secara bulanan (minggu ke-3) dan Qiamullail setiap 3 bulan.\n\nMaklumat sepertimana berikut :\nTarikh : *${item.tarikh} (${item.bulan.charAt(0) + item.bulan.slice(1).toLowerCase()})*\nMasa : *6.30 ptg - 9.30 mlm*\nTempat : *Masjid Madrasah Nasrullah, Pohon Buloh.*\n\nPengkuliah & Sukatan :\n1. *${item.tazkirah}* -\nTazkirah 15 minit (Maghrib - Isya')\n2. *${item.tadabbur}* -\nTadabbur Ayat (Selepas Isya' 30 minit)\n\nOleh yang demikian, tuan adalah ahli 12K Ansorullah PAS Kawasan Pasir Mas dan *DIWAJIBKAN HADIR* pada program tersebut.\n\n_Peserta program dikehendaki berpuasa Sunat pada hari Khamis tersebut._\n\n*Kehadiran adalah WAJIB kecuali uzur syar'ie.*\n\nSekian, Terima Kasih.`;
+            bukaPautanWA(msg);
+        }
+
+        function hantarWAUsrahKaw(idx) {
+            const item = window.dbDataGlobal.usrahKaw[idx];
+            const msg = `Assalamualaikum\n*USRAH PIMPINAN PAS KAWASAN PASIR MAS*\n\nKe majlis,\n\n*AHLI USRAH PIMPINAN PAS KAWASAN*\n1. AJK PAS Kawasan\n2. Mantan AJK PAS Kawasan\n3. Mantan & AJK Dewan Ulamak PAS Kawasan\n4. Mantan & AJK Dewan Pemuda PAS Kawasan\n5. Mantan & AJK Dewan Muslimat PAS Kawasan\n6. AJK Lajnah Tarbiah PAS Kawasan\n\n*USRAH PIMPINAN PAS KAWASAN PASIR MAS (${item.bulan})*\n\nTarikh : *${item.tarikh}*\nHari : *Rabu*\nMasa : *Bermula Solat Maghrib berjemaah*\n\nTempat :\n*Pejabat PAS Kawasan Pasir Mas*\n\nNaqib Usrah Negeri :\n*${item.naqibNegeri || '-'}*\n\nNaqib Kawasan :\n1. *${item.tafsir}* (TAFSIR)\n2. *${item.hadis}* (SIRAH)\n\nTuan dijemput dan *DIWAJIBKAN hadir*\nSekian, Wassalam`;
+            bukaPautanWA(msg);
+        }
+
+        function hantarWAKuliahDun(idx) {
+            const item = window.dbDataGlobal.kuliahDun[idx];
+            const msg = `*KULIAH HARAKI DUN MERANTI*\n\nالسلام عليكم ورحمة الله وبركاته\n\nKe majlis,\n\n*AHLI USRAH KULIAH HARAKI*\n\n👉 AJK MTD\n👉 AJK Pemuda DUN\n👉 AJK Muslimat DUN\n👉 AJK Amerah DUN\n👉 AJK Nuqaba DUN\n👉 semua lantikan politik DUN Meranti\n\n📝 *KULIAH HARAKI DUN MERANTI BULAN ${item.bulan} 2026* :\n\n📅 *${item.tarikh} (Rabu)*\n\n⏳ *Bermula Solat Maghrib Berjemaah*\n\n🏛️ *Tempat :\nPUSAT KHIDMAT DUN MERANTI*\n\nTajuk :\n*${item.pengisian}*\n\nTuan dijemput dan *DIWAJIBKAN hadir*\nSekian, Wassalam\n\nالواجبات أكثر من الأوقات\n\nSekian`;
+            bukaPautanWA(msg);
+        }
+
+        function hantarWAUsrahUdm(idx, pilihan) {
+            const item = window.dbDataGlobal.usrahUdm[idx];
+            let msg = '';
+            let tahunVal = window.dbDataGlobal.tahun || 2026;
+            if (pilihan === 1) {
+                msg = `Assalamualaikum\n*USRAH UDM DUN MERANTI BULAN ${item.bulan} ${tahunVal}*\n\nKe majlis,\n*Ketua UDM :*\n1. Meranti\n2. Bakong\n3. Meranti Kechik\n4. Pohon Buloh\n5. Bayu Lalang\n6. Pohon Tanjong\n7. Siram\n8. Jejawi\n9. Banggol Setol\n10. Tok Sangkut\n11. Tasek Berangan\n12. Banggol Chica\n13. Gajah Mati\n\n*Usrah UDM bulan ${item.bulan} ${tahunVal}*\nTarikh : *${item.tarikh} | Hari : Isnin*\n\nMasa :\nBermula solat maghrib berjemaah\n\nTempat :\nDitentukan oleh UDM\n\nPastikan usrah UDM berjalan mengikut jadual yang ditetapkan\n\nSekian, terima kasih`;
+            } else if (pilihan === 2) {
+                msg = `Assalamualaikum\n*USRAH UDM DUN MERANTI BULAN ${item.bulan} ${tahunVal}*\n\nKe majlis,\nAhli usrah UDM Pohon Tanjong :\n\nUsrah UDM bulan ${item.bulan} ${tahunVal}\nTarikh : *${item.tarikh}*\n\nHari : Isnin (mlm Selasa)\n\nMasa :\n9.00 mlm\n\nTempat :\nBalaisah Wok Abas\n\nSemua ahli usrah dijemput hadir\n\nSekian, terima kasih`;
+            } else {
+                msg = `Assalamualaikum\n*USRAH UDM DUN MERANTI*\nBulan : *${item.bulan}* | Tarikh : *${item.tarikh}*\n\nDimaklumkan bahawa Usrah UDM bagi bulan *${item.bulan}* hendaklah dilaksanakan mengikut jadual dan tempat yang telah ditetapkan. Mohon kerjasama semua Naqib untuk bersedia dan memastikan kehadiran serta kelancaran usrah di UDM masing-masing.\n\nSekiranya terdapat sebarang perubahan, sila maklum kepada ketua Naqib.\n\n*Berikut adalah Naqib UDM dalam DUN Meranti :*\n\n*Meranti*\nUst Ahmad Syakir B Dato' Hj Mohd Nassurudin\n*Bakong*\nUst Mohd Yusof Bahji B Mohd Shargawi\n*Meranti Kechik*\nUst Muhammad B Mohd Shah\n*Pohon Buloh*\nUst Mohd Zulkernain B Tajuddin\n*Bayu Lalang*\nUst Mohd Nasrullah B Mustafa\n*Pohon Tanjong*\nUst Asri B Mohd Zain\n*Siram*\nUst Mohamad Rosni B Harun\n*Jejawi*\nUst Mad B Omar\n*Banggol Setol*\nUst Ibni B Mat Zin\n*Tok Sangkut*\nUst Mohd Izrul Hariz B Mohd Rafi\n*Tasek Berangan*\nUst Othman B Che Yeeng\n*Banggol Chica*\nUst Zakaria Bin Jusoh\n*Bgl Gajah Mati*\nUst Abdul Fatah B Jaafar\n\nTerima kasih atas komitmen dan kerjasama semua.`;
+            }
+            bukaPautanWA(msg);
+        }
+
+        function tutupanyaModal() {
+            document.getElementById('modal-edit').classList.add('hidden');
+        }
+        function tutupModal() {
+            document.getElementById('modal-edit').classList.add('hidden');
+        }
+
+        async function simpanKemaskini(e) {
+            e.preventDefault();
+            const kat = document.getElementById('edit-kategori').value;
+            const idx = parseInt(document.getElementById('edit-index').value);
+            window.dbDataGlobal[kat][idx].tarikh = document.getElementById('edit-tarikh').value;
+            if (kat === 'dhuha') {
+                window.dbDataGlobal.dhuha[idx].pengkuliah = document.getElementById('edit-field-1').value;
+                window.dbDataGlobal.dhuha[idx].kitab = document.getElementById('edit-field-2').value;
+            } else if (kat === 'iftar') {
+                window.dbDataGlobal.iftar[idx].tazkirah = document.getElementById('edit-field-1').value;
+                window.dbDataGlobal.iftar[idx].tadabbur = document.getElementById('edit-field-2').value;
+            } else if (kat === 'usrahKaw') {
+                window.dbDataGlobal.usrahKaw[idx].naqibNegeri = document.getElementById('edit-field-1').value;
+            } else if (kat === 'kuliahDun') {
+                window.dbDataGlobal.kuliahDun[idx].pengkuliah = document.getElementById('edit-field-1').value;
+                window.dbDataGlobal.kuliahDun[idx].pengisian = document.getElementById('edit-field-2').value;
+                window.dbDataGlobal.kuliahDun[idx].lokasi = document.getElementById('edit-field-3').value;
+            } else if (kat === 'usrahUdm') {
+                window.dbDataGlobal.usrahUdm[idx].senaraiUdm = document.getElementById('edit-field-1').value;
+                window.dbDataGlobal.usrahUdm[idx].naqib = document.getElementById('edit-field-2').value;
+            }
+            if (typeof window.simpanKeCloud === 'function') {
+                await window.simpanKeCloud(window.dbDataGlobal);
+            }
+            tutupModal();
+            paparPesan("Rekod berjaya dikemaskini dan disimpan ke Firestore!");
+        }
+
+        function semakNotifikasiLoceng() {
+            const hariIni = new Date();
+            let senaraiPeringatan = [];
+            function tukarKeTarikh(strTarikh) {
+                const parts = strTarikh.split('/');
+                return parts.length === 3 ? new Date(parts[2], parts[1] - 1, parts[0]) : null;
+            }
+            const gabunganProgram = [
+                ...(window.dbDataGlobal.dhuha || []).map(i => ({ tajuk: 'Kuliah Dhuha', tarikh: i.tarikh })),
+                ...(window.dbDataGlobal.iftar || []).map(i => ({ tajuk: 'Iftar Jamaie', tarikh: i.tarikh })),
+                ...(window.dbDataGlobal.usrahKaw || []).map(i => ({ tajuk: 'Usrah Kawasan', tarikh: i.tarikh })),
+                ...(window.dbDataGlobal.kuliahDun || []).map(i => ({ tajuk: 'Kuliah Haraki', tarikh: i.tarikh })),
+                ...(window.dbDataGlobal.usrahUdm || []).map(i => ({ tajuk: 'Usrah UDM', tarikh: i.tarikh }))
+            ];
+            gabunganProgram.forEach(prog => {
+                const dProg = tukarKeTarikh(prog.tarikh);
+                if (dProg) {
+                    const diffMasa = dProg.getTime() - hariIni.getTime();
+                    const diffHari = Math.ceil(diffMasa / (1000 * 3600 * 24));
+                    if (diffHari >= 0 && diffHari <= 3) {
+                        senaraiPeringatan.push({
+                            tajuk: prog.tajuk,
+                            tarikh: prog.tarikh,
+                            baki: diffHari === 0 ? "HARI INI!" : `${diffHari} hari lagi`
+                        });
+                    }
+                }
+            });
+            const badge = document.getElementById('notif-badge');
+            const notifList = document.getElementById('notif-list');
+            if (senaraiPeringatan.length > 0) {
+                badge.classList.remove('hidden');
+                badge.innerText = senaraiPeringatan.length;
+                notifList.innerHTML = '';
+                senaraiPeringatan.forEach(item => {
+                    notifList.innerHTML += `
+                        <div class="p-3 hover:bg-gray-50 flex justify-between items-center text-xs">
+                            <div>
+                                <p class="font-bold text-navy-800">${item.tajuk}</p>
+                                <p class="text-[10px] text-gray-500">${item.tarikh}</p>
+                            </div>
+                            <span class="px-2 py-0.5 bg-red-100 text-red-700 font-bold text-[10px] rounded-full">${item.baki}</span>
+                        </div>
+                    `;
+                });
+            } else {
+                badge.classList.add('hidden');
+                notifList.innerHTML = `<div class="p-3 text-gray-500 text-center text-xs">Tiada program berdekatan.</div>`;
+            }
+        }
+
+        function toggleNotifikasi() {
+            document.getElementById('notif-dropdown').classList.toggle('hidden');
+        }
+
+        function pilihMenuSidebar(tabId) {
+            tukarTab(tabId, true);
+        }
+
+        function tukarTab(tabId, shouldScroll = false) {
+            document.querySelectorAll('.nav-link').forEach(el => {
+                el.classList.remove('bg-sky-200', 'text-navy-900', 'font-bold');
+                el.classList.add('text-gray-200', 'font-medium');
+            });
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-gray-200', 'font-medium');
+                activeBtn.classList.add('bg-sky-200', 'text-navy-900', 'font-bold');
+            }
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            const targetTab = document.getElementById(`tab-${tabId}`);
+            if (targetTab) {
+                targetTab.classList.remove('hidden');
+            }
+            const tajukMap = {
+                'dashboard': 'Analisis & Ringkasan Takwim Tarbiah',
+                'dhuha': 'Kuliah Dhuha Pagi Jumaat',
+                'iftar': 'Iftar Jamaie 12K Ansorullah',
+                'usrah-kaw': 'Usrah PAS Kawasan Pasir Mas',
+                'kuliah-dun': 'Kuliah Haraki DUN Meranti',
+                'usrah-udm': 'Usrah UDM Meranti (13 UDM)',
+                'tetapan': 'Tetapan & Integrasi Pangkalan Data Awan'
+            };
+            document.getElementById('page-title').innerText = tajukMap[tabId] || 'e - Lajnah Tarbiah';
+            if (shouldScroll) {
+                const mainArea = document.getElementById('main-content-area');
+                setTimeout(() => {
+                    const targetEl = document.getElementById(`tab-${tabId}`);
+                    if (targetEl) {
+                        const firstCard = targetEl.querySelector('.neu-card, table');
+                        if (firstCard) {
+                            const rect = firstCard.getBoundingClientRect();
+                            const mainRect = mainArea.getBoundingClientRect();
+                            const scrollTop = mainArea.scrollTop + (rect.top - mainRect.top) - 10;
+                            mainArea.scrollTo({ top: Math.max(0, scrollTop), behavior: 'smooth' });
+                        }
+                    }
+                }, 50);
+            }
+        }
+
+        function cetakJadual(tableId, namaProgram) {
+            const win = window.open('', '', 'height=700,width=900');
+            win.document.write('<!DOCTYPE html><html><head><title>Cetak Takwim</title>');
+            win.document.write('<style>body{font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;font-size:11pt;padding:20px;} h2{text-align:center;font-size:14pt;font-weight:bold;margin:2px 0;} h3{text-align:center;font-size:12pt;font-weight:bold;margin-bottom:15px;color:#333;} table{width:100%;border-collapse:collapse;margin-top:5px;} th,td{border:1px solid #000;padding:6px;text-align:left;} th{background-color:#f2f2f2;}</style>');
+            win.document.write('</head><body>');
+            win.document.write('<h2>LAJNAH TARBIAH PAS KAWASAN PASIR MAS</h2>');
+            win.document.write(`<h3>${namaProgram}</h3>`);
+            
+            const tableEl = document.getElementById(tableId).cloneNode(true);
+            const rows = tableEl.querySelectorAll('tr');
+            rows.forEach(r => {
+                const cells = r.querySelectorAll('th, td');
+                if (cells.length > 0) {
+                    cells[cells.length - 1].remove();
+                }
+            });
+            win.document.write(tableEl.outerHTML);
+            win.document.write('</body></html>');
+            win.document.close();
+            win.print();
+        }
+
+        function eksportBackupJSON() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(window.dbDataGlobal, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `eTarbiah_PasirMas_Backup_${window.dbDataGlobal.tahun || 2026}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        function importBackupJSON(e) {
+            const fileReader = new FileReader();
+            fileReader.onload = async function (event) {
+                try {
+                    const parsedData = JSON.parse(event.target.result);
+                    if (parsedData && parsedData.tahun) {
+                        window.dbDataGlobal = parsedData;
+                        if (typeof window.simpanKeCloud === 'function') {
+                            await window.simpanKeCloud(window.dbDataGlobal);
+                        }
+                        kemaskiniPaparanTetapan();
+                        binaJadualDhuha();
+                        binaJadualIftar();
+                        binaJadualUsrahKaw();
+                        binaJadualKuliahDun();
+                        binaJadualUsrahUdm();
+                        semakNotifikasiLoceng();
+                        paparPesan("Data berjaya dipulihkan!");
+                    }
+                } catch (err) {
+                    paparPesan("Fail JSON tidak sah!");
+                }
+            };
+            fileReader.readAsText(e.target.files[0]);
+        }
+    </script>
 </body>
 </html>
