@@ -817,20 +817,20 @@
                 tadabbur: "Ustaz Hj. Wan Ridzuan"
             }));
 
-            // Usrah Kawasan berasaskan jadual rasmi rujukan (Bergilir Tafsir/Sirah & Hadis/Fikrah)[span_2](start_span)[span_2](end_span)
+            // Usrah Kawasan berasaskan jadual rasmi rujukan (Bergilir Tafsir/Sirah & Hadis/Fikrah)[span_0](start_span)[span_0](end_span)
             const dataTemplateUsrahKaw = [
-                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Abdul Fatah B Jaafar (TAFSIR)", kitab2: "Ust Ibni B Mat Zin (SIRAH)" },
-                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "CUTI RAMADHAN", kitab2: "CUTI RAMADHAN" },
-                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Ahmad Shakrun B Ismail (TAFSIR)", kitab2: "Ust Mohd Alias B Sulaiman (SIRAH)" },
-                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Asri B Mohd Zain (HADIS)", kitab2: "Ust Nasrullah B Mustafa (FIKRAH)" },
-                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Mohd Suazhar B Abdullah (TAFSIR)", kitab2: "Ust Muhammad Fadhil B Makhtar (SIRAH)" },
-                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Zulkernain B Tajuddin (HADIS)", kitab2: "Ust Suhaimi Mohamed (FIKRAH)" },
-                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Ahmad Shakrun B Ismail (TAFSIR)", kitab2: "Ust Dr Hj Zawawi B Zakaria (SIRAH)" },
-                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Asri B Mohd Zain (HADIS)", kitab2: "Ust Nasrullah B Mustafa (FIKRAH)" },
-                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Zulkernain B Tajuddin (TAFSIR)", kitab2: "Ust Suhaimi Mohamed (SIRAH)" },
-                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Abdul Fatah B Jaafar (TAFSIR)", kitab2: "Ust Ibni B Mat Zin (SIRAH)" },
-                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Mohd Suazhar B Abdullah (TAFSIR)", kitab2: "Ust Muhammad Fadhil B Makhtar (SIRAH)" },
-                { naqibNegeri: "Ustaz Naqib Negeri", kitab1: "Ust Dr Hj Zawawi B Zakaria (HADIS)", kitab2: "Ust Mohd Alias B Sulaiman (FIKRAH)" }
+                { naqibNegeri: "Ustaz Naqib Negeri Kelantan", kitab1: "Ust Abdul Fatah B Jaafar (TAFSIR)", kitab2: "Ust Ibni B Mat Zin (SIRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri Kelantan", kitab1: "CUTI RAMADHAN", kitab2: "CUTI RAMADHAN" },
+                { naqibNegeri: "Ustaz Naqib Negeri Kelantan", kitab1: "Ust Ahmad Shakrun B Ismail (TAFSIR)", kitab2: "Ust Mohd Alias B Sulaiman (SIRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri Kelantan", kitab1: "Ust Asri B Mohd Zain (HADIS)", kitab2: "Ust Nasrullah B Mustafa (FIKRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri Kelantan", kitab1: "Ust Mohd Suazhar B Abdullah (TAFSIR)", kitab2: "Ust Muhammad Fadhil B Makhtar (SIRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri Kelantan", kitab1: "Ust Zulkernain B Tajuddin (HADIS)", kitab2: "Ust Suhaimi Mohamed (FIKRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri Kelantan", kitab1: "Ust Ahmad Shakrun B Ismail (TAFSIR)", kitab2: "Ust Dr Hj Zawawi B Zakaria (SIRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri Kelantan", kitab1: "Ust Asri B Mohd Zain (HADIS)", kitab2: "Ust Nasrullah B Mustafa (FIKRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri Kelantan", kitab1: "Ust Zulkernain B Tajuddin (TAFSIR)", kitab2: "Ust Suhaimi Mohamed (SIRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri Kelantan", kitab1: "Ust Abdul Fatah B Jaafar (TAFSIR)", kitab2: "Ust Ibni B Mat Zin (SIRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri Kelantan", kitab1: "Ust Mohd Suazhar B Abdullah (TAFSIR)", kitab2: "Ust Muhammad Fadhil B Makhtar (SIRAH)" },
+                { naqibNegeri: "Ustaz Naqib Negeri Kelantan", kitab1: "Ust Dr Hj Zawawi B Zakaria (HADIS)", kitab2: "Ust Mohd Alias B Sulaiman (FIKRAH)" }
             ];
 
             window.dbDataGlobal.usrahKaw = SENARAI_BULAN.map((bln, idx) => ({
@@ -1125,7 +1125,7 @@
             if (terkini) {
                 const idxReal = list.indexOf(terkini);
                 let labelBulanTerkini = terkini.bulan ? ` (${terkini.bulan})` : '';
-                document.getElementById('live-usrah-kaw-info').innerText = `Tarikh: ${terkini.tarikh}${labelBulanTerkini} | Naqib 1: ${terkini.kitab1 || '-'}`;
+                document.getElementById('live-usrah-kaw-info').innerText = `Tarikh: ${terkini.tarikh}${labelBulanTerkini} | Kitab 1: ${terkini.kitab1 || '-'}`;
                 document.getElementById('live-usrah-kaw-btn').innerHTML = `<button onclick="hantarWAUsrahKaw(${idxReal})" class="px-3 py-1 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 shadow-sm"><i class="fa-brands fa-whatsapp mr-1"></i> Hantar WA</button>`;
             }
         }
