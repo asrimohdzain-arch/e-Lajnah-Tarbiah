@@ -360,7 +360,7 @@
                 </div>
             </section>
 
-            <!-- USRAH PAS KAWASAN (2 KOLUM SEPERTI GAMBAR 1) -->
+            <!-- USRAH PAS KAWASAN (DENGAN KOLUM NAQIB NEGERI) -->
             <section id="tab-usrah-kaw" class="tab-content space-y-4 hidden">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-3.5 rounded-xl shadow-sm">
                     <div>
@@ -384,10 +384,11 @@
                     <div id="live-usrah-kaw-btn"></div>
                 </div>
                 <div class="neu-card p-3.5 overflow-x-auto">
-                    <table id="table-usrah-kaw" class="w-full text-[10px] text-left border-collapse min-w-[750px] cetak-tanpa-wa">
+                    <table id="table-usrah-kaw" class="w-full text-[10px] text-left border-collapse min-w-[850px] cetak-tanpa-wa">
                         <thead>
                             <tr class="bg-navy-800 text-white">
                                 <th class="p-2 border border-navy-700 text-center">BULAN / TARIKH</th>
+                                <th class="p-2 border border-navy-700 text-center">NAQIB NEGERI</th>
                                 <th class="p-2 border border-navy-700 text-center">NAQIB KAWASAN</th>
                                 <th class="p-2 border border-navy-700 text-center">KITAB</th>
                                 <th class="p-2 border border-navy-700 text-center no-print">Hantar WA</th>
@@ -814,7 +815,6 @@
                 tadabbur: "Ustaz Hj. Wan Ridzuan"
             }));
 
-            // Mengikut data rasmi Gambar 1 (2 baris per bulan: Naqib 1 & Kitab 1, Naqib 2 & Kitab 2)[span_2](start_span)[span_2](end_span)
             const dataTemplateUsrahKaw = [
                 { naqib1: "Ust Abdul Fatah B Jaafar", kitab1: "TAFSIR", naqib2: "Ust Ibni B Mat Zin", kitab2: "SIRAH" },
                 { naqib1: "CUTI RAMADHAN", kitab1: "-", naqib2: "CUTI RAMADHAN", kitab2: "-" },
@@ -959,17 +959,30 @@
             const f4 = document.getElementById('edit-field-4').value;
             const f5 = document.getElementById('edit-field-5').value;
 
+            // Pastikan nama bulan kekal dikemaskini mengikut tarikh yang dipilih
+            let bulanOtomatis = "";
+            if (tarikhVal) {
+                let parts = tarikhVal.split('/');
+                if (parts.length === 3) {
+                    let bIndex = parseInt(parts[1]) - 1;
+                    if (bIndex >= 0 && bIndex < 12) {
+                        bulanOtomatis = SENARAI_BULAN[bIndex];
+                    }
+                }
+            }
+
             let objBaru = {};
             if (kat === 'dhuha') {
                 objBaru = { tarikh: tarikhVal, pengkuliah: f1, kitab: f2 };
             } else if (kat === 'iftar') {
-                objBaru = { tarikh: tarikhVal, tazkirah: f1, tadabbur: f2 };
+                objBaru = { bulan: bulanOtomatis, tarikh: tarikhVal, tazkirah: f1, tadabbur: f2 };
             } else if (kat === 'usrahKaw') {
-                objBaru = { tarikh: tarikhVal, naqibNegeri: f1, naqib1: f2, kitab1: f3, naqib2: f4, kitab2: f5 };
+                let oldBulan = (idx > -1 && window.dbDataGlobal.usrahKaw[idx]) ? window.dbDataGlobal.usrahKaw[idx].bulan : "";
+                objBaru = { bulan: bulanOtomatis || oldBulan, tarikh: tarikhVal, naqibNegeri: f1, naqib1: f2, kitab1: f3, naqib2: f4, kitab2: f5 };
             } else if (kat === 'kuliahDun') {
-                objBaru = { tarikh: tarikhVal, pengkuliah: f1, pengisian: f2, lokasi: f3 };
+                objBaru = { bulan: bulanOtomatis, tarikh: tarikhVal, pengkuliah: f1, pengisian: f2, lokasi: f3 };
             } else if (kat === 'usrahUdm') {
-                objBaru = { tarikh: tarikhVal, senaraiUdm: f1, naqib: f2 };
+                objBaru = { bulan: bulanOtomatis, tarikh: tarikhVal, senaraiUdm: f1, naqib: f2 };
             }
 
             if (!window.dbDataGlobal[kat]) window.dbDataGlobal[kat] = [];
@@ -1101,23 +1114,26 @@
             }
         }
 
-        // BINA JADUAL USRAH PAS KAWASAN DENGAN 2 BARIS SEPERTI GAMBAR 1
+        // BINA JADUAL USRAH PAS KAWASAN DENGAN KOLUM NAQIB NEGERI & KEKALKAN BULAN
         function binaJadualUsrahKaw() {
             const tbody = document.getElementById('tbody-usrah-kaw');
             if (!tbody) return;
             tbody.innerHTML = '';
             let list = window.dbDataGlobal.usrahKaw || [];
             if (list.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">Tiada rekod.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-500">Tiada rekod.</td></tr>`;
                 return;
             }
             list.forEach((row, idx) => {
-                let labelBulan = row.bulan ? `<span class="block text-[10px] text-amber-700 font-bold uppercase">(${row.bulan})</span>` : '';
+                let labelBulan = row.bulan ? `<span class="block text-[10px] text-amber-700 font-bold uppercase">${row.bulan}</span>` : '';
                 tbody.innerHTML += `
                     <tr class="hover:bg-gray-50">
                         <td class="p-2 border text-center font-bold text-navy-800 align-middle" rowspan="2">
                             ${row.tarikh}
                             ${labelBulan}
+                        </td>
+                        <td class="p-2 border text-center align-middle font-semibold text-emerald-800" rowspan="2">
+                            ${row.naqibNegeri || 'Ustaz Naqib Negeri Kelantan'}
                         </td>
                         <td class="p-2 border font-medium">${row.naqib1 || '-'}</td>
                         <td class="p-2 border font-semibold text-pasgreen">${row.kitab1 || '-'}</td>
@@ -1235,11 +1251,11 @@
             bukaPautanWA(msg);
         }
 
-        // TEMPLAT MESEJ WHATSAPP USRAH PAS KAWASAN SEPERTI GAMBAR 2
+        // TEMPLAT WHATSAPP 100% SAMA SEPERTI GAMBAR 2 (TERSUSUN & DITEBALKAN)
         function hantarWAUsrahKaw(idx) {
             const item = window.dbDataGlobal.usrahKaw[idx];
-            let bulanStr = item.bulan ? ` (${item.bulan})` : '';
-            const msg = `Assalamualaikum\nUSRAH PIMPINAN PAS\nKAWASAN PASIR MAS\n\nKe majlis,\n\nAHLI USRAH PIMPINAN PAS\nKAWASAN\n1. AJK PAS Kawasan\n2. Mantan AJK PAS Kawasan\n3. Mantan & AJK Dewan\n   Ulamak PAS Kawasan\n4. Mantan & AJK Dewan\n   Pemuda PAS Kawasan\n5. Mantan & AJK Dewan\n   Muslimat PAS Kawasan\n6. AJK Lajnah Tarbiah PAS\n   Kawasan\n\nUSRAH PIMPINAN PAS\nKAWASAN PASIR MAS\n${bulanStr}\n\nTarikh : ${item.tarikh}\nHari : Rabu\nMasa : Bermula Solat Maghrib\nberjemaah\n\nTempat :\nPejabat PAS Kawasan Pasir Mas\n\nNaqib Usrah Negeri :\n${item.naqibNegeri || 'Ustaz Naqib Negeri Kelantan'}\n\nNaqib Kawasan :\n1. ${item.naqib1}\n   (${item.kitab1})\n2. ${item.naqib2}\n   (${item.kitab2})\n\nTuan dijemput dan DIWAJIBKAN\nhadir\nSekian, Wassalam`;
+            let bulanStr = item.bulan ? `\n(${item.bulan})` : '';
+            const msg = `Assalamualaikum\n*USRAH PIMPINAN PAS*\n*KAWASAN PASIR MAS*\n\nKe majlis,\n\n*AHLI USRAH PIMPINAN PAS*\n*KAWASAN*\n1. AJK PAS Kawasan\n2. Mantan AJK PAS Kawasan\n3. Mantan & AJK Dewan\n   Ulamak PAS Kawasan\n4. Mantan & AJK Dewan\n   Pemuda PAS Kawasan\n5. Mantan & AJK Dewan\n   Muslimat PAS Kawasan\n6. AJK Lajnah Tarbiah PAS\n   Kawasan\n\n*USRAH PIMPINAN PAS*\n*KAWASAN PASIR MAS*${bulanStr}\n\nTarikh : *${item.tarikh}*\nHari : *Rabu*\nMasa : *Bermula Solat Maghrib*\n*berjemaah*\n\nTempat :\n*Pejabat PAS Kawasan Pasir Mas*\n\nNaqib Usrah Negeri :\n*${item.naqibNegeri || 'Ustaz Naqib Negeri Kelantan'}*\n\nNaqib Kawasan :\n1. *${item.naqib1}*\n   *(${item.kitab1})*\n2. *${item.naqib2}*\n   *(${item.kitab2})*\n\nTuan dijemput dan *DIWAJIBKAN*\n*hadir*\nSekian, Wassalam`;
             bukaPautanWA(msg);
         }
 
