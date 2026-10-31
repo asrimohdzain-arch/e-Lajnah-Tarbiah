@@ -1249,11 +1249,11 @@
             bukaPautanWA(msg);
         }
 
-        // TEMPLAT WHATSAPP DENGAN SUSUNAN NOMBOR 1-6 TERSUSUN RAPI & TANPA BINTANG PADA NAMA NAQIB
+        // TEMPLAT WHATSAPP USRAH KAWASAN DISERAGAMKAN MENGIKUT GAYA LURUS UDM (TERSUSUN RAPI & TANPA BINTANG PADA NAMA)
         function hantarWAUsrahKaw(idx) {
             const item = window.dbDataGlobal.usrahKaw[idx];
             let bulanStr = item.bulan ? `\n(${item.bulan})` : '';
-            const msg = `Assalamualaikum\n*USRAH PIMPINAN PAS*\n*KAWASAN PASIR MAS*\n\nKe majlis,\n\n*AHLI USRAH PIMPINAN PAS*\n*KAWASAN*\n1. AJK PAS Kawasan\n2. Mantan AJK PAS Kawasan\n3. Mantan & AJK Dewan\n   Ulamak PAS Kawasan\n4. Mantan & AJK Dewan\n   Pemuda PAS Kawasan\n5. Mantan & AJK Dewan\n   Muslimat PAS Kawasan\n6. AJK Lajnah Tarbiah PAS\n   Kawasan\n\n*USRAH PIMPINAN PAS*\n*KAWASAN PASIR MAS*${bulanStr}\n\nTarikh : *${item.tarikh}*\nHari : *Rabu*\nMasa : *Bermula Solat Maghrib*\n*berjemaah*\n\nTempat :\n*Pejabat PAS Kawasan Pasir Mas*\n\nNaqib Usrah Negeri :\n*${item.naqibNegeri || 'Ustaz Naqib Negeri Kelantan'}*\n\nNaqib Kawasan :\n1. ${item.naqib1}\n   *(${item.kitab1})*\n2. ${item.naqib2}\n   *(${item.kitab2})*\n\nTuan dijemput dan *DIWAJIBKAN*\n*hadir*\nSekian, Wassalam`;
+            const msg = `Assalamualaikum\n*USRAH PIMPINAN PAS*\n*KAWASAN PASIR MAS*\n\nKe majlis,\n\n*AHLI USRAH PIMPINAN PAS*\n*KAWASAN*\n1. AJK PAS Kawasan\n2. Mantan AJK PAS Kawasan\n3. Mantan & AJK Dewan Ulamak PAS Kawasan\n4. Mantan & AJK Dewan Pemuda PAS Kawasan\n5. Mantan & AJK Dewan Muslimat PAS Kawasan\n6. AJK Lajnah Tarbiah PAS Kawasan\n\n*USRAH PIMPINAN PAS*\n*KAWASAN PASIR MAS*${bulanStr}\n\nTarikh : *${item.tarikh}*\nHari : *Rabu*\nMasa : *Bermula Solat Maghrib berjemaah*\n\nTempat :\n*Pejabat PAS Kawasan Pasir Mas*\n\nNaqib Usrah Negeri :\n*${item.naqibNegeri || 'Ustaz Naqib Negeri Kelantan'}*\n\nNaqib Kawasan :\n1. ${item.naqib1}\n   *(${item.kitab1})*\n2. ${item.naqib2}\n   *(${item.kitab2})*\n\nTuan dijemput dan *DIWAJIBKAN hadir*\nSekian, Wassalam`;
             bukaPautanWA(msg);
         }
 
