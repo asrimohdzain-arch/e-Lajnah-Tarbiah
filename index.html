@@ -1233,7 +1233,6 @@
             window.open(url, '_blank');
         }
 
-        // TEMPLAT WHATSAPP KULIAH DHUHA DISERAGAMKAN MENGIKUT GAYA LURUS RAPI TANPA BINTANG
         function hantarWADhuha(idx) {
             const item = window.dbDataGlobal.dhuha[idx];
             const parts = item.tarikh.split('/');
@@ -1244,9 +1243,10 @@
             bukaPautanWA(msg);
         }
 
+        // TEMPLAT WHATSAPP IFTAR JAMAIE 12K DISERAGAMKAN MENGIKUT GAYA LURUS RAPI TANPA BINTANG
         function hantarWAIFTAR(idx) {
             const item = window.dbDataGlobal.iftar[idx];
-            const msg = `Assalamualaikum\n*Iftar Jamaie 12K Ansorullah PAS Kawasan Pasir Mas*\n\n*Peserta Program 12K Ansorullah PAS Kawasan Pasir Mas Bulan ${item.bulan || ''}:*\n• AJK PAS Kawasan Pasir Mas\n• Ketua & AJK Dewan Ulama\n• Ketua & AJK Dewan Muslimat\n• Ketua & AJK Dewan Pemuda\n• AJK Lajnah Tarbiah\n• Ahli Projek 12K Kawasan PAS Pasir Mas\n• Penghulu Parlimen Pasir Mas\n\nSukacita dimaklumkan bahawa kami Jawatankuasa Program 12K Ansorullah akan mengadakan Iftar Jamaie secara bulanan (minggu ke-3) dan Qiamullail setiap 3 bulan.\n\nMaklumat sepertimana berikut :\nTarikh : *${item.tarikh} (${item.bulan ? item.bulan.charAt(0) + item.bulan.slice(1).toLowerCase() : ''})*\nMasa : *6.30 ptg - 9.30 mlm*\nTempat : *Masjid Madrasah Nasrullah, Pohon Buloh.*\n\nPengkuliah & Sukatan :\n1. *${item.tazkirah}* -\nTazkirah 15 minit (Maghrib - Isya')\n2. *${item.tadabbur}* -\nTadabbur Ayat (Selepas Isya' 30 minit)\n\nOleh yang demikian, tuan adalah ahli 12K Ansorullah PAS Kawasan Pasir Mas dan *DIWAJIBKAN HADIR* pada program tersebut.\n\n_Peserta program dikehendaki berpuasa Sunat pada hari Khamis tersebut._\n\n*Kehadiran adalah WAJIB kecuali uzur syar'ie.*\n\nSekian, Terima Kasih.`;
+            const msg = `Assalamualaikum\n*Iftar Jamaie 12K Ansorullah PAS Kawasan Pasir Mas*\n\n*Peserta Program 12K Ansorullah PAS Kawasan Pasir Mas Bulan ${item.bulan || ''}:*\n1. AJK PAS Kawasan Pasir Mas\n2. Ketua & AJK Dewan Ulama\n3. Ketua & AJK Dewan Muslimat\n4. Ketua & AJK Dewan Pemuda\n5. AJK Lajnah Tarbiah\n6. Ahli Projek 12K Kawasan PAS Pasir Mas\n7. Penghulu Parlimen Pasir Mas\n\nSukacita dimaklumkan bahawa kami Jawatankuasa Program 12K Ansorullah akan mengadakan Iftar Jamaie secara bulanan (minggu ke-3) dan Qiamullail setiap 3 bulan.\n\nMaklumat sepertimana berikut :\nTarikh : *${item.tarikh} (${item.bulan ? item.bulan.charAt(0) + item.bulan.slice(1).toLowerCase() : ''})*\nMasa : *6.30 ptg - 9.30 mlm*\nTempat : *Masjid Madrasah Nasrullah, Pohon Buloh.*\n\nPengkuliah & Sukatan :\n1. *${item.tazkirah}* -\nTazkirah 15 minit (Maghrib - Isya')\n2. *${item.tadabbur}* -\nTadabbur Ayat (Selepas Isya' 30 minit)\n\nOleh yang demikian, tuan adalah ahli 12K Ansorullah PAS Kawasan Pasir Mas dan *DIWAJIBKAN HADIR* pada program tersebut.\n\n_Peserta program dikehendaki berpuasa Sunat pada hari Khamis tersebut._\n\n*Kehadiran adalah WAJIB kecuali uzur syar'ie.*\n\nSekian, Terima Kasih.`;
             bukaPautanWA(msg);
         }
 
@@ -1442,3 +1442,4 @@
     </script>
 </body>
 </html>
+
