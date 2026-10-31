@@ -360,7 +360,7 @@
                 </div>
             </section>
 
-            <!-- USRAH PAS KAWASAN (DENGAN KOLUM NAQIB NEGERI) -->
+            <!-- USRAH PAS KAWASAN -->
             <section id="tab-usrah-kaw" class="tab-content space-y-4 hidden">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-3.5 rounded-xl shadow-sm">
                     <div>
@@ -959,7 +959,6 @@
             const f4 = document.getElementById('edit-field-4').value;
             const f5 = document.getElementById('edit-field-5').value;
 
-            // Pastikan nama bulan kekal dikemaskini mengikut tarikh yang dipilih
             let bulanOtomatis = "";
             if (tarikhVal) {
                 let parts = tarikhVal.split('/');
@@ -1114,7 +1113,6 @@
             }
         }
 
-        // BINA JADUAL USRAH PAS KAWASAN DENGAN KOLUM NAQIB NEGERI & KEKALKAN BULAN
         function binaJadualUsrahKaw() {
             const tbody = document.getElementById('tbody-usrah-kaw');
             if (!tbody) return;
@@ -1251,11 +1249,11 @@
             bukaPautanWA(msg);
         }
 
-        // TEMPLAT WHATSAPP 100% SAMA SEPERTI GAMBAR 2 (TERSUSUN & DITEBALKAN)
+        // TEMPLAT WHATSAPP DENGAN SUSUNAN NOMBOR 1-6 TERSUSUN RAPI & TIADA BINTANG (*) PADA NAMA NAQIB
         function hantarWAUsrahKaw(idx) {
             const item = window.dbDataGlobal.usrahKaw[idx];
             let bulanStr = item.bulan ? `\n(${item.bulan})` : '';
-            const msg = `Assalamualaikum\n*USRAH PIMPINAN PAS*\n*KAWASAN PASIR MAS*\n\nKe majlis,\n\n*AHLI USRAH PIMPINAN PAS*\n*KAWASAN*\n1. AJK PAS Kawasan\n2. Mantan AJK PAS Kawasan\n3. Mantan & AJK Dewan\n   Ulamak PAS Kawasan\n4. Mantan & AJK Dewan\n   Pemuda PAS Kawasan\n5. Mantan & AJK Dewan\n   Muslimat PAS Kawasan\n6. AJK Lajnah Tarbiah PAS\n   Kawasan\n\n*USRAH PIMPINAN PAS*\n*KAWASAN PASIR MAS*${bulanStr}\n\nTarikh : *${item.tarikh}*\nHari : *Rabu*\nMasa : *Bermula Solat Maghrib*\n*berjemaah*\n\nTempat :\n*Pejabat PAS Kawasan Pasir Mas*\n\nNaqib Usrah Negeri :\n*${item.naqibNegeri || 'Ustaz Naqib Negeri Kelantan'}*\n\nNaqib Kawasan :\n1. *${item.naqib1}*\n   *(${item.kitab1})*\n2. *${item.naqib2}*\n   *(${item.kitab2})*\n\nTuan dijemput dan *DIWAJIBKAN*\n*hadir*\nSekian, Wassalam`;
+            const msg = `Assalamualaikum\n*USRAH PIMPINAN PAS*\n*KAWASAN PASIR MAS*\n\nKe majlis,\n\n*AHLI USRAH PIMPINAN PAS*\n*KAWASAN*\n1. AJK PAS Kawasan\n2. Mantan AJK PAS Kawasan\n3. Mantan & AJK Dewan\n   Ulamak PAS Kawasan\n4. Mantan & AJK Dewan\n   Pemuda PAS Kawasan\n5. Mantan & AJK Dewan\n   Muslimat PAS Kawasan\n6. AJK Lajnah Tarbiah PAS\n   Kawasan\n\n*USRAH PIMPINAN PAS*\n*KAWASAN PASIR MAS*${bulanStr}\n\nTarikh : *${item.tarikh}*\nHari : *Rabu*\nMasa : *Bermula Solat Maghrib*\n*berjemaah*\n\nTempat :\n*Pejabat PAS Kawasan Pasir Mas*\n\nNaqib Usrah Negeri :\n*${item.naqibNegeri || 'Ustaz Naqib Negeri Kelantan'}*\n\nNaqib Kawasan :\n1. ${item.naqib1}\n   *(${item.kitab1})*\n2. ${item.naqib2}\n   *(${item.kitab2})*\n\nTuan dijemput dan *DIWAJIBKAN*\n*hadir*\nSekian, Wassalam`;
             bukaPautanWA(msg);
         }
 
