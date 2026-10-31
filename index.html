@@ -959,8 +959,11 @@
             const f4 = document.getElementById('edit-field-4').value;
             const f5 = document.getElementById('edit-field-5').value;
 
+            // Kekalkan nama bulan sedia ada jika rekod lama wujud, atau tentukan daripada indeks/tarikh
             let bulanOtomatis = "";
-            if (tarikhVal) {
+            if (idx > -1 && window.dbDataGlobal[kat] && window.dbDataGlobal[kat][idx] && window.dbDataGlobal[kat][idx].bulan) {
+                bulanOtomatis = window.dbDataGlobal[kat][idx].bulan;
+            } else if (tarikhVal) {
                 let parts = tarikhVal.split('/');
                 if (parts.length === 3) {
                     let bIndex = parseInt(parts[1]) - 1;
@@ -976,8 +979,7 @@
             } else if (kat === 'iftar') {
                 objBaru = { bulan: bulanOtomatis, tarikh: tarikhVal, tazkirah: f1, tadabbur: f2 };
             } else if (kat === 'usrahKaw') {
-                let oldBulan = (idx > -1 && window.dbDataGlobal.usrahKaw[idx]) ? window.dbDataGlobal.usrahKaw[idx].bulan : "";
-                objBaru = { bulan: bulanOtomatis || oldBulan, tarikh: tarikhVal, naqibNegeri: f1, naqib1: f2, kitab1: f3, naqib2: f4, kitab2: f5 };
+                objBaru = { bulan: bulanOtomatis, tarikh: tarikhVal, naqibNegeri: f1, naqib1: f2, kitab1: f3, naqib2: f4, kitab2: f5 };
             } else if (kat === 'kuliahDun') {
                 objBaru = { bulan: bulanOtomatis, tarikh: tarikhVal, pengkuliah: f1, pengisian: f2, lokasi: f3 };
             } else if (kat === 'usrahUdm') {
@@ -1243,7 +1245,6 @@
             bukaPautanWA(msg);
         }
 
-        // TEMPLAT WHATSAPP IFTAR JAMAIE 12K DISERAGAMKAN MENGIKUT GAYA LURUS RAPI TANPA BINTANG
         function hantarWAIFTAR(idx) {
             const item = window.dbDataGlobal.iftar[idx];
             const msg = `Assalamualaikum\n*Iftar Jamaie 12K Ansorullah PAS Kawasan Pasir Mas*\n\n*Peserta Program 12K Ansorullah PAS Kawasan Pasir Mas Bulan ${item.bulan || ''}:*\n1. AJK PAS Kawasan Pasir Mas\n2. Ketua & AJK Dewan Ulama\n3. Ketua & AJK Dewan Muslimat\n4. Ketua & AJK Dewan Pemuda\n5. AJK Lajnah Tarbiah\n6. Ahli Projek 12K Kawasan PAS Pasir Mas\n7. Penghulu Parlimen Pasir Mas\n\nSukacita dimaklumkan bahawa kami Jawatankuasa Program 12K Ansorullah akan mengadakan Iftar Jamaie secara bulanan (minggu ke-3) dan Qiamullail setiap 3 bulan.\n\nMaklumat sepertimana berikut :\nTarikh : *${item.tarikh} (${item.bulan ? item.bulan.charAt(0) + item.bulan.slice(1).toLowerCase() : ''})*\nMasa : *6.30 ptg - 9.30 mlm*\nTempat : *Masjid Madrasah Nasrullah, Pohon Buloh.*\n\nPengkuliah & Sukatan :\n1. *${item.tazkirah}* -\nTazkirah 15 minit (Maghrib - Isya')\n2. *${item.tadabbur}* -\nTadabbur Ayat (Selepas Isya' 30 minit)\n\nOleh yang demikian, tuan adalah ahli 12K Ansorullah PAS Kawasan Pasir Mas dan *DIWAJIBKAN HADIR* pada program tersebut.\n\n_Peserta program dikehendaki berpuasa Sunat pada hari Khamis tersebut._\n\n*Kehadiran adalah WAJIB kecuali uzur syar'ie.*\n\nSekian, Terima Kasih.`;
@@ -1385,7 +1386,14 @@
         function cetakJadual(tableId, namaProgram) {
             const win = window.open('', '', 'height=700,width=900');
             win.document.write('<!DOCTYPE html><html><head><title>Cetak Takwim</title>');
-            win.document.write('<style>body{font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;font-size:11pt;padding:20px;} h2{text-align:center;font-size:14pt;font-weight:bold;margin:2px 0;} h3{text-align:center;font-size:12pt;font-weight:bold;margin-bottom:15px;color:#333;} table{width:100%;border-collapse:collapse;margin-top:5px;} th,td{border:1px solid #000;padding:6px;text-align:left;} th{background-color:#f2f2f2;}</style>');
+            win.document.write('<style>');
+            win.document.write('body{font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;font-size:11pt;padding:20px; color: #000;}');
+            win.document.write('h2{text-align:center;font-size:14pt;font-weight:bold;margin:2px 0;}');
+            win.document.write('h3{text-align:center;font-size:12pt;font-weight:bold;margin-bottom:15px;color:#333;}');
+            win.document.write('table{width:100%;border-collapse:collapse;margin-top:5px; border:1px solid #000;}');
+            win.document.write('th,td{border:1px solid #000 !important;padding:6px;text-align:left;vertical-align:middle;}');
+            win.document.write('th{background-color:#f2f2f2 !important; text-align:center;}');
+            win.document.write('</style>');
             win.document.write('</head><body>');
             win.document.write('<h2>LAJNAH TARBIAH PAS KAWASAN PASIR MAS</h2>');
             win.document.write(`<h3>${namaProgram}</h3>`);
@@ -1395,7 +1403,7 @@
             rows.forEach(r => {
                 const cells = r.querySelectorAll('th, td');
                 if (cells.length > 0) {
-                    cells[cells.length - 1].remove();
+                    cells[cells.length - 1].remove(); // Buang kolum tindakan/WA
                 }
             });
             win.document.write(tableEl.outerHTML);
@@ -1442,4 +1450,3 @@
     </script>
 </body>
 </html>
-
