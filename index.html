@@ -1233,13 +1233,14 @@
             window.open(url, '_blank');
         }
 
+        // TEMPLAT WHATSAPP KULIAH DHUHA DISERAGAMKAN MENGIKUT GAYA LURUS RAPI TANPA BINTANG
         function hantarWADhuha(idx) {
             const item = window.dbDataGlobal.dhuha[idx];
             const parts = item.tarikh.split('/');
             let namaBulanStr = parts.length === 3 ? SENARAI_BULAN[parseInt(parts[1]) - 1] || "" : "";
             const dObj = new Date(parts[2], parts[1] - 1, parts[0]);
             const mingguKe = Math.ceil(dObj.getDate() / 7);
-            let msg = `Assalamualaikum Wbt\n*KULIAH DHUHA PAGI JUMAAT*\n\nKe Majlis,\n• YB/Ustaz/Tuan/Puan AJK PAS Kawasan Pasir Mas\n• AJK Dewan Ulama'/Muslimat/Pemuda\n• Semua Lantikan Politik\n• Penghulu /Halaqat/PPAD/PICT\n• Peserta Ladang Rakyat\n\nDengan segala hormatnya, dijemput hadir ke Kuliah Dhuha Pagi Jumaat sebagaimana berikut:\n\nBulan : *${namaBulanStr}*\nTarikh : *${item.tarikh}*\nMinggu : *${mingguKe}*\nMasa : *9:30 - 10:30 Pagi*\n\nTempat :\n*Masjid Madrasah Nasrullah,\nPohon Buloh.*\n\nPengkuliah :\n*${item.pengkuliah}*\n-------------------------\n\nSemua dijemput hadir.\nSekian, Terima Kasih.`;
+            let msg = `Assalamualaikum Wbt\n*KULIAH DHUHA PAGI JUMAAT*\n\nKe Majlis,\n1. YB/Ustaz/Tuan/Puan AJK PAS Kawasan Pasir Mas\n2. AJK Dewan Ulama'/Muslimat/Pemuda\n3. Semua Lantikan Politik\n4. Penghulu /Halaqat/PPAD/PICT\n5. Peserta Ladang Rakyat\n\nDengan segala hormatnya, dijemput hadir ke Kuliah Dhuha Pagi Jumaat sebagaimana berikut:\n\nBulan : *${namaBulanStr}*\nTarikh : *${item.tarikh}*\nMinggu : *${mingguKe}*\nMasa : *9:30 - 10:30 Pagi*\n\nTempat :\n*Masjid Madrasah Nasrullah, Pohon Buloh.*\n\nPengkuliah :\n*${item.pengkuliah}*\n-------------------------\n\nSemua dijemput hadir.\nSekian, Terima Kasih.`;
             bukaPautanWA(msg);
         }
 
@@ -1249,7 +1250,6 @@
             bukaPautanWA(msg);
         }
 
-        // TEMPLAT WHATSAPP USRAH KAWASAN DISERAGAMKAN MENGIKUT GAYA LURUS UDM (TERSUSUN RAPI & TANPA BINTANG PADA NAMA)
         function hantarWAUsrahKaw(idx) {
             const item = window.dbDataGlobal.usrahKaw[idx];
             let bulanStr = item.bulan ? `\n(${item.bulan})` : '';
